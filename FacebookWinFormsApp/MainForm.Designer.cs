@@ -152,8 +152,6 @@ namespace FacebookDApp
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(86)))), ((int)(((byte)(147)))));
             this.ClientSize = new System.Drawing.Size(922, 635);
             this.Controls.Add(this.buttonDownloadPhotos);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonFuture);
             this.Controls.Add(this.buttonPostNow);
             this.Controls.Add(this.textBoxPost);
