@@ -59,6 +59,7 @@ namespace FacebookDApp
             this.buttonLogin.TabIndex = 0;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // buttonLogout
             // 
@@ -73,7 +74,7 @@ namespace FacebookDApp
             this.buttonLogout.TabIndex = 1;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = false;
-          //  this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // pictureBoxProfile
             // 
@@ -92,7 +93,7 @@ namespace FacebookDApp
             this.labelAppName.Location = new System.Drawing.Point(6, 15);
             this.labelAppName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAppName.Name = "labelAppName";
-            this.labelAppName.Size = new System.Drawing.Size(364, 95);
+            this.labelAppName.Size = new System.Drawing.Size(435, 113);
             this.labelAppName.TabIndex = 5;
             this.labelAppName.Text = "facebook";
             // 
@@ -104,7 +105,7 @@ namespace FacebookDApp
             this.labelCreatePost.Location = new System.Drawing.Point(18, 242);
             this.labelCreatePost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCreatePost.Name = "labelCreatePost";
-            this.labelCreatePost.Size = new System.Drawing.Size(310, 47);
+            this.labelCreatePost.Size = new System.Drawing.Size(371, 56);
             this.labelCreatePost.TabIndex = 6;
             this.labelCreatePost.Text = "Create your Post";
             // 
@@ -166,7 +167,7 @@ namespace FacebookDApp
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(523, 27);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(305, 38);
+            this.label5.Size = new System.Drawing.Size(353, 45);
             this.label5.TabIndex = 15;
             this.label5.Text = "Get Your Next Event";
             // 
@@ -187,7 +188,7 @@ namespace FacebookDApp
             this.label1.ForeColor = System.Drawing.Color.DarkGray;
             this.label1.Location = new System.Drawing.Point(583, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 38);
+            this.label1.Size = new System.Drawing.Size(114, 45);
             this.label1.TabIndex = 17;
             this.label1.Text = "name";
             // 
@@ -198,13 +199,13 @@ namespace FacebookDApp
             this.label2.ForeColor = System.Drawing.Color.DarkGray;
             this.label2.Location = new System.Drawing.Point(768, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 38);
+            this.label2.Size = new System.Drawing.Size(145, 45);
             this.label2.TabIndex = 18;
             this.label2.Text = "dd/mm";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(86)))), ((int)(((byte)(147)))));
             this.ClientSize = new System.Drawing.Size(1383, 1025);

@@ -23,7 +23,7 @@ namespace FacebookDApp
 
         private void loginAndInit()
         {
-            m_LoginResult = FacebookService.Login("1450160541956417", /// (desig patter's "Design Patterns Course App 2.4" app)
+            m_LoginResult = FacebookService.Login("825616175626986", /// (desig patter's "Design Patterns Course App 2.4" app)
 					"email",
                     "public_profile",
                     "user_age_range",
@@ -69,6 +69,17 @@ namespace FacebookDApp
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            FacebookService.LogoutWithUI();
+            m_LoginResult = null;
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            loginAndInit();
         }
     }
 }
