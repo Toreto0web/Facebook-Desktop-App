@@ -16,6 +16,7 @@ namespace FacebookDApp
 
         User m_LoggedInUser;
         LoginResult m_LoginResult;
+
         public MainForm()
         {
             InitializeComponent();
@@ -80,6 +81,11 @@ namespace FacebookDApp
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             loginAndInit();
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
