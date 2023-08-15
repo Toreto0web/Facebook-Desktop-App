@@ -87,10 +87,10 @@ namespace FacebookDApp
             this.pictureBoxProfile.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.user_318_159711;
             this.pictureBoxProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxProfile.Location = new System.Drawing.Point(816, 14);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(816, 29);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(228, 256);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(228, 236);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxProfile.TabIndex = 3;
             this.pictureBoxProfile.TabStop = false;
@@ -274,6 +274,7 @@ namespace FacebookDApp
             this.PostTextLabel.Name = "PostTextLabel";
             this.PostTextLabel.Size = new System.Drawing.Size(0, 28);
             this.PostTextLabel.TabIndex = 22;
+            this.PostTextLabel.TextChanged += PostTextLabel_TextChanged;
             // 
             // MainForm
             // 

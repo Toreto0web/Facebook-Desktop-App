@@ -60,11 +60,16 @@ namespace FacebookDApp
 
         private void fetchUserInfo()
         {
-            PostTextLabel.Text = fetchLastStatusText();
-            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureLargeURL);
+            fetchLastStatusText();
+            fetchProfilePicture();
             fetchAlbumNames();
         }
 
+        void fetchProfilePicture()
+        {
+            pictureBoxProfile.BackgroundImage = null;
+            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureLargeURL);
+        }
  
         private void buttonLogout_Click(object sender, EventArgs e)
         {
@@ -171,7 +176,7 @@ namespace FacebookDApp
             }
         }
 
-        private string fetchLastStatusText()
+        private void fetchLastStatusText()
         {
             byte postIndex = 0;
             while (string.IsNullOrEmpty(m_LoggedInUser.Posts[postIndex].Message))
@@ -179,7 +184,12 @@ namespace FacebookDApp
                 postIndex++;
             }
 
-            return m_LoggedInUser.Posts[postIndex].Message;
+            PostTextLabel.Text = m_LoggedInUser.Posts[postIndex].Message;
+        }
+
+        private void PostTextLabel_TextChanged(object sender, System.EventArgs e)
+        {
+            PostTextLabel.Text = "\"" + PostTextLabel.Text + "\"";
         }
     }
 }
