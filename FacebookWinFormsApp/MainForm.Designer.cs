@@ -274,7 +274,6 @@ namespace FacebookDApp
             this.PostTextLabel.Name = "PostTextLabel";
             this.PostTextLabel.Size = new System.Drawing.Size(0, 28);
             this.PostTextLabel.TabIndex = 22;
-            this.PostTextLabel.TextChanged += PostTextLabel_TextChanged;
             // 
             // MainForm
             // 

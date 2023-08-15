@@ -184,12 +184,8 @@ namespace FacebookDApp
                 postIndex++;
             }
 
-            PostTextLabel.Text = m_LoggedInUser.Posts[postIndex].Message;
+            PostTextLabel.Text = string.Format("\"{0}\"",m_LoggedInUser.Posts[postIndex].Message);
         }
 
-        private void PostTextLabel_TextChanged(object sender, System.EventArgs e)
-        {
-            PostTextLabel.Text = "\"" + PostTextLabel.Text + "\"";
-        }
     }
 }
