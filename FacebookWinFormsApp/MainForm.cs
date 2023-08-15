@@ -166,5 +166,23 @@ namespace FacebookDApp
 
             }
         }
+
+        private void buttonFuture_Click(object sender, EventArgs e)
+        {
+            this.Controls.Add(this.postFuturePost);
+            this.Controls.Add(this.dateTimePicker);
+        }
+
+        private void PostFuturePost_Click(object sender, EventArgs e)
+        {
+            if(this.dateTimePicker.Value <= DateTime.Now) 
+            {
+                MessageBox.Show("The time you entered already passed");
+            }
+            else 
+            {
+                
+            }
+        }
     }
 }
