@@ -61,25 +61,12 @@ using System.Threading;
 
         private void fetchUserInfo()
         {
+            PostTextLabel.Text = fetchLastStatusText();
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureLargeURL);
             fetchAlbumNames();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
+ 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FacebookService.LogoutWithUI();
@@ -120,7 +107,6 @@ using System.Threading;
                 EventDateLabel.Text = closesestEvent.StartTime.ToString();
             }
         }
-
 
         private void fetchAlbumNames()
         {
@@ -185,6 +171,7 @@ using System.Threading;
                 DateTime currentTime = DateTime.Now;
 
                 TimeSpan timeDifference = this.dateTimePicker.Value - currentTime;
+                MessageBox.Show($"please wait {timeDifference.TotalSeconds.ToString()} seconds");
                 Thread.Sleep((int)timeDifference.TotalMilliseconds);
 
                 postPost();
@@ -207,6 +194,17 @@ using System.Threading;
             {
                 MessageBox.Show("Done!");
             }
+        }
+
+        private string fetchLastStatusText()
+        {
+            byte postIndex = 0;
+            while (string.IsNullOrEmpty(m_LoggedInUser.Posts[postIndex].Message))
+            {
+                postIndex++;
+            }
+
+            return m_LoggedInUser.Posts[postIndex].Message;
         }
     }
 }
