@@ -102,7 +102,7 @@ namespace FacebookDApp
             this.labelCreatePost.AutoSize = true;
             this.labelCreatePost.Font = new System.Drawing.Font("Klavika Bd", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCreatePost.ForeColor = System.Drawing.Color.White;
-            this.labelCreatePost.Location = new System.Drawing.Point(18, 242);
+            this.labelCreatePost.Location = new System.Drawing.Point(16, 233);
             this.labelCreatePost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCreatePost.Name = "labelCreatePost";
             this.labelCreatePost.Size = new System.Drawing.Size(371, 56);
@@ -152,7 +152,7 @@ namespace FacebookDApp
             this.buttonDownloadPhotos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonDownloadPhotos.FlatAppearance.BorderSize = 0;
             this.buttonDownloadPhotos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDownloadPhotos.Location = new System.Drawing.Point(1065, 349);
+            this.buttonDownloadPhotos.Location = new System.Drawing.Point(576, 494);
             this.buttonDownloadPhotos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonDownloadPhotos.Name = "buttonDownloadPhotos";
             this.buttonDownloadPhotos.Size = new System.Drawing.Size(300, 93);
@@ -174,19 +174,20 @@ namespace FacebookDApp
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Klavika Bd", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(834, 26);
+            this.button1.Location = new System.Drawing.Point(923, 27);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 39);
             this.button1.TabIndex = 16;
-            this.button1.Text = "Refrush!";
+            this.button1.Text = "Refresh!";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkGray;
-            this.label1.Location = new System.Drawing.Point(583, 72);
+            this.label1.Location = new System.Drawing.Point(523, 105);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 45);
             this.label1.TabIndex = 17;
@@ -197,7 +198,7 @@ namespace FacebookDApp
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(768, 72);
+            this.label2.Location = new System.Drawing.Point(702, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 45);
             this.label2.TabIndex = 18;
