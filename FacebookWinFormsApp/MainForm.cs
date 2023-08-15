@@ -56,11 +56,6 @@ namespace FacebookDApp
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
-        {
-            loginAndInit();
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -75,13 +70,5 @@ namespace FacebookDApp
         {
 
         }
-
-        private void buttonLogout_Click(object sender, EventArgs e)
-        {
-            FacebookService.LogoutWithUI();
-            m_LoginResult = null;
-        }
-
-        
     }
 }

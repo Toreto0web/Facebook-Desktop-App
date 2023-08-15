@@ -38,6 +38,10 @@ namespace FacebookDApp
             this.buttonPostNow = new System.Windows.Forms.Button();
             this.buttonFuture = new System.Windows.Forms.Button();
             this.buttonDownloadPhotos = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,10 +51,11 @@ namespace FacebookDApp
             this.buttonLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonLogin.FlatAppearance.BorderSize = 0;
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogin.Location = new System.Drawing.Point(14, 89);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonLogin.Font = new System.Drawing.Font("Klavika Bd", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLogin.Location = new System.Drawing.Point(22, 115);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(84, 44);
+            this.buttonLogin.Size = new System.Drawing.Size(112, 57);
             this.buttonLogin.TabIndex = 0;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = false;
@@ -60,10 +65,11 @@ namespace FacebookDApp
             this.buttonLogout.BackColor = System.Drawing.Color.White;
             this.buttonLogout.FlatAppearance.BorderSize = 0;
             this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogout.Location = new System.Drawing.Point(116, 89);
-            this.buttonLogout.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonLogout.Font = new System.Drawing.Font("Klavika Bd", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLogout.Location = new System.Drawing.Point(178, 115);
+            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(84, 44);
+            this.buttonLogout.Size = new System.Drawing.Size(112, 57);
             this.buttonLogout.TabIndex = 1;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = false;
@@ -71,43 +77,44 @@ namespace FacebookDApp
             // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(799, 11);
-            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(1065, 15);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(225, 250);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(300, 324);
             this.pictureBoxProfile.TabIndex = 3;
             this.pictureBoxProfile.TabStop = false;
             // 
             // labelAppName
             // 
             this.labelAppName.AutoSize = true;
-            this.labelAppName.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelAppName.Font = new System.Drawing.Font("Klavika Bd", 50F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAppName.ForeColor = System.Drawing.Color.White;
-            this.labelAppName.Location = new System.Drawing.Point(4, 11);
+            this.labelAppName.Location = new System.Drawing.Point(6, 15);
+            this.labelAppName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAppName.Name = "labelAppName";
-            this.labelAppName.Size = new System.Drawing.Size(570, 58);
+            this.labelAppName.Size = new System.Drawing.Size(364, 95);
             this.labelAppName.TabIndex = 5;
-            this.labelAppName.Text = "FaceBook Desktop App";
+            this.labelAppName.Text = "facebook";
             // 
             // labelCreatePost
             // 
             this.labelCreatePost.AutoSize = true;
-            this.labelCreatePost.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelCreatePost.Font = new System.Drawing.Font("Klavika Bd", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCreatePost.ForeColor = System.Drawing.Color.White;
-            this.labelCreatePost.Location = new System.Drawing.Point(20, 174);
+            this.labelCreatePost.Location = new System.Drawing.Point(18, 242);
+            this.labelCreatePost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCreatePost.Name = "labelCreatePost";
-            this.labelCreatePost.Size = new System.Drawing.Size(348, 46);
+            this.labelCreatePost.Size = new System.Drawing.Size(310, 47);
             this.labelCreatePost.TabIndex = 6;
-            this.labelCreatePost.Text = "Create your Post!";
-            this.labelCreatePost.Click += new System.EventHandler(this.label2_Click);
+            this.labelCreatePost.Text = "Create your Post";
             // 
             // textBoxPost
             // 
-            this.textBoxPost.Location = new System.Drawing.Point(19, 226);
-            this.textBoxPost.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxPost.Location = new System.Drawing.Point(26, 294);
+            this.textBoxPost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxPost.Multiline = true;
             this.textBoxPost.Name = "textBoxPost";
-            this.textBoxPost.Size = new System.Drawing.Size(335, 158);
+            this.textBoxPost.Size = new System.Drawing.Size(445, 204);
             this.textBoxPost.TabIndex = 7;
             this.textBoxPost.Text = "write your thought...";
             // 
@@ -116,10 +123,10 @@ namespace FacebookDApp
             this.buttonPostNow.BackColor = System.Drawing.Color.White;
             this.buttonPostNow.FlatAppearance.BorderSize = 0;
             this.buttonPostNow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPostNow.Location = new System.Drawing.Point(19, 392);
-            this.buttonPostNow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonPostNow.Location = new System.Drawing.Point(26, 509);
+            this.buttonPostNow.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonPostNow.Name = "buttonPostNow";
-            this.buttonPostNow.Size = new System.Drawing.Size(161, 60);
+            this.buttonPostNow.Size = new System.Drawing.Size(214, 78);
             this.buttonPostNow.TabIndex = 8;
             this.buttonPostNow.Text = "Post Now!";
             this.buttonPostNow.UseVisualStyleBackColor = false;
@@ -130,10 +137,10 @@ namespace FacebookDApp
             this.buttonFuture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonFuture.FlatAppearance.BorderSize = 0;
             this.buttonFuture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFuture.Location = new System.Drawing.Point(189, 392);
-            this.buttonFuture.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonFuture.Location = new System.Drawing.Point(252, 509);
+            this.buttonFuture.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonFuture.Name = "buttonFuture";
-            this.buttonFuture.Size = new System.Drawing.Size(165, 60);
+            this.buttonFuture.Size = new System.Drawing.Size(220, 78);
             this.buttonFuture.TabIndex = 9;
             this.buttonFuture.Text = "Schedule for later!";
             this.buttonFuture.UseVisualStyleBackColor = false;
@@ -144,20 +151,67 @@ namespace FacebookDApp
             this.buttonDownloadPhotos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonDownloadPhotos.FlatAppearance.BorderSize = 0;
             this.buttonDownloadPhotos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDownloadPhotos.Location = new System.Drawing.Point(799, 269);
-            this.buttonDownloadPhotos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonDownloadPhotos.Location = new System.Drawing.Point(1065, 349);
+            this.buttonDownloadPhotos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonDownloadPhotos.Name = "buttonDownloadPhotos";
-            this.buttonDownloadPhotos.Size = new System.Drawing.Size(225, 72);
+            this.buttonDownloadPhotos.Size = new System.Drawing.Size(300, 93);
             this.buttonDownloadPhotos.TabIndex = 12;
-            this.buttonDownloadPhotos.Text = "Download your FaceBook Albums!";
+            this.buttonDownloadPhotos.Text = "Download your Facebook Albums!";
             this.buttonDownloadPhotos.UseVisualStyleBackColor = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(523, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(305, 38);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Get Your Next Event";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Klavika Bd", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(834, 26);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 39);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Refrush!";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkGray;
+            this.label1.Location = new System.Drawing.Point(583, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 38);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "name";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkGray;
+            this.label2.Location = new System.Drawing.Point(768, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(124, 38);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "dd/mm";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(86)))), ((int)(((byte)(147)))));
-            this.ClientSize = new System.Drawing.Size(1037, 794);
+            this.ClientSize = new System.Drawing.Size(1383, 1025);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonDownloadPhotos);
             this.Controls.Add(this.buttonFuture);
             this.Controls.Add(this.buttonPostNow);
@@ -167,9 +221,10 @@ namespace FacebookDApp
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonLogin);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Font = new System.Drawing.Font("Klavika Bd", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
-            this.Text = "FaceBook Desktop App";
+            this.Text = "facebook Desktop App";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -187,5 +242,9 @@ namespace FacebookDApp
         private System.Windows.Forms.Button buttonPostNow;
         private System.Windows.Forms.Button buttonFuture;
         private System.Windows.Forms.Button buttonDownloadPhotos;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
