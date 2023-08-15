@@ -22,9 +22,38 @@ namespace FacebookDApp
             InitializeComponent();
         }
 
+        private void FetchClosestsEvent() 
+        {
+            Event nearestEvent = new Event();
+            nearestEvent.UpdateTime = DateTime.Now;
+            m_LoggedInUser.Events.Add(new Event());
+
+          
+            if(m_LoggedInUser.Events.Count == 0) 
+            {
+                label1.Text = "No events";
+                label2.Text = " ";
+            }
+            else 
+            {
+                nearestEvent = m_LoggedInUser.Events[0];
+            
+                foreach(Event fbEvent in m_LoggedInUser.Events) 
+                {
+                    if(fbEvent.StartTime < nearestEvent.StartTime) 
+                    {
+                        nearestEvent = fbEvent;
+                    }
+                }
+
+                label1.Text = nearestEvent.Name;
+                label2.Text = nearestEvent.StartTime.ToString();
+            }
+        }
+
         private void loginAndInit()
         {
-            m_LoginResult = FacebookService.Login("825616175626986", /// (desig patter's "Design Patterns Course App 2.4" app)
+            m_LoginResult = FacebookService.Login("825616175626986",
 					"email",
                     "public_profile",
                     "user_age_range",
@@ -84,6 +113,11 @@ namespace FacebookDApp
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            FetchClosestsEvent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

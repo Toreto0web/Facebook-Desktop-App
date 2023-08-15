@@ -191,7 +191,8 @@ namespace FacebookDApp
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 45);
             this.label1.TabIndex = 17;
-            this.label1.Text = "name";
+            this.label1.Text = "Name";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
