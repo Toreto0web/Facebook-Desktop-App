@@ -142,6 +142,7 @@ namespace FacebookDApp
             this.buttonPostNow.TabIndex = 8;
             this.buttonPostNow.Text = "Post Now!";
             this.buttonPostNow.UseVisualStyleBackColor = false;
+            this.buttonPostNow.Click += new System.EventHandler(this.buttonPostNow_Click);
             // 
             // buttonFuture
             // 
@@ -230,15 +231,15 @@ namespace FacebookDApp
             this.DowLoadAlbumLabel.TabIndex = 20;
             this.DowLoadAlbumLabel.Text = "Download Your Albums";
             // 
-            // dateTimePicker1
+            // dateTimePicker
             // 
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker.Location = new System.Drawing.Point(13, 464);
-            this.dateTimePicker.Name = "dateTimePicker1";
+            this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(214, 26);
             this.dateTimePicker.TabIndex = 21;
             // 
-            // button1
+            // postFuturePost
             // 
             this.postFuturePost.BackColor = System.Drawing.Color.White;
             this.postFuturePost.FlatAppearance.BorderSize = 0;
@@ -246,7 +247,7 @@ namespace FacebookDApp
             this.postFuturePost.Font = new System.Drawing.Font("Klavika Md", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.postFuturePost.Location = new System.Drawing.Point(13, 513);
             this.postFuturePost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.postFuturePost.Name = "button1";
+            this.postFuturePost.Name = "postFuturePost";
             this.postFuturePost.Size = new System.Drawing.Size(152, 47);
             this.postFuturePost.TabIndex = 22;
             this.postFuturePost.Text = "Post Now!";
@@ -281,6 +282,12 @@ namespace FacebookDApp
             this.PerformLayout();
 
         }
+
+        private void PostFuturePost_Click2(object sender, System.EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
 
         #endregion
 

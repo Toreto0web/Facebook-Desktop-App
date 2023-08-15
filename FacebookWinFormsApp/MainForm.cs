@@ -10,8 +10,9 @@ using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using System.IO;
 using System.Net;
+using System.Threading;
 
-namespace FacebookDApp
+ namespace FacebookDApp
 {
     public partial class MainForm : Form
     {
@@ -181,7 +182,30 @@ namespace FacebookDApp
             }
             else 
             {
-                
+                DateTime currentTime = DateTime.Now;
+
+                TimeSpan timeDifference = this.dateTimePicker.Value - currentTime;
+                Thread.Sleep((int)timeDifference.TotalMilliseconds);
+
+                postPost();
+            }
+        }
+
+        private void buttonPostNow_Click(object sender, EventArgs e)
+        {
+            postPost();
+        }
+
+        private void postPost() 
+        {
+            try
+            {
+                Status postedStatus = m_LoggedInUser.PostStatus(textBoxPost.Text);
+                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Done!");
             }
         }
     }
