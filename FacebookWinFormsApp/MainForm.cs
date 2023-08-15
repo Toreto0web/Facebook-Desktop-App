@@ -49,6 +49,8 @@ namespace FacebookDApp
                 m_LoggedInUser = m_LoginResult.LoggedInUser;
 
                 fetchUserInfo();
+                AlbumNameComboBox.Enabled = true;
+                RefreshButton.Enabled = true;
             }
             else
             {

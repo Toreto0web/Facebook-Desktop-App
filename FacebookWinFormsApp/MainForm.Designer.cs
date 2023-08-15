@@ -80,6 +80,7 @@ namespace FacebookDApp
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxProfile.Location = new System.Drawing.Point(1127, 15);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
@@ -161,6 +162,7 @@ namespace FacebookDApp
             // 
             // RefreshButton
             // 
+            this.RefreshButton.Enabled = false;
             this.RefreshButton.Font = new System.Drawing.Font("Klavika Bd", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RefreshButton.Location = new System.Drawing.Point(923, 27);
             this.RefreshButton.Name = "RefreshButton";
@@ -194,6 +196,7 @@ namespace FacebookDApp
             // 
             // AlbumNameComboBox
             // 
+            this.AlbumNameComboBox.Enabled = false;
             this.AlbumNameComboBox.Font = new System.Drawing.Font("Klavika Lt", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AlbumNameComboBox.FormattingEnabled = true;
             this.AlbumNameComboBox.Location = new System.Drawing.Point(1101, 355);
