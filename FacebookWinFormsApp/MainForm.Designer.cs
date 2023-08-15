@@ -45,6 +45,8 @@ namespace FacebookDApp
             this.DowLoadAlbumLabel = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.postFuturePost = new System.Windows.Forms.Button();
+            this.lastPostLabel = new System.Windows.Forms.Label();
+            this.PostTextLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,7 +103,7 @@ namespace FacebookDApp
             this.labelAppName.Location = new System.Drawing.Point(6, 15);
             this.labelAppName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAppName.Name = "labelAppName";
-            this.labelAppName.Size = new System.Drawing.Size(347, 90);
+            this.labelAppName.Size = new System.Drawing.Size(290, 75);
             this.labelAppName.TabIndex = 5;
             this.labelAppName.Text = "facebook";
             // 
@@ -113,7 +115,7 @@ namespace FacebookDApp
             this.labelCreatePost.Location = new System.Drawing.Point(13, 180);
             this.labelCreatePost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCreatePost.Name = "labelCreatePost";
-            this.labelCreatePost.Size = new System.Drawing.Size(268, 41);
+            this.labelCreatePost.Size = new System.Drawing.Size(225, 34);
             this.labelCreatePost.TabIndex = 6;
             this.labelCreatePost.Text = "Create your Post";
             // 
@@ -166,7 +168,7 @@ namespace FacebookDApp
             this.GetNextEventLabel.ForeColor = System.Drawing.Color.White;
             this.GetNextEventLabel.Location = new System.Drawing.Point(447, 180);
             this.GetNextEventLabel.Name = "GetNextEventLabel";
-            this.GetNextEventLabel.Size = new System.Drawing.Size(321, 41);
+            this.GetNextEventLabel.Size = new System.Drawing.Size(270, 34);
             this.GetNextEventLabel.TabIndex = 15;
             this.GetNextEventLabel.Text = "Get Your Next Event";
             // 
@@ -192,7 +194,7 @@ namespace FacebookDApp
             this.EventNameLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.EventNameLabel.Location = new System.Drawing.Point(484, 219);
             this.EventNameLabel.Name = "EventNameLabel";
-            this.EventNameLabel.Size = new System.Drawing.Size(87, 34);
+            this.EventNameLabel.Size = new System.Drawing.Size(71, 28);
             this.EventNameLabel.TabIndex = 17;
             this.EventNameLabel.Text = "name";
             // 
@@ -203,7 +205,7 @@ namespace FacebookDApp
             this.EventDateLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.EventDateLabel.Location = new System.Drawing.Point(583, 219);
             this.EventDateLabel.Name = "EventDateLabel";
-            this.EventDateLabel.Size = new System.Drawing.Size(110, 34);
+            this.EventDateLabel.Size = new System.Drawing.Size(91, 28);
             this.EventDateLabel.TabIndex = 18;
             this.EventDateLabel.Text = "dd/mm";
             // 
@@ -214,7 +216,7 @@ namespace FacebookDApp
             this.AlbumNameComboBox.FormattingEnabled = true;
             this.AlbumNameComboBox.Location = new System.Drawing.Point(428, 104);
             this.AlbumNameComboBox.Name = "AlbumNameComboBox";
-            this.AlbumNameComboBox.Size = new System.Drawing.Size(304, 31);
+            this.AlbumNameComboBox.Size = new System.Drawing.Size(304, 27);
             this.AlbumNameComboBox.TabIndex = 19;
             this.AlbumNameComboBox.Text = "SelectAlbum";
             this.AlbumNameComboBox.SelectedIndexChanged += new System.EventHandler(this.dowLoadAlbumLabel_SelectedIndexChanged);
@@ -226,19 +228,19 @@ namespace FacebookDApp
             this.DowLoadAlbumLabel.ForeColor = System.Drawing.Color.White;
             this.DowLoadAlbumLabel.Location = new System.Drawing.Point(432, 56);
             this.DowLoadAlbumLabel.Name = "DowLoadAlbumLabel";
-            this.DowLoadAlbumLabel.Size = new System.Drawing.Size(373, 41);
+            this.DowLoadAlbumLabel.Size = new System.Drawing.Size(310, 34);
             this.DowLoadAlbumLabel.TabIndex = 20;
             this.DowLoadAlbumLabel.Text = "Download Your Albums";
             // 
-            // dateTimePicker1
+            // dateTimePicker
             // 
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker.Location = new System.Drawing.Point(13, 464);
-            this.dateTimePicker.Name = "dateTimePicker1";
-            this.dateTimePicker.Size = new System.Drawing.Size(214, 26);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(214, 22);
             this.dateTimePicker.TabIndex = 21;
             // 
-            // button1
+            // postFuturePost
             // 
             this.postFuturePost.BackColor = System.Drawing.Color.White;
             this.postFuturePost.FlatAppearance.BorderSize = 0;
@@ -246,17 +248,39 @@ namespace FacebookDApp
             this.postFuturePost.Font = new System.Drawing.Font("Klavika Md", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.postFuturePost.Location = new System.Drawing.Point(13, 513);
             this.postFuturePost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.postFuturePost.Name = "button1";
+            this.postFuturePost.Name = "postFuturePost";
             this.postFuturePost.Size = new System.Drawing.Size(152, 47);
             this.postFuturePost.TabIndex = 22;
             this.postFuturePost.Text = "Post Now!";
             this.postFuturePost.UseVisualStyleBackColor = false;
-            this.postFuturePost.Click += PostFuturePost_Click;
+            // 
+            // lastPostLabel
+            // 
+            this.lastPostLabel.AutoSize = true;
+            this.lastPostLabel.Font = new System.Drawing.Font("Klavika Bd", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastPostLabel.ForeColor = System.Drawing.Color.White;
+            this.lastPostLabel.Location = new System.Drawing.Point(433, 343);
+            this.lastPostLabel.Name = "lastPostLabel";
+            this.lastPostLabel.Size = new System.Drawing.Size(167, 28);
+            this.lastPostLabel.TabIndex = 21;
+            this.lastPostLabel.Text = "your last post: ";
+            // 
+            // PostTextLabel
+            // 
+            this.PostTextLabel.AutoSize = true;
+            this.PostTextLabel.Font = new System.Drawing.Font("Klavika Rg", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PostTextLabel.ForeColor = System.Drawing.Color.DarkGray;
+            this.PostTextLabel.Location = new System.Drawing.Point(612, 343);
+            this.PostTextLabel.Name = "PostTextLabel";
+            this.PostTextLabel.Size = new System.Drawing.Size(0, 28);
+            this.PostTextLabel.TabIndex = 22;
             // 
             // MainForm
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(86)))), ((int)(((byte)(147)))));
             this.ClientSize = new System.Drawing.Size(1066, 591);
+            this.Controls.Add(this.PostTextLabel);
+            this.Controls.Add(this.lastPostLabel);
             this.Controls.Add(this.DowLoadAlbumLabel);
             this.Controls.Add(this.AlbumNameComboBox);
             this.Controls.Add(this.EventDateLabel);
@@ -300,5 +324,7 @@ namespace FacebookDApp
         private System.Windows.Forms.Label DowLoadAlbumLabel;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Button postFuturePost;
+        private System.Windows.Forms.Label lastPostLabel;
+        private System.Windows.Forms.Label PostTextLabel;
     }
 }

@@ -60,25 +60,12 @@ namespace FacebookDApp
 
         private void fetchUserInfo()
         {
+            PostTextLabel.Text = fetchLastStatusText();
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureLargeURL);
             fetchAlbumNames();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
+ 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FacebookService.LogoutWithUI();
@@ -119,7 +106,6 @@ namespace FacebookDApp
                 EventDateLabel.Text = closesestEvent.StartTime.ToString();
             }
         }
-
 
         private void fetchAlbumNames()
         {
@@ -183,6 +169,17 @@ namespace FacebookDApp
             {
                 
             }
+        }
+
+        private string fetchLastStatusText()
+        {
+            byte postIndex = 0;
+            while (string.IsNullOrEmpty(m_LoggedInUser.Posts[postIndex].Message))
+            {
+                postIndex++;
+            }
+
+            return m_LoggedInUser.Posts[postIndex].Message;
         }
     }
 }
