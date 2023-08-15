@@ -137,20 +137,21 @@ namespace FacebookDApp
         {
             Album SelectedAlbum = m_LoggedInUser.Albums[AlbumNameComboBox.SelectedIndex];
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-            folderBrowser.Description = "Select where you want the ALbum will be save";
+            folderBrowser.Description = "Select where you want the Album will be save";
             DialogResult result = folderBrowser.ShowDialog();
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
             {
                 string selectedFolderPath = folderBrowser.SelectedPath;
-                string newFolderPath = Path.Combine(selectedFolderPath, "NewPhotoFolder");
+                string newFolderPath = Path.Combine(selectedFolderPath, SelectedAlbum.Name);
 
                 try
                 {
                     Directory.CreateDirectory(newFolderPath);
+                    byte photoIndex = 0;
                     foreach(Photo photo in SelectedAlbum.Photos)
                     {
                         string imageUrl = photo.PictureNormalURL;
-                        string fileName = photo.Name + ".jpg";
+                        string fileName = (++photoIndex).ToString() + ".jpg";
                         string fullPath = Path.Combine(newFolderPath, fileName);
 
                         using (WebClient webClient = new WebClient())

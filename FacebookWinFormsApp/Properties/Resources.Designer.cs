@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FacebookDApp.Properties {
+namespace BasicFacebookFeatures.Properties {
     using System;
     
     
@@ -57,6 +57,16 @@ namespace FacebookDApp.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_318_159711 {
+            get {
+                object obj = ResourceManager.GetObject("user_318-159711", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
