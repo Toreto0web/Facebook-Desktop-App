@@ -90,10 +90,39 @@ namespace FacebookDApp
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-
+            FetchClosestsEvent();
         }
 
- 
+        private void FetchClosestsEvent()
+        {
+            Event nearestEvent = new Event();
+            //nearestEvent.UpdateTime = DateTime.Now;
+            //m_LoggedInUser.Events.Add(new Event());
+
+
+            if (m_LoggedInUser.Events.Count == 0)
+            {
+                EventNameLabel.Text = "No events";
+                EventDateLabel.Text = " ";
+            }
+            else
+            {
+                nearestEvent = m_LoggedInUser.Events[0];
+
+                foreach (Event fbEvent in m_LoggedInUser.Events)
+                {
+                    if (fbEvent.StartTime < nearestEvent.StartTime)
+                    {
+                        nearestEvent = fbEvent;
+                    }
+                }
+
+                EventNameLabel.Text = nearestEvent.Name;
+                EventDateLabel.Text = nearestEvent.StartTime.ToString();
+            }
+        }
+
+
         private void fetchAlbumNames()
         {
             foreach (Album album in m_LoggedInUser.Albums)
@@ -104,7 +133,7 @@ namespace FacebookDApp
 
         private void dowLoadAlbumLabel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Album SelectedAlbum = getselectedAlbum();
+            Album SelectedAlbum = m_LoggedInUser.Albums[AlbumNameComboBox.SelectedIndex];
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             folderBrowser.Description = "Select where you want the ALbum will be save";
             DialogResult result = folderBrowser.ShowDialog();
@@ -137,22 +166,6 @@ namespace FacebookDApp
                 }
 
             }
-        }
-
-        private Album getselectedAlbum()
-        {
-            string albumNameSelected = AlbumNameComboBox.SelectedIndex.ToString();
-
-            foreach (Album album in m_LoggedInUser.Albums)
-            {
-                if (album.Name == albumNameSelected)
-                {
-                    return album;
-                }
-
-            }
-
-            return null;
         }
     }
 }

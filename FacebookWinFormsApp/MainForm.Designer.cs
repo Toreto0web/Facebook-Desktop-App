@@ -154,6 +154,7 @@ namespace FacebookDApp
             this.GetNextEventLabel.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GetNextEventLabel.ForeColor = System.Drawing.Color.White;
             this.GetNextEventLabel.Location = new System.Drawing.Point(523, 27);
+            this.GetNextEventLabel.Name = "GetNextEventLabel";
             this.GetNextEventLabel.Size = new System.Drawing.Size(305, 38);
             this.GetNextEventLabel.TabIndex = 15;
             this.GetNextEventLabel.Text = "Get Your Next Event";
@@ -162,6 +163,7 @@ namespace FacebookDApp
             // 
             this.RefreshButton.Font = new System.Drawing.Font("Klavika Bd", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RefreshButton.Location = new System.Drawing.Point(923, 27);
+            this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(117, 39);
             this.RefreshButton.TabIndex = 16;
             this.RefreshButton.Text = "Refresh!";
@@ -174,18 +176,18 @@ namespace FacebookDApp
             this.EventNameLabel.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventNameLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.EventNameLabel.Location = new System.Drawing.Point(523, 105);
-            this.EventNameLabel.Name = "label1";
+            this.EventNameLabel.Name = "EventNameLabel";
             this.EventNameLabel.Size = new System.Drawing.Size(98, 38);
             this.EventNameLabel.TabIndex = 17;
             this.EventNameLabel.Text = "name";
             // 
-            // label2
+            // EventDateLabel
             // 
             this.EventDateLabel.AutoSize = true;
             this.EventDateLabel.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventDateLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.EventDateLabel.Location = new System.Drawing.Point(702, 105);
-            this.EventDateLabel.Name = "label2";
+            this.EventDateLabel.Name = "EventDateLabel";
             this.EventDateLabel.Size = new System.Drawing.Size(124, 38);
             this.EventDateLabel.TabIndex = 18;
             this.EventDateLabel.Text = "dd/mm";
@@ -194,8 +196,8 @@ namespace FacebookDApp
             // 
             this.AlbumNameComboBox.Font = new System.Drawing.Font("Klavika Lt", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AlbumNameComboBox.FormattingEnabled = true;
-            this.AlbumNameComboBox.Location = new System.Drawing.Point(1119, 355);
-            this.AlbumNameComboBox.Name = "comboBox1";
+            this.AlbumNameComboBox.Location = new System.Drawing.Point(1101, 355);
+            this.AlbumNameComboBox.Name = "AlbumNameComboBox";
             this.AlbumNameComboBox.Size = new System.Drawing.Size(244, 27);
             this.AlbumNameComboBox.TabIndex = 19;
             this.AlbumNameComboBox.Text = "SelectAlbum";
@@ -206,7 +208,8 @@ namespace FacebookDApp
             this.DowLoadAlbumLabel.AutoSize = true;
             this.DowLoadAlbumLabel.Font = new System.Drawing.Font("Klavika Bd", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DowLoadAlbumLabel.ForeColor = System.Drawing.Color.White;
-            this.DowLoadAlbumLabel.Location = new System.Drawing.Point(1108, 324);
+            this.DowLoadAlbumLabel.Location = new System.Drawing.Point(1096, 324);
+            this.DowLoadAlbumLabel.Name = "DowLoadAlbumLabel";
             this.DowLoadAlbumLabel.Size = new System.Drawing.Size(257, 28);
             this.DowLoadAlbumLabel.TabIndex = 20;
             this.DowLoadAlbumLabel.Text = "Download Your Albums";
