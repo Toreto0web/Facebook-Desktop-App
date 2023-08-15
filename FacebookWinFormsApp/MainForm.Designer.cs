@@ -37,11 +37,12 @@ namespace FacebookDApp
             this.textBoxPost = new System.Windows.Forms.TextBox();
             this.buttonPostNow = new System.Windows.Forms.Button();
             this.buttonFuture = new System.Windows.Forms.Button();
-            this.buttonDownloadPhotos = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.GetNextEventLabel = new System.Windows.Forms.Label();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.EventNameLabel = new System.Windows.Forms.Label();
+            this.EventDateLabel = new System.Windows.Forms.Label();
+            this.AlbumNameComboBox = new System.Windows.Forms.ComboBox();
+            this.DowLoadAlbumLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,10 +79,11 @@ namespace FacebookDApp
             // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(1065, 15);
+            this.pictureBoxProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxProfile.Location = new System.Drawing.Point(1127, 15);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(300, 324);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(238, 273);
             this.pictureBoxProfile.TabIndex = 3;
             this.pictureBoxProfile.TabStop = false;
             // 
@@ -93,7 +95,7 @@ namespace FacebookDApp
             this.labelAppName.Location = new System.Drawing.Point(6, 15);
             this.labelAppName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAppName.Name = "labelAppName";
-            this.labelAppName.Size = new System.Drawing.Size(435, 113);
+            this.labelAppName.Size = new System.Drawing.Size(364, 95);
             this.labelAppName.TabIndex = 5;
             this.labelAppName.Text = "facebook";
             // 
@@ -105,7 +107,7 @@ namespace FacebookDApp
             this.labelCreatePost.Location = new System.Drawing.Point(16, 233);
             this.labelCreatePost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCreatePost.Name = "labelCreatePost";
-            this.labelCreatePost.Size = new System.Drawing.Size(371, 56);
+            this.labelCreatePost.Size = new System.Drawing.Size(310, 47);
             this.labelCreatePost.TabIndex = 6;
             this.labelCreatePost.Text = "Create your Post";
             // 
@@ -146,75 +148,81 @@ namespace FacebookDApp
             this.buttonFuture.Text = "Schedule for later!";
             this.buttonFuture.UseVisualStyleBackColor = false;
             // 
-            // buttonDownloadPhotos
+            // GetNextEventLabel
             // 
-            this.buttonDownloadPhotos.BackColor = System.Drawing.Color.White;
-            this.buttonDownloadPhotos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonDownloadPhotos.FlatAppearance.BorderSize = 0;
-            this.buttonDownloadPhotos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDownloadPhotos.Location = new System.Drawing.Point(576, 494);
-            this.buttonDownloadPhotos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonDownloadPhotos.Name = "buttonDownloadPhotos";
-            this.buttonDownloadPhotos.Size = new System.Drawing.Size(300, 93);
-            this.buttonDownloadPhotos.TabIndex = 12;
-            this.buttonDownloadPhotos.Text = "Download your Facebook Albums!";
-            this.buttonDownloadPhotos.UseVisualStyleBackColor = false;
+            this.GetNextEventLabel.AutoSize = true;
+            this.GetNextEventLabel.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GetNextEventLabel.ForeColor = System.Drawing.Color.White;
+            this.GetNextEventLabel.Location = new System.Drawing.Point(523, 27);
+            this.GetNextEventLabel.Size = new System.Drawing.Size(305, 38);
+            this.GetNextEventLabel.TabIndex = 15;
+            this.GetNextEventLabel.Text = "Get Your Next Event";
             // 
-            // label5
+            // RefreshButton
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(523, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(353, 45);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Get Your Next Event";
+            this.RefreshButton.Font = new System.Drawing.Font("Klavika Bd", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RefreshButton.Location = new System.Drawing.Point(923, 27);
+            this.RefreshButton.Size = new System.Drawing.Size(117, 39);
+            this.RefreshButton.TabIndex = 16;
+            this.RefreshButton.Text = "Refresh!";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
-            // button1
+            // EventNameLabel
             // 
-            this.button1.Font = new System.Drawing.Font("Klavika Bd", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(923, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 39);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Refresh!";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonRefresh_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkGray;
-            this.label1.Location = new System.Drawing.Point(523, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 45);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "name";
+            this.EventNameLabel.AutoSize = true;
+            this.EventNameLabel.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EventNameLabel.ForeColor = System.Drawing.Color.DarkGray;
+            this.EventNameLabel.Location = new System.Drawing.Point(523, 105);
+            this.EventNameLabel.Name = "label1";
+            this.EventNameLabel.Size = new System.Drawing.Size(98, 38);
+            this.EventNameLabel.TabIndex = 17;
+            this.EventNameLabel.Text = "name";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(702, 105);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 45);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "dd/mm";
+            this.EventDateLabel.AutoSize = true;
+            this.EventDateLabel.Font = new System.Drawing.Font("Klavika Bd", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EventDateLabel.ForeColor = System.Drawing.Color.DarkGray;
+            this.EventDateLabel.Location = new System.Drawing.Point(702, 105);
+            this.EventDateLabel.Name = "label2";
+            this.EventDateLabel.Size = new System.Drawing.Size(124, 38);
+            this.EventDateLabel.TabIndex = 18;
+            this.EventDateLabel.Text = "dd/mm";
+            // 
+            // AlbumNameComboBox
+            // 
+            this.AlbumNameComboBox.Font = new System.Drawing.Font("Klavika Lt", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlbumNameComboBox.FormattingEnabled = true;
+            this.AlbumNameComboBox.Location = new System.Drawing.Point(1119, 355);
+            this.AlbumNameComboBox.Name = "comboBox1";
+            this.AlbumNameComboBox.Size = new System.Drawing.Size(244, 27);
+            this.AlbumNameComboBox.TabIndex = 19;
+            this.AlbumNameComboBox.Text = "SelectAlbum";
+            this.AlbumNameComboBox.SelectedIndexChanged += new System.EventHandler(this.dowLoadAlbumLabel_SelectedIndexChanged);
+            // 
+            // DowLoadAlbumLabel
+            // 
+            this.DowLoadAlbumLabel.AutoSize = true;
+            this.DowLoadAlbumLabel.Font = new System.Drawing.Font("Klavika Bd", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DowLoadAlbumLabel.ForeColor = System.Drawing.Color.White;
+            this.DowLoadAlbumLabel.Location = new System.Drawing.Point(1108, 324);
+            this.DowLoadAlbumLabel.Size = new System.Drawing.Size(257, 28);
+            this.DowLoadAlbumLabel.TabIndex = 20;
+            this.DowLoadAlbumLabel.Text = "Download Your Albums";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(86)))), ((int)(((byte)(147)))));
             this.ClientSize = new System.Drawing.Size(1383, 1025);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.buttonDownloadPhotos);
+            this.Controls.Add(this.DowLoadAlbumLabel);
+            this.Controls.Add(this.AlbumNameComboBox);
+            this.Controls.Add(this.EventDateLabel);
+            this.Controls.Add(this.EventNameLabel);
+            this.Controls.Add(this.RefreshButton);
+            this.Controls.Add(this.GetNextEventLabel);
             this.Controls.Add(this.buttonFuture);
             this.Controls.Add(this.buttonPostNow);
             this.Controls.Add(this.textBoxPost);
@@ -243,10 +251,11 @@ namespace FacebookDApp
         private System.Windows.Forms.TextBox textBoxPost;
         private System.Windows.Forms.Button buttonPostNow;
         private System.Windows.Forms.Button buttonFuture;
-        private System.Windows.Forms.Button buttonDownloadPhotos;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label GetNextEventLabel;
+        private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.Label EventNameLabel;
+        private System.Windows.Forms.Label EventDateLabel;
+        private System.Windows.Forms.ComboBox AlbumNameComboBox;
+        private System.Windows.Forms.Label DowLoadAlbumLabel;
     }
 }
