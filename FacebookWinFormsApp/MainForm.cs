@@ -95,7 +95,6 @@ namespace FacebookDApp
 
         private void FetchClosestsEvent()
         {
-            Event closesestEvent = new Event();
 
             if (m_LoggedInUser.Events.Count == 0)
             {
@@ -104,7 +103,7 @@ namespace FacebookDApp
             }
             else
             {
-                closesestEvent = m_LoggedInUser.Events[0];
+                Event closesestEvent = m_LoggedInUser.Events[0];
 
                 foreach (Event fbEvent in m_LoggedInUser.Events)
                 {
