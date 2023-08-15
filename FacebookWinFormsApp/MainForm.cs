@@ -95,10 +95,7 @@ namespace FacebookDApp
 
         private void FetchClosestsEvent()
         {
-            Event nearestEvent = new Event();
-            //nearestEvent.UpdateTime = DateTime.Now;
-            //m_LoggedInUser.Events.Add(new Event());
-
+            Event closesestEvent = new Event();
 
             if (m_LoggedInUser.Events.Count == 0)
             {
@@ -107,18 +104,18 @@ namespace FacebookDApp
             }
             else
             {
-                nearestEvent = m_LoggedInUser.Events[0];
+                closesestEvent = m_LoggedInUser.Events[0];
 
                 foreach (Event fbEvent in m_LoggedInUser.Events)
                 {
-                    if (fbEvent.StartTime < nearestEvent.StartTime)
+                    if (fbEvent.StartTime < closesestEvent.StartTime)
                     {
-                        nearestEvent = fbEvent;
+                        closesestEvent = fbEvent;
                     }
                 }
 
-                EventNameLabel.Text = nearestEvent.Name;
-                EventDateLabel.Text = nearestEvent.StartTime.ToString();
+                EventNameLabel.Text = closesestEvent.Name;
+                EventDateLabel.Text = closesestEvent.StartTime.ToString();
             }
         }
 
