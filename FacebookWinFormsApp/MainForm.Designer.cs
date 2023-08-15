@@ -73,7 +73,7 @@ namespace FacebookDApp
             this.buttonLogout.TabIndex = 1;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = false;
-            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+          //  this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // pictureBoxProfile
             // 
