@@ -53,7 +53,7 @@ namespace FacebookDApp
 
         private void fetchUserInfo()
         {
-            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
+            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureLargeURL);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
