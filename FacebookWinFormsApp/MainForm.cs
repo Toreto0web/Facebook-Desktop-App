@@ -23,8 +23,6 @@ using System.Threading;
             InitializeComponent();
         }
 
-
-
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             m_Client.LogoutClient();
@@ -37,6 +35,8 @@ using System.Threading;
             try 
             {
                 m_Client.LoginAndInit("EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD");
+                fetchAlbumNames();
+                fetchProfilePicture();
             }
             catch(Exception)
             {
