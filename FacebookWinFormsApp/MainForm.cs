@@ -16,62 +16,15 @@ using System.Threading;
 {
     public partial class MainForm : Form
     {
-
-        User m_LoggedInUser;
-        LoginResult m_LoginResult;
+        Client m_Client;
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void loginAndInit()
-        {
-            //       m_LoginResult = FacebookService.Login("825616175626986", /// (desig patter's "Design Patterns Course App 2.4" app)
-            //"email",
-            //               "public_profile",
-            //               "user_age_range",
-            //               "user_birthday",
-            //               "user_events",
-            //               "user_friends",
-            //               "user_gender",
-            //               "user_hometown",
-            //               "user_likes",
-            //               "user_link",
-            //               "user_location",
-            //               "user_photos",
-            //               "user_posts",
-            //               "user_videos");
 
 
-            m_LoginResult = FacebookService.Connect("EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD");
-            if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
-            {
-                m_LoggedInUser = m_LoginResult.LoggedInUser;
-
-                fetchUserInfo();
-                AlbumNameComboBox.Enabled = true;
-                RefreshButton.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
-            }
-        }
-
-        private void fetchUserInfo()
-        {
-            fetchLastStatusText();
-            fetchProfilePicture();
-            fetchAlbumNames();
-        }
-
-        void fetchProfilePicture()
-        {
-            pictureBoxProfile.BackgroundImage = null;
-            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureLargeURL);
-        }
- 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FacebookService.LogoutWithUI();
@@ -80,7 +33,18 @@ using System.Threading;
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            loginAndInit();
+            m_Client = Client.Instance;
+            try 
+            {
+                m_Client.LoginAndInit("EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD");
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Login Failed");
+            }
+
+            AlbumNameComboBox.Enabled = true;
+            RefreshButton.Enabled = true;
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
@@ -110,14 +74,6 @@ using System.Threading;
 
                 EventNameLabel.Text = closesestEvent.Name;
                 EventDateLabel.Text = closesestEvent.StartTime.ToString();
-            }
-        }
-
-        private void fetchAlbumNames()
-        {
-            foreach (Album album in m_LoggedInUser.Albums)
-            {
-                AlbumNameComboBox.Items.Add(album.Name);
             }
         }
 
@@ -177,16 +133,21 @@ using System.Threading;
         }
 
 
-        private void fetchLastStatusText()
+        void fetchProfilePicture()
         {
-            byte postIndex = 0;
-            while (string.IsNullOrEmpty(m_LoggedInUser.Posts[postIndex].Message))
-            {
-                postIndex++;
-            }
-
-            PostTextLabel.Text = string.Format("\"{0}\"",m_LoggedInUser.Posts[postIndex].Message);
+            pictureBoxProfile.BackgroundImage = null;
+            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureLargeURL);
         }
+
+        private void fetchAlbumNames()
+        {
+            foreach (Album album in m_Client.m_LoggedInUser.Albums)
+            {
+                AlbumNameComboBox.Items.Add(album.Name);
+            }
+        }
+
+
 
     }
 }

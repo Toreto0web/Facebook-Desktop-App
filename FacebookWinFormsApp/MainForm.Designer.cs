@@ -84,7 +84,7 @@ namespace FacebookDApp
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pictureBoxProfile.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.user_318_159711;
+            this.pictureBoxProfile.BackgroundImage = global::FacebookDApp.Properties.Resources.user_318_159711;
             this.pictureBoxProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxProfile.Location = new System.Drawing.Point(816, 29);

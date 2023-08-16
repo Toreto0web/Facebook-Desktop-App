@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BasicFacebookFeatures.Properties {
+namespace FacebookDApp.Properties {
     using System;
     
     
