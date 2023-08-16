@@ -27,8 +27,7 @@ using System.Threading;
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            FacebookService.LogoutWithUI();
-            m_LoginResult = null;
+            m_Client.LogoutClient();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
