@@ -82,15 +82,24 @@ namespace FacebookDApp
             fetchLastStatusText();
         }
 
-        private void fetchLastStatusText()
+        private string fetchLastStatusText()
         {
             byte postIndex = 0;
-            while (string.IsNullOrEmpty(s_LoggedInUser.Posts[postIndex].Message))
+
+            try 
             {
-                postIndex++;
+                while (string.IsNullOrEmpty(s_LoggedInUser.Posts[postIndex].Message))
+                {
+                    postIndex++;
+                }
             }
 
-            PostTextLabel.Text = string.Format("\"{0}\"", m_LoggedInUser.Posts[postIndex].Message);
+            catch (Exception ex)
+            {
+                MessageBox.Show("fetching status failed");
+            }
+
+            return string.Format("\"{0}\"", s_LoggedInUser.Posts[postIndex].Message);
         }
 
         public void LogoutClient()
@@ -103,17 +112,24 @@ namespace FacebookDApp
         {
             get
             {
-                if (s_LoggedInUser.Events.Count != 0)
+                try 
                 {
-                    s_closesestEvent = s_LoggedInUser.Events[0];
-
-                    foreach (Event fbEvent in s_LoggedInUser.Events)
+                    if (s_LoggedInUser.Events.Count != 0)
                     {
-                        if (fbEvent.StartTime < s_closesestEvent.StartTime)
+                        s_closesestEvent = s_LoggedInUser.Events[0];
+
+                        foreach (Event fbEvent in s_LoggedInUser.Events)
                         {
-                            s_closesestEvent = fbEvent;
+                            if (fbEvent.StartTime < s_closesestEvent.StartTime)
+                            {
+                                s_closesestEvent = fbEvent;
+                            }
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("fetching events failed...");
                 }
 
                 return s_closesestEvent;
@@ -121,9 +137,9 @@ namespace FacebookDApp
         }
 
 
-        public void PostFuturePost(DateTime time, string text)
+        public void PostFuturePost(in DateTime i_futurePost,in string text)
         {
-            if (time <= DateTime.Now)
+            if (i_futurePost <= DateTime.Now)
             {
                 MessageBox.Show("The time you entered already passed");
             }
@@ -131,7 +147,7 @@ namespace FacebookDApp
             {
                 DateTime currentTime = DateTime.Now;
 
-                TimeSpan timeDifference = time - currentTime;
+                TimeSpan timeDifference = i_futurePost - currentTime;
                 MessageBox.Show($"please wait {timeDifference.TotalSeconds.ToString()} seconds");
                 Thread.Sleep((int)timeDifference.TotalMilliseconds);
 
@@ -176,5 +192,17 @@ namespace FacebookDApp
             }
         }
 
+        public void postPost(in string text)
+        {
+            try
+            {
+                Status postedStatus = s_LoggedInUser.PostStatus(text);
+                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Done!");
+            }
+        }
     }
 }
