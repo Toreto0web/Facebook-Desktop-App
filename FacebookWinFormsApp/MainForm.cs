@@ -68,39 +68,20 @@ using System.Threading;
 
         private void dowLoadAlbumLabel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Album SelectedAlbum = m_LoggedInUser.Albums[AlbumNameComboBox.SelectedIndex];
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             folderBrowser.Description = "Select where you want the Album will be save";
             DialogResult result = folderBrowser.ShowDialog();
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
             {
-                string selectedFolderPath = folderBrowser.SelectedPath;
-                string newFolderPath = Path.Combine(selectedFolderPath, SelectedAlbum.Name);
-
                 try
                 {
-                    Directory.CreateDirectory(newFolderPath);
-                    byte photoIndex = 0;
-                    foreach(Photo photo in SelectedAlbum.Photos)
-                    {
-                        string imageUrl = photo.PictureNormalURL;
-                        string fileName = (++photoIndex).ToString() + ".jpg";
-                        string fullPath = Path.Combine(newFolderPath, fileName);
-
-                        using (WebClient webClient = new WebClient())
-                        {
-                            byte[] imageBytes = webClient.DownloadData(imageUrl);
-
-                            File.WriteAllBytes(fullPath, imageBytes);
-                        }
-                    }
+                    m_Client.DownloadSelectedAlbum(AlbumNameComboBox.SelectedIndex, folderBrowser.SelectedPath);
                     MessageBox.Show("New folder created and photos saved.");
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show($"Error: {ex.Message}");
+                   MessageBox.Show("Failed to download Album to the computer");
                 }
-
             }
         }
 
@@ -125,12 +106,12 @@ using System.Threading;
         void fetchProfilePicture()
         {
             pictureBoxProfile.BackgroundImage = null;
-            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureLargeURL);
+            pictureBoxProfile.LoadAsync(m_Client.ProfilePictureUrl);
         }
 
         private void fetchAlbumNames()
         {
-            foreach (Album album in m_Client.m_LoggedInUser.Albums)
+            foreach (Album album in m_Client.ClientAlbums)
             {
                 AlbumNameComboBox.Items.Add(album.Name);
             }

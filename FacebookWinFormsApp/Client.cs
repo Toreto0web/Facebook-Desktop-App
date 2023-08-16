@@ -138,5 +138,43 @@ namespace FacebookDApp
                 postPost(text);
             }
         }
+
+        public void DownloadSelectedAlbum(in int i_index, in string i_selectedFolderPath)
+        {
+            Album selectedAlbum =  s_LoggedInUser.Albums[i_index];
+            string newFolderPath = Path.Combine(i_selectedFolderPath, selectedAlbum.Name);
+            Directory.CreateDirectory(newFolderPath);
+            byte photoIndex = 0;
+            foreach (Photo photo in selectedAlbum.Photos)
+            {
+                string imageUrl = photo.PictureNormalURL;
+                string fileName = (++photoIndex).ToString() + ".jpg";
+                string fullPath = Path.Combine(newFolderPath, fileName);
+
+                using (WebClient webClient = new WebClient())
+                {
+                    byte[] imageBytes = webClient.DownloadData(imageUrl);
+
+                    File.WriteAllBytes(fullPath, imageBytes);
+                }
+            }
+        }
+
+        public string ProfilePictureUrl
+        {
+            get
+            {
+                return s_LoggedInUser.PictureLargeURL;
+            }
+        }
+
+        public FacebookObjectCollection<Album> ClientAlbums
+        {
+            get
+            {
+                return s_LoggedInUser.Albums;
+            }
+        }
+
     }
 }
