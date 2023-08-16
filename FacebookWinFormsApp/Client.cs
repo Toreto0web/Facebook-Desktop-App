@@ -67,7 +67,6 @@ namespace FacebookDApp
             if (!string.IsNullOrEmpty(s_LoginResult.AccessToken))
             {
                 s_LoggedInUser = s_LoginResult.LoggedInUser;
-                fetchUserInfo();
             }
 
             else
@@ -77,12 +76,7 @@ namespace FacebookDApp
            
         }
 
-        private void fetchUserInfo()
-        {
-            fetchLastStatusText();
-        }
-
-        private string fetchLastStatusText()
+        public string FetchLastStatusText()
         {
             byte postIndex = 0;
 
@@ -94,7 +88,7 @@ namespace FacebookDApp
                 }
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("fetching status failed");
             }
