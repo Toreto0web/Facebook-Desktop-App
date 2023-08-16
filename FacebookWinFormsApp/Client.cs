@@ -147,7 +147,7 @@ namespace FacebookDApp
                 DateTime currentTime = DateTime.Now;
 
                 TimeSpan timeDifference = i_futurePost - currentTime;
-                MessageBox.Show($"please wait {timeDifference.TotalSeconds.ToString()} seconds");
+                MessageBox.Show($"please wait {timeDifference.TotalSeconds.ToString("0.00")} seconds");
                 Thread.Sleep((int)timeDifference.TotalMilliseconds);
 
                 postPost(text);

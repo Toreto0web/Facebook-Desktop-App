@@ -252,7 +252,7 @@ namespace FacebookDApp
             this.postFuturePost.Name = "postFuturePost";
             this.postFuturePost.Size = new System.Drawing.Size(152, 47);
             this.postFuturePost.TabIndex = 22;
-            this.postFuturePost.Text = "Post Now!";
+            this.postFuturePost.Text = "Future Post";
             this.postFuturePost.UseVisualStyleBackColor = false;
             this.postFuturePost.Click += PostFuturePost_Click;
             // 
