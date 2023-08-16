@@ -167,39 +167,15 @@ using System.Threading;
 
         private void PostFuturePost_Click(object sender, EventArgs e)
         {
-            if(this.dateTimePicker.Value <= DateTime.Now) 
-            {
-                MessageBox.Show("The time you entered already passed");
-            }
-            else 
-            {
-                DateTime currentTime = DateTime.Now;
-
-                TimeSpan timeDifference = this.dateTimePicker.Value - currentTime;
-                MessageBox.Show($"please wait {timeDifference.TotalSeconds.ToString()} seconds");
-                Thread.Sleep((int)timeDifference.TotalMilliseconds);
-
-                postPost();
-            }
+           
         }
 
         private void buttonPostNow_Click(object sender, EventArgs e)
         {
-            postPost();
+            Post post = new Post();
+            post.postPost(this.textBoxPost.Text);
         }
 
-        private void postPost() 
-        {
-            try
-            {
-                Status postedStatus = m_LoggedInUser.PostStatus(textBoxPost.Text);
-                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Done!");
-            }
-        }
 
         private void fetchLastStatusText()
         {

@@ -254,6 +254,7 @@ namespace FacebookDApp
             this.postFuturePost.TabIndex = 22;
             this.postFuturePost.Text = "Post Now!";
             this.postFuturePost.UseVisualStyleBackColor = false;
+            this.postFuturePost.Click += PostFuturePost_Click;
             // 
             // lastPostLabel
             // 
@@ -305,11 +306,6 @@ namespace FacebookDApp
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
-
-        private void PostFuturePost_Click2(object sender, System.EventArgs e)
-        {
-            throw new System.NotImplementedException();
         }
 
 
