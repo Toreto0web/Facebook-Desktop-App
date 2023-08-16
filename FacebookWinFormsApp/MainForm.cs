@@ -33,6 +33,7 @@ using System.Threading;
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             m_Client = Client.Instance;
+
             try 
             {
                 m_Client.LoginAndInit("EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD");
@@ -54,6 +55,7 @@ using System.Threading;
         private void FetchClosestsEvent()
         {
             Event lastEvent = m_Client.LastEvent;
+
             if (lastEvent == null)
             {
                 EventNameLabel.Text = "No events";
@@ -112,13 +114,12 @@ using System.Threading;
 
         private void PostFuturePost_Click(object sender, EventArgs e)
         {
-           
+            m_Client.PostFuturePost(this.dateTimePicker.Value, this.textBoxPost.Text);
         }
 
         private void buttonPostNow_Click(object sender, EventArgs e)
         {
-            Post post = new Post();
-            post.postPost(this.textBoxPost.Text);
+            m_Client.postPost(this.textBoxPost.Text);
         }
 
 
