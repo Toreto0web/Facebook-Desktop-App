@@ -92,8 +92,35 @@ namespace FacebookDApp
             PostTextLabel.Text = string.Format("\"{0}\"", m_LoggedInUser.Posts[postIndex].Message);
         }
 
+        public void postPost(string text)
+        {
+            try
+            {
+                Status postedStatus = s_LoggedInUser.PostStatus(text);
+                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Done!");
+            }
+        }
 
+        public void PostFuturePost(DateTime time, string text)
+        {
+            if (time <= DateTime.Now)
+            {
+                MessageBox.Show("The time you entered already passed");
+            }
+            else
+            {
+                DateTime currentTime = DateTime.Now;
 
+                TimeSpan timeDifference = time - currentTime;
+                MessageBox.Show($"please wait {timeDifference.TotalSeconds.ToString()} seconds");
+                Thread.Sleep((int)timeDifference.TotalMilliseconds);
 
+                postPost(text);
+            }
+        }
     }
 }
