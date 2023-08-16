@@ -27,8 +27,7 @@ using System.Threading;
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            FacebookService.LogoutWithUI();
-            m_LoginResult = null;
+            m_Client.LogoutClient();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -54,26 +53,16 @@ using System.Threading;
 
         private void FetchClosestsEvent()
         {
-
-            if (m_LoggedInUser.Events.Count == 0)
+            Event lastEvent = m_Client.LastEvent;
+            if (lastEvent == null)
             {
                 EventNameLabel.Text = "No events";
                 EventDateLabel.Text = " ";
             }
             else
             {
-                Event closesestEvent = m_LoggedInUser.Events[0];
-
-                foreach (Event fbEvent in m_LoggedInUser.Events)
-                {
-                    if (fbEvent.StartTime < closesestEvent.StartTime)
-                    {
-                        closesestEvent = fbEvent;
-                    }
-                }
-
-                EventNameLabel.Text = closesestEvent.Name;
-                EventDateLabel.Text = closesestEvent.StartTime.ToString();
+                EventNameLabel.Text = lastEvent.Name;
+                EventDateLabel.Text = lastEvent.StartTime.ToString();
             }
         }
 

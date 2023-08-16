@@ -19,6 +19,7 @@ namespace FacebookDApp
         private static User s_LoggedInUser;
         private static LoginResult s_LoginResult;
         private static Client s_Instance;
+        private static Event s_closesestEvent = null;
 
         private Client()
         {
@@ -92,18 +93,33 @@ namespace FacebookDApp
             PostTextLabel.Text = string.Format("\"{0}\"", m_LoggedInUser.Posts[postIndex].Message);
         }
 
-        public void postPost(string text)
+        public void LogoutClient()
         {
-            try
+            FacebookService.LogoutWithUI();
+            s_LoginResult = null;
+        }
+
+        public Event LastEvent
+        {
+            get
             {
-                Status postedStatus = s_LoggedInUser.PostStatus(text);
-                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Done!");
+                if (s_LoggedInUser.Events.Count != 0)
+                {
+                    s_closesestEvent = s_LoggedInUser.Events[0];
+
+                    foreach (Event fbEvent in s_LoggedInUser.Events)
+                    {
+                        if (fbEvent.StartTime < s_closesestEvent.StartTime)
+                        {
+                            s_closesestEvent = fbEvent;
+                        }
+                    }
+                }
+
+                return s_closesestEvent;
             }
         }
+
 
         public void PostFuturePost(DateTime time, string text)
         {
