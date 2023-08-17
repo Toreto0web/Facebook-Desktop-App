@@ -25,9 +25,8 @@ using System.Threading;
 
             m_AppSettings = AppSettings.LoadFromFile();
 
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.StartPosition = FormStartPosition.Manual;
-
-            this.Size = m_AppSettings.m_LastWindowSize;
             this.Location = m_AppSettings.m_LastWindowLocation;
             this.checkBox.Checked = m_AppSettings.m_RememberUser;
 
@@ -90,8 +89,11 @@ using System.Threading;
 
         private void buttonFuture_Click(object sender, EventArgs e)
         {
-            this.Controls.Add(this.postFuturePost);
+            this.Controls.Add(this.postFuturePostButton);
+            this.postFuturePostButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Controls.Add(this.dateTimePicker);
+            this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 12F);
+
         }
 
         private void PostFuturePost_Click(object sender, EventArgs e)
@@ -148,8 +150,8 @@ using System.Threading;
             m_Client = Client.Instance;
 
             try
-            {
-                m_Client.LoginAndInit("EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD");
+            { // yoav access token : EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD
+                m_Client.LoginAndInit(m_AppSettings.m_LastAccessToken);
                 fetchAlbumNames();
                 fetchProfilePicture();
                 PostTextLabel.Text = m_Client.FetchLastStatusText();
@@ -161,6 +163,11 @@ using System.Threading;
 
             AlbumNameComboBox.Enabled = true;
             RefreshButton.Enabled = true;
+        }
+
+        private void lastPostLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
