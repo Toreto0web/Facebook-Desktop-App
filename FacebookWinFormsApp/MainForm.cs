@@ -17,10 +17,16 @@ using System.Threading;
     public partial class MainForm : Form
     {
         Client m_Client;
+        AppSettings m_AppSettings;
 
         public MainForm()
         {
             InitializeComponent();
+
+            m_AppSettings = new AppSettings();
+
+            this.Size = m_AppSettings.m_LastWindowSize;
+            this.Location = m_AppSettings.m_LastWindowLocation;
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)
