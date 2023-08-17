@@ -26,6 +26,14 @@ namespace FacebookDApp
 
         }
 
+        public string AccesToken 
+        {
+            get 
+            {
+                return s_LoginResult.AccessToken;
+            }
+        }
+
         public static Client Instance
         {
             get
@@ -73,7 +81,7 @@ namespace FacebookDApp
             {
                 throw new Exception();
             }
-           
+
         }
 
         public string FetchLastStatusText()

@@ -23,10 +23,19 @@ using System.Threading;
         {
             InitializeComponent();
 
-            m_AppSettings = new AppSettings();
+            m_AppSettings = AppSettings.LoadFromFile();
+
+            this.StartPosition = FormStartPosition.Manual;
 
             this.Size = m_AppSettings.m_LastWindowSize;
             this.Location = m_AppSettings.m_LastWindowLocation;
+            this.checkBox.Checked = m_AppSettings.m_RememberUser;
+
+            if(m_AppSettings.m_RememberUser &&
+                !string.IsNullOrEmpty(m_AppSettings.m_LastAccessToken)) 
+            {
+                logInProccess();
+            }
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -36,22 +45,7 @@ using System.Threading;
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            m_Client = Client.Instance;
-
-            try 
-            {
-                m_Client.LoginAndInit("EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD");
-                fetchAlbumNames();
-                fetchProfilePicture();
-                PostTextLabel.Text = m_Client.FetchLastStatusText();
-            }
-            catch(Exception)
-            {
-                MessageBox.Show("Login Failed");
-            }
-
-            AlbumNameComboBox.Enabled = true;
-            RefreshButton.Enabled = true;
+            logInProccess();
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
@@ -124,7 +118,49 @@ using System.Threading;
             }
         }
 
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            m_AppSettings.m_RememberUser = checkBox.Checked;
+        }
 
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
 
+            m_AppSettings.m_LastWindowLocation = this.Location;
+            m_AppSettings.m_LastWindowSize = this.Size;
+            m_AppSettings.m_RememberUser = this.checkBox.Checked;
+
+            if (m_AppSettings.m_RememberUser) 
+            {
+                m_AppSettings.m_LastAccessToken = m_Client.AccesToken;
+            }
+            else 
+            {
+                m_AppSettings.m_LastAccessToken = null;
+            }
+
+            m_AppSettings.SaveToFile();
+        }
+
+        private void logInProccess() 
+        {
+            m_Client = Client.Instance;
+
+            try
+            {
+                m_Client.LoginAndInit("EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD");
+                fetchAlbumNames();
+                fetchProfilePicture();
+                PostTextLabel.Text = m_Client.FetchLastStatusText();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Login Failed");
+            }
+
+            AlbumNameComboBox.Enabled = true;
+            RefreshButton.Enabled = true;
+        }
     }
 }
