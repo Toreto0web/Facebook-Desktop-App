@@ -16,13 +16,14 @@ using System.Threading;
 {
     public partial class MainForm : Form
     {
+        string[] m_sortableAttributes = {"Gender", "Name", "Birthday"};
         Client m_Client;
         AppSettings m_AppSettings;
 
         public MainForm()
         {
             InitializeComponent();
-
+            
             m_AppSettings = AppSettings.LoadFromFile();
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -154,6 +155,7 @@ using System.Threading;
                 m_Client.LoginAndInit(m_AppSettings.m_LastAccessToken);
                 fetchAlbumNames();
                 fetchProfilePicture();
+                fillComboBox(m_sortableAttributes);
                 PostTextLabel.Text = m_Client.FetchLastStatusText();
             }
             catch (Exception)
@@ -162,12 +164,28 @@ using System.Threading;
             }
 
             AlbumNameComboBox.Enabled = true;
+            sortableAttributesComboBox.Enabled = true;
             RefreshButton.Enabled = true;
         }
 
-        private void lastPostLabel_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void sortableAttributesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string result = m_sortableAttributes[sortableAttributesComboBox.SelectedIndex];
+
+            m_Client.sortCollection<>
+        }
+
+        private void fillComboBox(string[] strArr)
+        {
+            foreach (string str in strArr)
+            {
+                sortableAttributesComboBox.Items.Add(str);
+            }
         }
     }
 }

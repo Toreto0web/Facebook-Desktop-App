@@ -26,9 +26,9 @@ namespace FacebookDApp
 
         }
 
-        public string AccesToken 
+        public string AccesToken
         {
-            get 
+            get
             {
                 return s_LoginResult.AccessToken;
             }
@@ -88,7 +88,7 @@ namespace FacebookDApp
         {
             byte postIndex = 0;
 
-            try 
+            try
             {
                 while (string.IsNullOrEmpty(s_LoggedInUser.Posts[postIndex].Message))
                 {
@@ -114,7 +114,7 @@ namespace FacebookDApp
         {
             get
             {
-                try 
+                try
                 {
                     if (s_LoggedInUser.Events.Count != 0)
                     {
@@ -138,7 +138,7 @@ namespace FacebookDApp
             }
         }
 
-        public void PostFuturePost(in DateTime i_futurePost,in string text)
+        public void PostFuturePost(in DateTime i_futurePost, in string text)
         {
             if (i_futurePost <= DateTime.Now)
             {
@@ -158,7 +158,7 @@ namespace FacebookDApp
 
         public void DownloadSelectedAlbum(in int i_index, in string i_selectedFolderPath)
         {
-            Album selectedAlbum =  s_LoggedInUser.Albums[i_index];
+            Album selectedAlbum = s_LoggedInUser.Albums[i_index];
             string newFolderPath = Path.Combine(i_selectedFolderPath, selectedAlbum.Name);
             Directory.CreateDirectory(newFolderPath);
             byte photoIndex = 0;
@@ -205,5 +205,15 @@ namespace FacebookDApp
                 MessageBox.Show("Done!");
             }
         }
+
+        public FacebookUserCollection sortCollection<T>(T i_attribute)
+            where T : IComparable
+        {
+            FacebookUserCollection myFriends = new FacebookUserCollection(s_LoggedInUser.Friends.ToArray<User>());
+            myFriends.SortCollection<T>(i_attribute.GetType().ToString());
+
+            return myFriends;
+        }
+
     }
 }
