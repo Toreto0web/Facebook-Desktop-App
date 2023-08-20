@@ -16,10 +16,7 @@ namespace FacebookDApp
         private static Client s_Instance;
         private static Event s_closesestEvent = null;
 
-        private Client()
-        {
-
-        }
+        private Client() { }
 
         public string AccessToken
         {
