@@ -6,13 +6,13 @@ using FacebookWrapper;
 
 namespace FacebookDApp
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();

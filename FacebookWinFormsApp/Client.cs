@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
@@ -26,11 +21,19 @@ namespace FacebookDApp
 
         }
 
-        public string AccesToken
+        public string AccessToken
         {
             get
             {
                 return s_LoginResult.AccessToken;
+            }
+        }
+
+        public FacebookObjectCollection<User> MyFriendsList 
+        {
+            get 
+            {
+                return s_LoggedInUser.Friends;
             }
         }
 
@@ -152,7 +155,7 @@ namespace FacebookDApp
                 MessageBox.Show($"please wait {timeDifference.TotalSeconds.ToString("0.00")} seconds");
                 Thread.Sleep((int)timeDifference.TotalMilliseconds);
 
-                postPost(text);
+                PostPost(text);
             }
         }
 
@@ -193,7 +196,7 @@ namespace FacebookDApp
             }
         }
 
-        public void postPost(in string text)
+        public void PostPost(in string text)
         {
             try
             {
@@ -206,13 +209,10 @@ namespace FacebookDApp
             }
         }
 
-        public FacebookUserCollection sortCollection<T>(T i_attribute)
-            where T : IComparable
+        public void SortCollection(in string i_attribute)
         {
             FacebookUserCollection myFriends = new FacebookUserCollection(s_LoggedInUser.Friends.ToArray<User>());
-            myFriends.SortCollection<T>(i_attribute.GetType().ToString());
-
-            return myFriends;
+            myFriends.SortCollection(i_attribute);
         }
 
     }

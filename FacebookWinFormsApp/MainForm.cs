@@ -1,24 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
-using FacebookWrapper;
-using System.IO;
-using System.Net;
-using System.Threading;
 
  namespace FacebookDApp
 {
     public partial class MainForm : Form
     {
-        string[] m_sortableAttributes = {"Gender", "Name", "Birthday"};
-        Client m_Client;
-        AppSettings m_AppSettings;
+        private string[] m_sortableAttributes = { "Gender", "Name", "Birthday" };
+        private Client m_Client;
+        private AppSettings m_AppSettings;
 
         public MainForm()
         {
@@ -50,10 +40,10 @@ using System.Threading;
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            FetchClosestsEvent();
+            fetchClosestsEvent();
         }
 
-        private void FetchClosestsEvent()
+        private void fetchClosestsEvent()
         {
             Event lastEvent = m_Client.LastEvent;
 
@@ -94,20 +84,19 @@ using System.Threading;
             this.postFuturePostButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Controls.Add(this.dateTimePicker);
             this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 12F);
-
         }
 
-        private void PostFuturePost_Click(object sender, EventArgs e)
+        private void postFuturePost_Click(object sender, EventArgs e)
         {
             m_Client.PostFuturePost(this.dateTimePicker.Value, this.textBoxPost.Text);
         }
 
         private void buttonPostNow_Click(object sender, EventArgs e)
         {
-            m_Client.postPost(this.textBoxPost.Text);
+            m_Client.PostPost(this.textBoxPost.Text);
         }
 
-        void fetchProfilePicture()
+        private void fetchProfilePicture()
         {
             pictureBoxProfile.BackgroundImage = null;
             pictureBoxProfile.LoadAsync(m_Client.ProfilePictureUrl);
@@ -136,7 +125,7 @@ using System.Threading;
 
             if (m_AppSettings.m_RememberUser) 
             {
-                m_AppSettings.m_LastAccessToken = m_Client.AccesToken;
+                m_AppSettings.m_LastAccessToken = m_Client.AccessToken;
             }
             else 
             {
@@ -168,16 +157,18 @@ using System.Threading;
             RefreshButton.Enabled = true;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void sortableAttributesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string result = m_sortableAttributes[sortableAttributesComboBox.SelectedIndex];
 
-            m_Client.sortCollection<>
+            m_Client.SortCollection(result);
+
+            myFriendsListBox.Items.Clear();
+
+            foreach (User user in m_Client.MyFriendsList)
+            {
+                myFriendsListBox.Items.Add(user.FirstName + " " + user.LastName);
+            }
         }
 
         private void fillComboBox(string[] strArr)

@@ -15,7 +15,7 @@ using System.Reflection;
 
 namespace FacebookDApp
 {
-    public class FacebookUserCollection 
+    class FacebookUserCollection
     {
         private User[] Friends { get; set; }
 
@@ -24,17 +24,21 @@ namespace FacebookDApp
             Friends = friends;
         }
 
-        public void SortCollection<TAttr>(string attributeName) where TAttr : IComparable
+        public void SortCollection(in string i_attributeName)
         {
-            PropertyInfo property = typeof(User).GetProperty(attributeName);
+            PropertyInfo property = typeof(User).GetProperty(i_attributeName);
             if (property != null)
             {
-                Func<User, TAttr> attributeSelector = user => (TAttr)property.GetValue(user);
-                Array.Sort(Friends, (user1, user2) => attributeSelector(user1).CompareTo(attributeSelector(user2)));
+                Array.Sort(Friends, (user1, user2) =>
+                {
+                    IComparable value1 = (IComparable)property.GetValue(user1);
+                    IComparable value2 = (IComparable)property.GetValue(user2);
+                    return value1.CompareTo(value2);
+                });
             }
             else
             {
-                Console.WriteLine($"Attribute '{attributeName}' not found.");
+                Console.WriteLine($"Attribute '{i_attributeName}' not found.");
             }
         }
     }

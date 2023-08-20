@@ -1,7 +1,6 @@
-﻿
-namespace FacebookDApp
+﻿namespace FacebookDApp
 {
-    partial class MainForm
+    public partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -18,6 +17,7 @@ namespace FacebookDApp
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -51,6 +51,7 @@ namespace FacebookDApp
             this.checkBox = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.sortableAttributesComboBox = new System.Windows.Forms.ComboBox();
+            this.myFriendsListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,11 +92,11 @@ namespace FacebookDApp
             this.pictureBoxProfile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxProfile.BackgroundImage")));
             this.pictureBoxProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxProfile.Location = new System.Drawing.Point(856, 18);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(703, 14);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(182, 189);
-            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxProfile.Size = new System.Drawing.Size(234, 234);
+            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfile.TabIndex = 3;
             this.pictureBoxProfile.TabStop = false;
             // 
@@ -116,7 +117,7 @@ namespace FacebookDApp
             this.labelCreatePost.AutoSize = true;
             this.labelCreatePost.Font = new System.Drawing.Font("Klavika Bd", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCreatePost.ForeColor = System.Drawing.Color.White;
-            this.labelCreatePost.Location = new System.Drawing.Point(13, 180);
+            this.labelCreatePost.Location = new System.Drawing.Point(23, 336);
             this.labelCreatePost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCreatePost.Name = "labelCreatePost";
             this.labelCreatePost.Size = new System.Drawing.Size(268, 41);
@@ -127,7 +128,7 @@ namespace FacebookDApp
             // 
             this.textBoxPost.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPost.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxPost.Location = new System.Drawing.Point(13, 219);
+            this.textBoxPost.Location = new System.Drawing.Point(30, 386);
             this.textBoxPost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxPost.Multiline = true;
             this.textBoxPost.Name = "textBoxPost";
@@ -141,7 +142,7 @@ namespace FacebookDApp
             this.buttonPostNow.FlatAppearance.BorderSize = 0;
             this.buttonPostNow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPostNow.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.buttonPostNow.Location = new System.Drawing.Point(13, 381);
+            this.buttonPostNow.Location = new System.Drawing.Point(30, 548);
             this.buttonPostNow.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonPostNow.Name = "buttonPostNow";
             this.buttonPostNow.Size = new System.Drawing.Size(164, 35);
@@ -157,7 +158,7 @@ namespace FacebookDApp
             this.buttonFuture.FlatAppearance.BorderSize = 0;
             this.buttonFuture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFuture.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.buttonFuture.Location = new System.Drawing.Point(185, 381);
+            this.buttonFuture.Location = new System.Drawing.Point(202, 548);
             this.buttonFuture.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonFuture.Name = "buttonFuture";
             this.buttonFuture.Size = new System.Drawing.Size(160, 35);
@@ -171,7 +172,7 @@ namespace FacebookDApp
             this.GetNextEventLabel.AutoSize = true;
             this.GetNextEventLabel.Font = new System.Drawing.Font("Klavika Bd", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GetNextEventLabel.ForeColor = System.Drawing.Color.White;
-            this.GetNextEventLabel.Location = new System.Drawing.Point(823, 300);
+            this.GetNextEventLabel.Location = new System.Drawing.Point(380, 177);
             this.GetNextEventLabel.Name = "GetNextEventLabel";
             this.GetNextEventLabel.Size = new System.Drawing.Size(321, 41);
             this.GetNextEventLabel.TabIndex = 15;
@@ -184,7 +185,7 @@ namespace FacebookDApp
             this.RefreshButton.FlatAppearance.BorderSize = 0;
             this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RefreshButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.RefreshButton.Location = new System.Drawing.Point(870, 381);
+            this.RefreshButton.Location = new System.Drawing.Point(426, 261);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(117, 29);
             this.RefreshButton.TabIndex = 16;
@@ -197,7 +198,7 @@ namespace FacebookDApp
             this.EventNameLabel.AutoSize = true;
             this.EventNameLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventNameLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.EventNameLabel.Location = new System.Drawing.Point(834, 340);
+            this.EventNameLabel.Location = new System.Drawing.Point(380, 218);
             this.EventNameLabel.Name = "EventNameLabel";
             this.EventNameLabel.Size = new System.Drawing.Size(94, 40);
             this.EventNameLabel.TabIndex = 17;
@@ -208,7 +209,7 @@ namespace FacebookDApp
             this.EventDateLabel.AutoSize = true;
             this.EventDateLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventDateLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.EventDateLabel.Location = new System.Drawing.Point(949, 340);
+            this.EventDateLabel.Location = new System.Drawing.Point(480, 218);
             this.EventDateLabel.Name = "EventDateLabel";
             this.EventDateLabel.Size = new System.Drawing.Size(120, 40);
             this.EventDateLabel.TabIndex = 18;
@@ -219,9 +220,9 @@ namespace FacebookDApp
             this.AlbumNameComboBox.Enabled = false;
             this.AlbumNameComboBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.AlbumNameComboBox.FormattingEnabled = true;
-            this.AlbumNameComboBox.Location = new System.Drawing.Point(428, 381);
+            this.AlbumNameComboBox.Location = new System.Drawing.Point(657, 386);
             this.AlbumNameComboBox.Name = "AlbumNameComboBox";
-            this.AlbumNameComboBox.Size = new System.Drawing.Size(304, 40);
+            this.AlbumNameComboBox.Size = new System.Drawing.Size(243, 40);
             this.AlbumNameComboBox.TabIndex = 19;
             this.AlbumNameComboBox.Text = "Select Album";
             this.AlbumNameComboBox.SelectedIndexChanged += new System.EventHandler(this.dowLoadAlbumLabel_SelectedIndexChanged);
@@ -231,7 +232,7 @@ namespace FacebookDApp
             this.DowLoadAlbumLabel.AutoSize = true;
             this.DowLoadAlbumLabel.Font = new System.Drawing.Font("Klavika Bd", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DowLoadAlbumLabel.ForeColor = System.Drawing.Color.White;
-            this.DowLoadAlbumLabel.Location = new System.Drawing.Point(423, 300);
+            this.DowLoadAlbumLabel.Location = new System.Drawing.Point(650, 336);
             this.DowLoadAlbumLabel.Name = "DowLoadAlbumLabel";
             this.DowLoadAlbumLabel.Size = new System.Drawing.Size(373, 41);
             this.DowLoadAlbumLabel.TabIndex = 20;
@@ -239,10 +240,11 @@ namespace FacebookDApp
             // 
             // dateTimePicker
             // 
+            this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker.Location = new System.Drawing.Point(13, 464);
+            this.dateTimePicker.Location = new System.Drawing.Point(30, 591);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(214, 26);
+            this.dateTimePicker.Size = new System.Drawing.Size(187, 39);
             this.dateTimePicker.TabIndex = 21;
             // 
             // postFuturePostButton
@@ -250,20 +252,22 @@ namespace FacebookDApp
             this.postFuturePostButton.BackColor = System.Drawing.Color.White;
             this.postFuturePostButton.FlatAppearance.BorderSize = 0;
             this.postFuturePostButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.postFuturePostButton.Location = new System.Drawing.Point(13, 513);
+            this.postFuturePostButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.postFuturePostButton.Location = new System.Drawing.Point(219, 591);
             this.postFuturePostButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.postFuturePostButton.Name = "postFuturePostButton";
-            this.postFuturePostButton.Size = new System.Drawing.Size(152, 30);
+            this.postFuturePostButton.Size = new System.Drawing.Size(143, 28);
             this.postFuturePostButton.TabIndex = 22;
             this.postFuturePostButton.Text = "Future Post";
             this.postFuturePostButton.UseVisualStyleBackColor = false;
+            this.postFuturePostButton.Click += new System.EventHandler(this.postFuturePostButton_Click);
             // 
             // lastPostLabel
             // 
             this.lastPostLabel.AutoSize = true;
             this.lastPostLabel.Font = new System.Drawing.Font("Klavika Bd", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastPostLabel.ForeColor = System.Drawing.Color.White;
-            this.lastPostLabel.Location = new System.Drawing.Point(423, 103);
+            this.lastPostLabel.Location = new System.Drawing.Point(23, 177);
             this.lastPostLabel.Name = "lastPostLabel";
             this.lastPostLabel.Size = new System.Drawing.Size(255, 41);
             this.lastPostLabel.TabIndex = 21;
@@ -273,7 +277,7 @@ namespace FacebookDApp
             // 
             this.PostTextLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PostTextLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.PostTextLabel.Location = new System.Drawing.Point(428, 180);
+            this.PostTextLabel.Location = new System.Drawing.Point(30, 231);
             this.PostTextLabel.Multiline = true;
             this.PostTextLabel.Name = "PostTextLabel";
             this.PostTextLabel.ReadOnly = true;
@@ -300,7 +304,7 @@ namespace FacebookDApp
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Klavika Bd", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(423, 479);
+            this.label1.Location = new System.Drawing.Point(380, 336);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(250, 41);
             this.label1.TabIndex = 24;
@@ -312,17 +316,29 @@ namespace FacebookDApp
             this.sortableAttributesComboBox.Enabled = false;
             this.sortableAttributesComboBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.sortableAttributesComboBox.FormattingEnabled = true;
-            this.sortableAttributesComboBox.Location = new System.Drawing.Point(734, 479);
+            this.sortableAttributesComboBox.Location = new System.Drawing.Point(387, 386);
             this.sortableAttributesComboBox.Name = "sortableAttributesComboBox";
-            this.sortableAttributesComboBox.Size = new System.Drawing.Size(304, 40);
+            this.sortableAttributesComboBox.Size = new System.Drawing.Size(243, 40);
             this.sortableAttributesComboBox.TabIndex = 25;
             this.sortableAttributesComboBox.Text = "Select Parameter";
             this.sortableAttributesComboBox.SelectedIndexChanged += new System.EventHandler(this.sortableAttributesComboBox_SelectedIndexChanged);
             // 
+            // myFriendsListBox
+            // 
+            this.myFriendsListBox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.myFriendsListBox.FormattingEnabled = true;
+            this.myFriendsListBox.ItemHeight = 32;
+            this.myFriendsListBox.Location = new System.Drawing.Point(387, 432);
+            this.myFriendsListBox.Name = "myFriendsListBox";
+            this.myFriendsListBox.Size = new System.Drawing.Size(243, 100);
+            this.myFriendsListBox.TabIndex = 26;
+            this.myFriendsListBox.SelectedIndexChanged += new System.EventHandler(this.myFriendsListBox_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(86)))), ((int)(((byte)(147)))));
-            this.ClientSize = new System.Drawing.Size(1144, 593);
+            this.ClientSize = new System.Drawing.Size(950, 640);
+            this.Controls.Add(this.myFriendsListBox);
             this.Controls.Add(this.sortableAttributesComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBox);
@@ -352,7 +368,6 @@ namespace FacebookDApp
 
         }
 
-
         #endregion
 
         private System.Windows.Forms.Button buttonLogin;
@@ -376,5 +391,6 @@ namespace FacebookDApp
         private System.Windows.Forms.CheckBox checkBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox sortableAttributesComboBox;
+        private System.Windows.Forms.ListBox myFriendsListBox;
     }
 }
