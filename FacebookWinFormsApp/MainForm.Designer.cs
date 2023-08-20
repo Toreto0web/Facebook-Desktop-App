@@ -260,7 +260,6 @@
             this.postFuturePostButton.TabIndex = 22;
             this.postFuturePostButton.Text = "Future Post";
             this.postFuturePostButton.UseVisualStyleBackColor = false;
-            this.postFuturePostButton.Click += new System.EventHandler(this.postFuturePostButton_Click);
             // 
             // lastPostLabel
             // 
@@ -309,7 +308,6 @@
             this.label1.Size = new System.Drawing.Size(250, 41);
             this.label1.TabIndex = 24;
             this.label1.Text = "Sort Friends By";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // sortableAttributesComboBox
             // 
@@ -332,7 +330,6 @@
             this.myFriendsListBox.Name = "myFriendsListBox";
             this.myFriendsListBox.Size = new System.Drawing.Size(243, 100);
             this.myFriendsListBox.TabIndex = 26;
-            this.myFriendsListBox.SelectedIndexChanged += new System.EventHandler(this.myFriendsListBox_SelectedIndexChanged);
             // 
             // MainForm
             // 
