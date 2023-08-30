@@ -118,7 +118,7 @@ namespace FacebookDApp
                 {
                     if (s_LoggedInUser.Events.Count != 0)
                     {
-                        s_closesestEvent = s_LoggedInUser.Events[0];
+                        s_closesestEvent = s_LoggedInUser.Events[0]; //d
 
                         foreach (Event fbEvent in s_LoggedInUser.Events)
                         {
