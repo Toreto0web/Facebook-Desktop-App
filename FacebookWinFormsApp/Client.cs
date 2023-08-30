@@ -129,7 +129,7 @@ namespace FacebookDApp
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("fetching events failed...");
                 }

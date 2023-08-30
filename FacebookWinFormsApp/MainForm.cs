@@ -38,44 +38,20 @@ using FacebookWrapper.ObjectModel;
             logInProccess();
         }
 
-        private void buttonRefresh_Click(object sender, EventArgs e)
-        {
-            fetchClosestsEvent();
-        }
-
         private void fetchClosestsEvent()
         {
             Event lastEvent = m_Client.LastEvent;
-
-            if (lastEvent == null)
-            {
-                EventNameLabel.Text = "No events";
-                EventDateLabel.Text = " ";
-            }
-            else
-            {
-                EventNameLabel.Text = lastEvent.Name;
-                EventDateLabel.Text = lastEvent.StartTime.ToString();
-            }
-        }
-
-        private void dowLoadAlbumLabel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-            folderBrowser.Description = "Select where you want the Album will be save";
-            DialogResult result = folderBrowser.ShowDialog();
-            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
-            {
-                try
-                {
-                    m_Client.DownloadSelectedAlbum(AlbumNameComboBox.SelectedIndex, folderBrowser.SelectedPath);
-                    MessageBox.Show("New folder created and photos saved.");
-                }
-                catch
-                {
-                   MessageBox.Show("Failed to download Album to the computer");
-                }
-            }
+            eventBindingSource.DataSource = lastEvent;
+            //if (lastEvent == null)
+            //{
+            //    EventNameLabel.Text = "No events";
+            //    EventDateLabel.Text = " ";
+            //}
+            //else
+            //{
+            //    EventNameLabel.Text = lastEvent.Name;
+            //    EventDateLabel.Text = lastEvent.StartTime.ToString();
+            //}
         }
 
         private void buttonFuture_Click(object sender, EventArgs e)
@@ -104,10 +80,12 @@ using FacebookWrapper.ObjectModel;
 
         private void fetchAlbumNames()
         {
-            foreach (Album album in m_Client.ClientAlbums)
-            {
-                AlbumNameComboBox.Items.Add(album.Name);
-            }
+            //foreach (Album album in m_Client.ClientAlbums)
+            //{
+            //    AlbumNameComboBox.Items.Add(album.Name);
+            //}
+
+            albumBindingSource.DataSource = m_Client.ClientAlbums;
         }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
@@ -144,6 +122,7 @@ using FacebookWrapper.ObjectModel;
                 m_Client.LoginAndInit(m_AppSettings.m_LastAccessToken);
                 fetchAlbumNames();
                 fetchProfilePicture();
+                fetchClosestsEvent();
                 fillComboBox(m_sortableAttributes);
                 PostTextLabel.Text = m_Client.FetchLastStatusText();
             }
@@ -154,7 +133,6 @@ using FacebookWrapper.ObjectModel;
 
             AlbumNameComboBox.Enabled = true;
             sortableAttributesComboBox.Enabled = true;
-            RefreshButton.Enabled = true;
         }
 
         private void sortableAttributesComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -177,6 +155,35 @@ using FacebookWrapper.ObjectModel;
             {
                 sortableAttributesComboBox.Items.Add(str);
             }
+        }
+
+        private void buttonDownloadSelectedAlbum_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+            folderBrowser.Description = "Select where you want the Album will be save";
+            DialogResult result = folderBrowser.ShowDialog();
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
+            {
+                try
+                {
+                    m_Client.DownloadSelectedAlbum(AlbumNameComboBox.SelectedIndex, folderBrowser.SelectedPath);
+                    MessageBox.Show("New folder created and photos saved.");
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to download Album to the computer");
+                }
+            }
+        }
+
+        private void startTimeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void startTimeLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
