@@ -134,7 +134,7 @@ namespace FacebookDApp
             }
         }
 
-        public void PostFuturePost(in DateTime i_futurePost, in string text)
+        public void PostFutureStatus(in DateTime i_futurePost, in string text)
         {
             if (i_futurePost <= DateTime.Now)
             {
@@ -148,7 +148,7 @@ namespace FacebookDApp
                 MessageBox.Show($"please wait {timeDifference.TotalSeconds.ToString("0.00")} seconds");
                 Thread.Sleep((int)timeDifference.TotalMilliseconds);
 
-                PostPost(text);
+                PostStatus(text);
             }
         }
 
@@ -189,7 +189,7 @@ namespace FacebookDApp
             }
         }
 
-        public void PostPost(in string text)
+        public void PostStatus(in string text)
         {
             try
             {

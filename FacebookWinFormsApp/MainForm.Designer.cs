@@ -109,7 +109,7 @@
             NextEventLocationLabel.ForeColor = System.Drawing.Color.White;
             NextEventLocationLabel.Location = new System.Drawing.Point(-5, 63);
             NextEventLocationLabel.Name = "NextEventLocationLabel";
-            NextEventLocationLabel.Size = new System.Drawing.Size(94, 25);
+            NextEventLocationLabel.Size = new System.Drawing.Size(107, 30);
             NextEventLocationLabel.TabIndex = 0;
             NextEventLocationLabel.Text = "Location:";
             // 
@@ -120,7 +120,7 @@
             NextEventNameLabel.ForeColor = System.Drawing.Color.White;
             NextEventNameLabel.Location = new System.Drawing.Point(-4, 0);
             NextEventNameLabel.Name = "NextEventNameLabel";
-            NextEventNameLabel.Size = new System.Drawing.Size(69, 25);
+            NextEventNameLabel.Size = new System.Drawing.Size(80, 30);
             NextEventNameLabel.TabIndex = 2;
             NextEventNameLabel.Text = "Name:";
             // 
@@ -131,7 +131,7 @@
             NextEventstartTimeLabel.ForeColor = System.Drawing.Color.White;
             NextEventstartTimeLabel.Location = new System.Drawing.Point(-4, 34);
             NextEventstartTimeLabel.Name = "NextEventstartTimeLabel";
-            NextEventstartTimeLabel.Size = new System.Drawing.Size(58, 25);
+            NextEventstartTimeLabel.Size = new System.Drawing.Size(68, 30);
             NextEventstartTimeLabel.TabIndex = 4;
             NextEventstartTimeLabel.Text = "Date:";
             // 
@@ -326,7 +326,7 @@
             this.lastPostLabel.ForeColor = System.Drawing.Color.White;
             this.lastPostLabel.Location = new System.Drawing.Point(23, 177);
             this.lastPostLabel.Name = "lastPostLabel";
-            this.lastPostLabel.Size = new System.Drawing.Size(197, 34);
+            this.lastPostLabel.Size = new System.Drawing.Size(266, 40);
             this.lastPostLabel.TabIndex = 21;
             this.lastPostLabel.Text = "Your Last Post";
             // 
@@ -386,7 +386,7 @@
             this.myFriendsListBox.ItemHeight = 32;
             this.myFriendsListBox.Location = new System.Drawing.Point(387, 432);
             this.myFriendsListBox.Name = "myFriendsListBox";
-            this.myFriendsListBox.Size = new System.Drawing.Size(243, 160);
+            this.myFriendsListBox.Size = new System.Drawing.Size(243, 132);
             this.myFriendsListBox.TabIndex = 28;
             // 
             // SelectedAlbumPanel

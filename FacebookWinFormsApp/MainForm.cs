@@ -63,12 +63,12 @@ using FacebookWrapper.ObjectModel;
 
         private void postFuturePost_Click(object sender, EventArgs e)
         {
-            m_Client.PostFuturePost(this.dateTimePicker.Value, this.textBoxPost.Text);
+            m_Client.PostFutureStatus(this.dateTimePicker.Value, this.textBoxPost.Text);
         }
 
         private void buttonPostNow_Click(object sender, EventArgs e)
         {
-            m_Client.PostPost(this.textBoxPost.Text);
+            m_Client.PostStatus(this.textBoxPost.Text);
         }
 
         private void fetchProfilePicture()
@@ -167,7 +167,7 @@ using FacebookWrapper.ObjectModel;
 
         private void fetchFacebookContent()
         {
-            FetchLastStatusTextAdapter statusTextAdapter = new FetchLastStatusTextAdapter { Client = m_Client, TextBox = PostTextLabel };
+            FetchLastStatusTextAdapter statusTextAdapter = new FetchLastStatusTextAdapter { Client = m_Client, TextBox = new TextBoxProxy(PostTextLabel) };
             
             fillSortableAttributesComboBox(m_sortableAttributes);
             

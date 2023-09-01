@@ -9,11 +9,12 @@ namespace FacebookDApp
     public class FetchLastStatusTextAdapter
     {
         public Client Client { get; set; }
-        public System.Windows.Forms.TextBox TextBox { get; set; }
+        public TextBoxProxy TextBox{ get; set; }
 
         public void FetchLastStatusText() 
         {
-            TextBox.Text = Client.FetchLastStatusText();
+            TextBox.TextBoxForm.Text = Client.FetchLastStatusText();
+            TextBox.AlignStatus();
         }
     }
 }
