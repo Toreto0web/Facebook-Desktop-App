@@ -13,7 +13,7 @@ namespace FacebookDApp
 
         public void FetchLastStatusText() 
         {
-            TextBox.Invoke(new Action(() => TextBox.Text = Client.FetchLastStatusText()));
+            TextBox.Text = Client.FetchLastStatusText();
         }
     }
 }
