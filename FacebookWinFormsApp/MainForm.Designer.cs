@@ -32,10 +32,10 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label NumOfSelectAlbumLabel;
             System.Windows.Forms.Label SelectedAlbumPicLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.Label NextEventLocationLabel;
             System.Windows.Forms.Label NextEventNameLabel;
             System.Windows.Forms.Label NextEventstartTimeLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.SelectedAlbumTimeLabel1 = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
@@ -63,8 +63,8 @@
             this.SelectedAlbumtimeLabel = new System.Windows.Forms.Label();
             this.SelectedAlbumPictureBox = new System.Windows.Forms.PictureBox();
             this.NextEventPanel = new System.Windows.Forms.Panel();
-            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NextEventLocationLabel1 = new System.Windows.Forms.Label();
+            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NextEventNameLabel1 = new System.Windows.Forms.Label();
             this.NextEventstartTimeLabel1 = new System.Windows.Forms.Label();
             NumOfSelectAlbumLabel = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@
             NumOfSelectAlbumLabel.ForeColor = System.Drawing.Color.White;
             NumOfSelectAlbumLabel.Location = new System.Drawing.Point(1, 0);
             NumOfSelectAlbumLabel.Name = "NumOfSelectAlbumLabel";
-            NumOfSelectAlbumLabel.Size = new System.Drawing.Size(182, 25);
+            NumOfSelectAlbumLabel.Size = new System.Drawing.Size(209, 30);
             NumOfSelectAlbumLabel.TabIndex = 0;
             NumOfSelectAlbumLabel.Text = "Number of photos:";
             // 
@@ -98,9 +98,42 @@
             SelectedAlbumPicLabel.ForeColor = System.Drawing.Color.White;
             SelectedAlbumPicLabel.Location = new System.Drawing.Point(1, 63);
             SelectedAlbumPicLabel.Name = "SelectedAlbumPicLabel";
-            SelectedAlbumPicLabel.Size = new System.Drawing.Size(144, 25);
+            SelectedAlbumPicLabel.Size = new System.Drawing.Size(167, 30);
             SelectedAlbumPicLabel.TabIndex = 4;
             SelectedAlbumPicLabel.Text = "Album Picture:";
+            // 
+            // NextEventLocationLabel
+            // 
+            NextEventLocationLabel.AutoSize = true;
+            NextEventLocationLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
+            NextEventLocationLabel.ForeColor = System.Drawing.Color.White;
+            NextEventLocationLabel.Location = new System.Drawing.Point(-5, 63);
+            NextEventLocationLabel.Name = "NextEventLocationLabel";
+            NextEventLocationLabel.Size = new System.Drawing.Size(107, 30);
+            NextEventLocationLabel.TabIndex = 0;
+            NextEventLocationLabel.Text = "Location:";
+            // 
+            // NextEventNameLabel
+            // 
+            NextEventNameLabel.AutoSize = true;
+            NextEventNameLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
+            NextEventNameLabel.ForeColor = System.Drawing.Color.White;
+            NextEventNameLabel.Location = new System.Drawing.Point(-4, 0);
+            NextEventNameLabel.Name = "NextEventNameLabel";
+            NextEventNameLabel.Size = new System.Drawing.Size(80, 30);
+            NextEventNameLabel.TabIndex = 2;
+            NextEventNameLabel.Text = "Name:";
+            // 
+            // NextEventstartTimeLabel
+            // 
+            NextEventstartTimeLabel.AutoSize = true;
+            NextEventstartTimeLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
+            NextEventstartTimeLabel.ForeColor = System.Drawing.Color.White;
+            NextEventstartTimeLabel.Location = new System.Drawing.Point(-4, 36);
+            NextEventstartTimeLabel.Name = "NextEventstartTimeLabel";
+            NextEventstartTimeLabel.Size = new System.Drawing.Size(68, 30);
+            NextEventstartTimeLabel.TabIndex = 4;
+            NextEventstartTimeLabel.Text = "Date:";
             // 
             // SelectedAlbumTimeLabel1
             // 
@@ -109,7 +142,7 @@
             this.SelectedAlbumTimeLabel1.ForeColor = System.Drawing.Color.White;
             this.SelectedAlbumTimeLabel1.Location = new System.Drawing.Point(1, 30);
             this.SelectedAlbumTimeLabel1.Name = "SelectedAlbumTimeLabel1";
-            this.SelectedAlbumTimeLabel1.Size = new System.Drawing.Size(134, 25);
+            this.SelectedAlbumTimeLabel1.Size = new System.Drawing.Size(158, 30);
             this.SelectedAlbumTimeLabel1.TabIndex = 2;
             this.SelectedAlbumTimeLabel1.Text = "Created Time:";
             // 
@@ -161,24 +194,24 @@
             // labelAppName
             // 
             this.labelAppName.AutoSize = true;
-            this.labelAppName.Font = new System.Drawing.Font("Klavika Bd", 45F, System.Drawing.FontStyle.Bold);
+            this.labelAppName.Font = new System.Drawing.Font("Microsoft Sans Serif", 45F, System.Drawing.FontStyle.Bold);
             this.labelAppName.ForeColor = System.Drawing.Color.White;
             this.labelAppName.Location = new System.Drawing.Point(13, 9);
             this.labelAppName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAppName.Name = "labelAppName";
-            this.labelAppName.Size = new System.Drawing.Size(323, 84);
+            this.labelAppName.Size = new System.Drawing.Size(416, 102);
             this.labelAppName.TabIndex = 5;
             this.labelAppName.Text = "facebook";
             // 
             // labelCreatePost
             // 
             this.labelCreatePost.AutoSize = true;
-            this.labelCreatePost.Font = new System.Drawing.Font("Klavika Bd", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCreatePost.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCreatePost.ForeColor = System.Drawing.Color.White;
             this.labelCreatePost.Location = new System.Drawing.Point(23, 336);
             this.labelCreatePost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCreatePost.Name = "labelCreatePost";
-            this.labelCreatePost.Size = new System.Drawing.Size(225, 34);
+            this.labelCreatePost.Size = new System.Drawing.Size(303, 40);
             this.labelCreatePost.TabIndex = 6;
             this.labelCreatePost.Text = "Create your Post";
             // 
@@ -228,11 +261,11 @@
             // GetNextEventLabel
             // 
             this.GetNextEventLabel.AutoSize = true;
-            this.GetNextEventLabel.Font = new System.Drawing.Font("Klavika Bd", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GetNextEventLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GetNextEventLabel.ForeColor = System.Drawing.Color.White;
             this.GetNextEventLabel.Location = new System.Drawing.Point(380, 177);
             this.GetNextEventLabel.Name = "GetNextEventLabel";
-            this.GetNextEventLabel.Size = new System.Drawing.Size(270, 34);
+            this.GetNextEventLabel.Size = new System.Drawing.Size(365, 40);
             this.GetNextEventLabel.TabIndex = 15;
             this.GetNextEventLabel.Text = "Get Your Next Event";
             // 
@@ -245,7 +278,7 @@
             this.AlbumNameComboBox.FormattingEnabled = true;
             this.AlbumNameComboBox.Location = new System.Drawing.Point(657, 386);
             this.AlbumNameComboBox.Name = "AlbumNameComboBox";
-            this.AlbumNameComboBox.Size = new System.Drawing.Size(243, 36);
+            this.AlbumNameComboBox.Size = new System.Drawing.Size(243, 40);
             this.AlbumNameComboBox.TabIndex = 19;
             // 
             // albumBindingSource
@@ -255,11 +288,11 @@
             // DowLoadAlbumLabel
             // 
             this.DowLoadAlbumLabel.AutoSize = true;
-            this.DowLoadAlbumLabel.Font = new System.Drawing.Font("Klavika Bd", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DowLoadAlbumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DowLoadAlbumLabel.ForeColor = System.Drawing.Color.White;
             this.DowLoadAlbumLabel.Location = new System.Drawing.Point(650, 336);
             this.DowLoadAlbumLabel.Name = "DowLoadAlbumLabel";
-            this.DowLoadAlbumLabel.Size = new System.Drawing.Size(310, 34);
+            this.DowLoadAlbumLabel.Size = new System.Drawing.Size(412, 40);
             this.DowLoadAlbumLabel.TabIndex = 20;
             this.DowLoadAlbumLabel.Text = "Download Your Albums";
             // 
@@ -269,7 +302,7 @@
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker.Location = new System.Drawing.Point(30, 591);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(187, 34);
+            this.dateTimePicker.Size = new System.Drawing.Size(187, 39);
             this.dateTimePicker.TabIndex = 21;
             // 
             // postFuturePostButton
@@ -289,11 +322,11 @@
             // lastPostLabel
             // 
             this.lastPostLabel.AutoSize = true;
-            this.lastPostLabel.Font = new System.Drawing.Font("Klavika Bd", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastPostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastPostLabel.ForeColor = System.Drawing.Color.White;
             this.lastPostLabel.Location = new System.Drawing.Point(23, 177);
             this.lastPostLabel.Name = "lastPostLabel";
-            this.lastPostLabel.Size = new System.Drawing.Size(211, 34);
+            this.lastPostLabel.Size = new System.Drawing.Size(288, 40);
             this.lastPostLabel.TabIndex = 21;
             this.lastPostLabel.Text = "Your Last Post: ";
             // 
@@ -317,7 +350,7 @@
             this.checkBox.ForeColor = System.Drawing.Color.White;
             this.checkBox.Location = new System.Drawing.Point(37, 130);
             this.checkBox.Name = "checkBox";
-            this.checkBox.Size = new System.Drawing.Size(203, 36);
+            this.checkBox.Size = new System.Drawing.Size(245, 44);
             this.checkBox.TabIndex = 23;
             this.checkBox.Text = "Remember Me";
             this.checkBox.UseVisualStyleBackColor = true;
@@ -326,11 +359,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Klavika Bd", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(380, 336);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 34);
+            this.label1.Size = new System.Drawing.Size(280, 40);
             this.label1.TabIndex = 24;
             this.label1.Text = "Sort Friends By";
             // 
@@ -341,7 +374,7 @@
             this.sortableAttributesComboBox.FormattingEnabled = true;
             this.sortableAttributesComboBox.Location = new System.Drawing.Point(387, 386);
             this.sortableAttributesComboBox.Name = "sortableAttributesComboBox";
-            this.sortableAttributesComboBox.Size = new System.Drawing.Size(243, 36);
+            this.sortableAttributesComboBox.Size = new System.Drawing.Size(243, 40);
             this.sortableAttributesComboBox.TabIndex = 25;
             this.sortableAttributesComboBox.Text = "Select Parameter";
             this.sortableAttributesComboBox.SelectedIndexChanged += new System.EventHandler(this.sortableAttributesComboBox_SelectedIndexChanged);
@@ -350,10 +383,10 @@
             // 
             this.myFriendsListBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.myFriendsListBox.FormattingEnabled = true;
-            this.myFriendsListBox.ItemHeight = 28;
+            this.myFriendsListBox.ItemHeight = 32;
             this.myFriendsListBox.Location = new System.Drawing.Point(387, 432);
             this.myFriendsListBox.Name = "myFriendsListBox";
-            this.myFriendsListBox.Size = new System.Drawing.Size(243, 144);
+            this.myFriendsListBox.Size = new System.Drawing.Size(243, 132);
             this.myFriendsListBox.TabIndex = 28;
             // 
             // SelectedAlbumPanel
@@ -431,21 +464,6 @@
             this.NextEventPanel.Size = new System.Drawing.Size(264, 88);
             this.NextEventPanel.TabIndex = 29;
             // 
-            // eventBindingSource
-            // 
-            this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
-            // 
-            // NextEventLocationLabel
-            // 
-            NextEventLocationLabel.AutoSize = true;
-            NextEventLocationLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
-            NextEventLocationLabel.ForeColor = System.Drawing.Color.White;
-            NextEventLocationLabel.Location = new System.Drawing.Point(-5, 63);
-            NextEventLocationLabel.Name = "NextEventLocationLabel";
-            NextEventLocationLabel.Size = new System.Drawing.Size(94, 25);
-            NextEventLocationLabel.TabIndex = 0;
-            NextEventLocationLabel.Text = "Location:";
-            // 
             // NextEventLocationLabel1
             // 
             this.NextEventLocationLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "Location", true));
@@ -457,16 +475,9 @@
             this.NextEventLocationLabel1.TabIndex = 1;
             this.NextEventLocationLabel1.Text = "Location";
             // 
-            // NextEventNameLabel
+            // eventBindingSource
             // 
-            NextEventNameLabel.AutoSize = true;
-            NextEventNameLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
-            NextEventNameLabel.ForeColor = System.Drawing.Color.White;
-            NextEventNameLabel.Location = new System.Drawing.Point(-4, 0);
-            NextEventNameLabel.Name = "NextEventNameLabel";
-            NextEventNameLabel.Size = new System.Drawing.Size(69, 25);
-            NextEventNameLabel.TabIndex = 2;
-            NextEventNameLabel.Text = "Name:";
+            this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
             // 
             // NextEventNameLabel1
             // 
@@ -479,18 +490,6 @@
             this.NextEventNameLabel1.TabIndex = 3;
             this.NextEventNameLabel1.Text = "Name";
             // 
-            // NextEventstartTimeLabel
-            // 
-            NextEventstartTimeLabel.AutoSize = true;
-            NextEventstartTimeLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
-            NextEventstartTimeLabel.ForeColor = System.Drawing.Color.White;
-            NextEventstartTimeLabel.Location = new System.Drawing.Point(-4, 36);
-            NextEventstartTimeLabel.Name = "NextEventstartTimeLabel";
-            NextEventstartTimeLabel.Size = new System.Drawing.Size(58, 25);
-            NextEventstartTimeLabel.TabIndex = 4;
-            NextEventstartTimeLabel.Text = "Date:";
-            NextEventstartTimeLabel.Click += new System.EventHandler(this.startTimeLabel_Click);
-            // 
             // NextEventstartTimeLabel1
             // 
             this.NextEventstartTimeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "StartTime", true));
@@ -501,7 +500,6 @@
             this.NextEventstartTimeLabel1.Size = new System.Drawing.Size(100, 23);
             this.NextEventstartTimeLabel1.TabIndex = 5;
             this.NextEventstartTimeLabel1.Text = "Date";
-            this.NextEventstartTimeLabel1.Click += new System.EventHandler(this.startTimeLabel1_Click);
             // 
             // MainForm
             // 

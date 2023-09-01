@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 
@@ -24,7 +25,7 @@ using FacebookWrapper.ObjectModel;
             if(m_AppSettings.m_RememberUser &&
                 !string.IsNullOrEmpty(m_AppSettings.m_LastAccessToken)) 
             {
-                logInProccess();
+                new Thread(logInProccess).Start();
             }
         }
 
@@ -35,23 +36,13 @@ using FacebookWrapper.ObjectModel;
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            logInProccess();
+            new Thread(logInProccess).Start();
         }
 
         private void fetchClosestsEvent()
         {
             Event lastEvent = m_Client.LastEvent;
             eventBindingSource.DataSource = lastEvent;
-            //if (lastEvent == null)
-            //{
-            //    EventNameLabel.Text = "No events";
-            //    EventDateLabel.Text = " ";
-            //}
-            //else
-            //{
-            //    EventNameLabel.Text = lastEvent.Name;
-            //    EventDateLabel.Text = lastEvent.StartTime.ToString();
-            //}
         }
 
         private void buttonFuture_Click(object sender, EventArgs e)
@@ -74,17 +65,12 @@ using FacebookWrapper.ObjectModel;
 
         private void fetchProfilePicture()
         {
-            pictureBoxProfile.BackgroundImage = null;
-            pictureBoxProfile.LoadAsync(m_Client.ProfilePictureUrl);
+            pictureBoxProfile.Invoke(new Action(() => pictureBoxProfile.BackgroundImage = null));
+            pictureBoxProfile.Invoke(new Action(() => pictureBoxProfile.LoadAsync(m_Client.ProfilePictureUrl)));
         }
 
         private void fetchAlbumNames()
         {
-            //foreach (Album album in m_Client.ClientAlbums)
-            //{
-            //    AlbumNameComboBox.Items.Add(album.Name);
-            //}
-
             albumBindingSource.DataSource = m_Client.ClientAlbums;
         }
 
@@ -118,21 +104,16 @@ using FacebookWrapper.ObjectModel;
             m_Client = Client.Instance;
 
             try
-            { // yoav access token : EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD
+            { // Yoav access token : EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD
                 m_Client.LoginAndInit(m_AppSettings.m_LastAccessToken);
-                fetchAlbumNames();
-                fetchProfilePicture();
-                fetchClosestsEvent();
-                fillComboBox(m_sortableAttributes);
-                PostTextLabel.Text = m_Client.FetchLastStatusText();
+                fetchFacebookContent();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show("Login Failed");
+                MessageBox.Show(e.ToString());
             }
 
-            AlbumNameComboBox.Enabled = true;
-            sortableAttributesComboBox.Enabled = true;
+            enableButtonsAfterFetchSucceeded();
         }
 
         private void sortableAttributesComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -149,11 +130,11 @@ using FacebookWrapper.ObjectModel;
             }
         }
 
-        private void fillComboBox(string[] strArr)
+        private void fillSortableAttributesComboBox(string[] strArr)
         {
             foreach (string str in strArr)
             {
-                sortableAttributesComboBox.Items.Add(str);
+                sortableAttributesComboBox.Invoke(new Action(() => sortableAttributesComboBox.Items.Add(str)));
             }
         }
 
@@ -176,14 +157,24 @@ using FacebookWrapper.ObjectModel;
             }
         }
 
-        private void startTimeLabel_Click(object sender, EventArgs e)
+        private void fetchFacebookContent()
         {
-
+            FetchLastStatusTextAdapter statusTextAdapter = new FetchLastStatusTextAdapter { Client = m_Client, TextBox = PostTextLabel };
+            
+            fillSortableAttributesComboBox(m_sortableAttributes);
+            
+            fetchAlbumNames();
+            new Thread(fetchProfilePicture).Start();
+            new Thread(statusTextAdapter.FetchLastStatusText);
+            
+            //fetchClosestsEvent();
+            //PostTextLabel.Text = m_Client.FetchLastStatusText();
         }
 
-        private void startTimeLabel1_Click(object sender, EventArgs e)
+        private void enableButtonsAfterFetchSucceeded() 
         {
-
+            AlbumNameComboBox.Invoke(new Action(() => AlbumNameComboBox.Enabled = true));
+            sortableAttributesComboBox.Invoke(new Action(() => sortableAttributesComboBox.Enabled = true));
         }
     }
 }
