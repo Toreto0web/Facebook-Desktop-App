@@ -92,6 +92,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="FacebookUserCollection.cs" />
+    <Compile Include="Factory.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
