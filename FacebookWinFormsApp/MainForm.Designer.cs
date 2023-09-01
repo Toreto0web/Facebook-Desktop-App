@@ -32,10 +32,10 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label NumOfSelectAlbumLabel;
             System.Windows.Forms.Label SelectedAlbumPicLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.Label NextEventLocationLabel;
             System.Windows.Forms.Label NextEventNameLabel;
             System.Windows.Forms.Label NextEventstartTimeLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.SelectedAlbumTimeLabel1 = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
@@ -63,8 +63,8 @@
             this.SelectedAlbumtimeLabel = new System.Windows.Forms.Label();
             this.SelectedAlbumPictureBox = new System.Windows.Forms.PictureBox();
             this.NextEventPanel = new System.Windows.Forms.Panel();
-            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NextEventLocationLabel1 = new System.Windows.Forms.Label();
+            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NextEventNameLabel1 = new System.Windows.Forms.Label();
             this.NextEventstartTimeLabel1 = new System.Windows.Forms.Label();
             NumOfSelectAlbumLabel = new System.Windows.Forms.Label();
@@ -101,6 +101,40 @@
             SelectedAlbumPicLabel.Size = new System.Drawing.Size(144, 25);
             SelectedAlbumPicLabel.TabIndex = 4;
             SelectedAlbumPicLabel.Text = "Album Picture:";
+            // 
+            // NextEventLocationLabel
+            // 
+            NextEventLocationLabel.AutoSize = true;
+            NextEventLocationLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
+            NextEventLocationLabel.ForeColor = System.Drawing.Color.White;
+            NextEventLocationLabel.Location = new System.Drawing.Point(-5, 63);
+            NextEventLocationLabel.Name = "NextEventLocationLabel";
+            NextEventLocationLabel.Size = new System.Drawing.Size(94, 25);
+            NextEventLocationLabel.TabIndex = 0;
+            NextEventLocationLabel.Text = "Location:";
+            // 
+            // NextEventNameLabel
+            // 
+            NextEventNameLabel.AutoSize = true;
+            NextEventNameLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
+            NextEventNameLabel.ForeColor = System.Drawing.Color.White;
+            NextEventNameLabel.Location = new System.Drawing.Point(-4, 0);
+            NextEventNameLabel.Name = "NextEventNameLabel";
+            NextEventNameLabel.Size = new System.Drawing.Size(69, 25);
+            NextEventNameLabel.TabIndex = 2;
+            NextEventNameLabel.Text = "Name:";
+            // 
+            // NextEventstartTimeLabel
+            // 
+            NextEventstartTimeLabel.AutoSize = true;
+            NextEventstartTimeLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
+            NextEventstartTimeLabel.ForeColor = System.Drawing.Color.White;
+            NextEventstartTimeLabel.Location = new System.Drawing.Point(-4, 34);
+            NextEventstartTimeLabel.Name = "NextEventstartTimeLabel";
+            NextEventstartTimeLabel.Size = new System.Drawing.Size(58, 25);
+            NextEventstartTimeLabel.TabIndex = 4;
+            NextEventstartTimeLabel.Text = "Date:";
+            NextEventstartTimeLabel.Click += new System.EventHandler(this.startTimeLabel_Click);
             // 
             // SelectedAlbumTimeLabel1
             // 
@@ -293,9 +327,9 @@
             this.lastPostLabel.ForeColor = System.Drawing.Color.White;
             this.lastPostLabel.Location = new System.Drawing.Point(23, 177);
             this.lastPostLabel.Name = "lastPostLabel";
-            this.lastPostLabel.Size = new System.Drawing.Size(211, 34);
+            this.lastPostLabel.Size = new System.Drawing.Size(197, 34);
             this.lastPostLabel.TabIndex = 21;
-            this.lastPostLabel.Text = "Your Last Post: ";
+            this.lastPostLabel.Text = "Your Last Post";
             // 
             // PostTextLabel
             // 
@@ -353,7 +387,7 @@
             this.myFriendsListBox.ItemHeight = 28;
             this.myFriendsListBox.Location = new System.Drawing.Point(387, 432);
             this.myFriendsListBox.Name = "myFriendsListBox";
-            this.myFriendsListBox.Size = new System.Drawing.Size(243, 144);
+            this.myFriendsListBox.Size = new System.Drawing.Size(243, 160);
             this.myFriendsListBox.TabIndex = 28;
             // 
             // SelectedAlbumPanel
@@ -413,7 +447,7 @@
             this.SelectedAlbumPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.albumBindingSource, "ImageSmall", true));
             this.SelectedAlbumPictureBox.Location = new System.Drawing.Point(151, 63);
             this.SelectedAlbumPictureBox.Name = "SelectedAlbumPictureBox";
-            this.SelectedAlbumPictureBox.Size = new System.Drawing.Size(92, 81);
+            this.SelectedAlbumPictureBox.Size = new System.Drawing.Size(96, 88);
             this.SelectedAlbumPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.SelectedAlbumPictureBox.TabIndex = 5;
             this.SelectedAlbumPictureBox.TabStop = false;
@@ -431,76 +465,46 @@
             this.NextEventPanel.Size = new System.Drawing.Size(264, 88);
             this.NextEventPanel.TabIndex = 29;
             // 
-            // eventBindingSource
-            // 
-            this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
-            // 
-            // NextEventLocationLabel
-            // 
-            NextEventLocationLabel.AutoSize = true;
-            NextEventLocationLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
-            NextEventLocationLabel.ForeColor = System.Drawing.Color.White;
-            NextEventLocationLabel.Location = new System.Drawing.Point(-5, 63);
-            NextEventLocationLabel.Name = "NextEventLocationLabel";
-            NextEventLocationLabel.Size = new System.Drawing.Size(94, 25);
-            NextEventLocationLabel.TabIndex = 0;
-            NextEventLocationLabel.Text = "Location:";
-            // 
             // NextEventLocationLabel1
             // 
             this.NextEventLocationLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "Location", true));
             this.NextEventLocationLabel1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
             this.NextEventLocationLabel1.ForeColor = System.Drawing.Color.White;
-            this.NextEventLocationLabel1.Location = new System.Drawing.Point(119, 63);
+            this.NextEventLocationLabel1.Location = new System.Drawing.Point(95, 63);
             this.NextEventLocationLabel1.Name = "NextEventLocationLabel1";
-            this.NextEventLocationLabel1.Size = new System.Drawing.Size(100, 23);
+            this.NextEventLocationLabel1.Size = new System.Drawing.Size(169, 23);
             this.NextEventLocationLabel1.TabIndex = 1;
             this.NextEventLocationLabel1.Text = "Location";
+            this.NextEventLocationLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // NextEventNameLabel
+            // eventBindingSource
             // 
-            NextEventNameLabel.AutoSize = true;
-            NextEventNameLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
-            NextEventNameLabel.ForeColor = System.Drawing.Color.White;
-            NextEventNameLabel.Location = new System.Drawing.Point(-4, 0);
-            NextEventNameLabel.Name = "NextEventNameLabel";
-            NextEventNameLabel.Size = new System.Drawing.Size(69, 25);
-            NextEventNameLabel.TabIndex = 2;
-            NextEventNameLabel.Text = "Name:";
+            this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
+            this.eventBindingSource.CurrentChanged += new System.EventHandler(this.eventBindingSource_CurrentChanged);
             // 
             // NextEventNameLabel1
             // 
             this.NextEventNameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "Name", true));
             this.NextEventNameLabel1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
             this.NextEventNameLabel1.ForeColor = System.Drawing.Color.White;
-            this.NextEventNameLabel1.Location = new System.Drawing.Point(119, 2);
+            this.NextEventNameLabel1.Location = new System.Drawing.Point(71, 2);
             this.NextEventNameLabel1.Name = "NextEventNameLabel1";
-            this.NextEventNameLabel1.Size = new System.Drawing.Size(100, 23);
+            this.NextEventNameLabel1.Size = new System.Drawing.Size(193, 23);
             this.NextEventNameLabel1.TabIndex = 3;
             this.NextEventNameLabel1.Text = "Name";
-            // 
-            // NextEventstartTimeLabel
-            // 
-            NextEventstartTimeLabel.AutoSize = true;
-            NextEventstartTimeLabel.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
-            NextEventstartTimeLabel.ForeColor = System.Drawing.Color.White;
-            NextEventstartTimeLabel.Location = new System.Drawing.Point(-4, 36);
-            NextEventstartTimeLabel.Name = "NextEventstartTimeLabel";
-            NextEventstartTimeLabel.Size = new System.Drawing.Size(58, 25);
-            NextEventstartTimeLabel.TabIndex = 4;
-            NextEventstartTimeLabel.Text = "Date:";
-            NextEventstartTimeLabel.Click += new System.EventHandler(this.startTimeLabel_Click);
+            this.NextEventNameLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NextEventstartTimeLabel1
             // 
             this.NextEventstartTimeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "StartTime", true));
             this.NextEventstartTimeLabel1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
             this.NextEventstartTimeLabel1.ForeColor = System.Drawing.Color.White;
-            this.NextEventstartTimeLabel1.Location = new System.Drawing.Point(119, 36);
+            this.NextEventstartTimeLabel1.Location = new System.Drawing.Point(76, 35);
             this.NextEventstartTimeLabel1.Name = "NextEventstartTimeLabel1";
-            this.NextEventstartTimeLabel1.Size = new System.Drawing.Size(100, 23);
+            this.NextEventstartTimeLabel1.Size = new System.Drawing.Size(188, 23);
             this.NextEventstartTimeLabel1.TabIndex = 5;
             this.NextEventstartTimeLabel1.Text = "Date";
+            this.NextEventstartTimeLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.NextEventstartTimeLabel1.Click += new System.EventHandler(this.startTimeLabel1_Click);
             // 
             // MainForm

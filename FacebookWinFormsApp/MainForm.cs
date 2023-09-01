@@ -40,8 +40,16 @@ using FacebookWrapper.ObjectModel;
 
         private void fetchClosestsEvent()
         {
-            Event lastEvent = m_Client.LastEvent;
-            eventBindingSource.DataSource = lastEvent;
+            try
+            {
+                eventBindingSource.DataSource = m_Client.LastEvent;
+            }
+            catch(Exception)
+            {
+                NextEventNameLabel1.Text = "No farther events";
+                NextEventLocationLabel1.Text = "-";
+                NextEventstartTimeLabel1.Text = "__/__/__";
+            }
             //if (lastEvent == null)
             //{
             //    EventNameLabel.Text = "No events";
@@ -182,6 +190,11 @@ using FacebookWrapper.ObjectModel;
         }
 
         private void startTimeLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void eventBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
         }

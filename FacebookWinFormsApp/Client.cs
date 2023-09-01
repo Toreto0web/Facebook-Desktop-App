@@ -114,27 +114,23 @@ namespace FacebookDApp
         {
             get
             {
-                try
+                if (s_LoggedInUser.Events.Count == 0)
                 {
-                    if (s_LoggedInUser.Events.Count != 0)
-                    {
-                        s_closesestEvent = s_LoggedInUser.Events[0]; //d
+                    throw new Exception("No Events");
+                }
+                else
+                {
+                    Event closesestEvent = s_LoggedInUser.Events[0];
 
-                        foreach (Event fbEvent in s_LoggedInUser.Events)
+                    foreach (Event fbEvent in s_LoggedInUser.Events)
+                    {
+                        if (fbEvent.StartTime < closesestEvent.StartTime)
                         {
-                            if (fbEvent.StartTime < s_closesestEvent.StartTime)
-                            {
-                                s_closesestEvent = fbEvent;
-                            }
+                            closesestEvent = fbEvent;
                         }
                     }
+                    return closesestEvent;
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("fetching events failed...");
-                }
-
-                return s_closesestEvent;
             }
         }
 
