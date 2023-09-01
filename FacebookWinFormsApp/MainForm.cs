@@ -173,10 +173,8 @@ using FacebookWrapper.ObjectModel;
             
             fetchAlbumNames();
             fetchProfilePicture();
-            statusTextAdapter.FetchLastStatusText();
-            
             fetchClosestsEvent();
-            //PostTextLabel.Text = m_Client.FetchLastStatusText();
+            statusTextAdapter.FetchLastStatusText();
         }
 
         private void enableButtonsAfterFetchSucceeded() 
