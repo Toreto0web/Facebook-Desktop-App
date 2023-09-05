@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Xml.Serialization;
 using System.IO;
+using System.Windows.Forms;
 
 namespace FacebookDApp
 {
@@ -27,9 +28,9 @@ namespace FacebookDApp
         {
             AppSettings appSettings = new AppSettings();
 
-            if (File.Exists(AppSettings.giveDesktopPath()))
+            if (File.Exists(giveAppFolderPath()))
             {
-                using (Stream stream = new FileStream(AppSettings.giveDesktopPath(), FileMode.Open))
+                using (Stream stream = new FileStream(giveAppFolderPath(), FileMode.Open))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
                     appSettings = serializer.Deserialize(stream) as AppSettings;
@@ -39,19 +40,19 @@ namespace FacebookDApp
             return appSettings;
         }
 
-        private static string giveDesktopPath()
+        private static string giveAppFolderPath()
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filePath = Path.Combine(desktopPath, "appSettings.xml");
+            string AppFolderPath = AppDomain.CurrentDomain.BaseDirectory;
+            string filePath = Path.Combine(AppFolderPath, "appSettings.xml");
 
             return filePath;
         }
 
         public void SaveToFile() 
         {
-            if (File.Exists(giveDesktopPath())) 
+            if (File.Exists(giveAppFolderPath())) 
             {
-                using (Stream stream = new FileStream(giveDesktopPath(), FileMode.Truncate)) 
+                using (Stream stream = new FileStream(giveAppFolderPath(), FileMode.Truncate)) 
                 {
                     XmlSerializer serializer = new XmlSerializer(this.GetType());
                     serializer.Serialize(stream, this);
@@ -59,7 +60,7 @@ namespace FacebookDApp
             }
             else 
             {
-                using (Stream stream = new FileStream(giveDesktopPath(), FileMode.Create))
+                using (Stream stream = new FileStream(giveAppFolderPath(), FileMode.Create))
                 {
                     XmlSerializer serializer = new XmlSerializer(this.GetType());
                     serializer.Serialize(stream, this);

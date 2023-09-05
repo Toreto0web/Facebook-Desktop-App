@@ -14,9 +14,10 @@ namespace FacebookDApp
         private static User s_LoggedInUser;
         private static LoginResult s_LoginResult;
         private static Client s_Instance;
-        private static Event s_closesestEvent = null;
 
         private Client() { }
+
+        public bool isLoggedIn { get { return s_Instance != null; } }
 
         public string AccessToken
         {
@@ -56,17 +57,12 @@ namespace FacebookDApp
             else
             {
                 s_LoginResult = FacebookService.Login("825616175626986",
-                               "email",
                                "public_profile",
                                "user_age_range",
                                "user_birthday",
                                "user_events",
                                "user_friends",
                                "user_gender",
-                               "user_hometown",
-                               "user_likes",
-                               "user_link",
-                               "user_location",
                                "user_photos",
                                "user_posts",
                                "user_videos");

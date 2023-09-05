@@ -87,7 +87,7 @@
             NumOfSelectAlbumLabel.ForeColor = System.Drawing.Color.White;
             NumOfSelectAlbumLabel.Location = new System.Drawing.Point(1, 0);
             NumOfSelectAlbumLabel.Name = "NumOfSelectAlbumLabel";
-            NumOfSelectAlbumLabel.Size = new System.Drawing.Size(209, 30);
+            NumOfSelectAlbumLabel.Size = new System.Drawing.Size(182, 25);
             NumOfSelectAlbumLabel.TabIndex = 0;
             NumOfSelectAlbumLabel.Text = "Number of photos:";
             // 
@@ -98,7 +98,7 @@
             SelectedAlbumPicLabel.ForeColor = System.Drawing.Color.White;
             SelectedAlbumPicLabel.Location = new System.Drawing.Point(1, 63);
             SelectedAlbumPicLabel.Name = "SelectedAlbumPicLabel";
-            SelectedAlbumPicLabel.Size = new System.Drawing.Size(167, 30);
+            SelectedAlbumPicLabel.Size = new System.Drawing.Size(144, 25);
             SelectedAlbumPicLabel.TabIndex = 4;
             SelectedAlbumPicLabel.Text = "Album Picture:";
             // 
@@ -142,7 +142,7 @@
             this.SelectedAlbumTimeLabel1.ForeColor = System.Drawing.Color.White;
             this.SelectedAlbumTimeLabel1.Location = new System.Drawing.Point(1, 30);
             this.SelectedAlbumTimeLabel1.Name = "SelectedAlbumTimeLabel1";
-            this.SelectedAlbumTimeLabel1.Size = new System.Drawing.Size(158, 30);
+            this.SelectedAlbumTimeLabel1.Size = new System.Drawing.Size(134, 25);
             this.SelectedAlbumTimeLabel1.TabIndex = 2;
             this.SelectedAlbumTimeLabel1.Text = "Created Time:";
             // 
@@ -194,12 +194,12 @@
             // labelAppName
             // 
             this.labelAppName.AutoSize = true;
-            this.labelAppName.Font = new System.Drawing.Font("Microsoft Sans Serif", 45F, System.Drawing.FontStyle.Bold);
+            this.labelAppName.Font = new System.Drawing.Font("Klavika Bd", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAppName.ForeColor = System.Drawing.Color.White;
             this.labelAppName.Location = new System.Drawing.Point(13, 9);
             this.labelAppName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAppName.Name = "labelAppName";
-            this.labelAppName.Size = new System.Drawing.Size(416, 102);
+            this.labelAppName.Size = new System.Drawing.Size(323, 84);
             this.labelAppName.TabIndex = 5;
             this.labelAppName.Text = "facebook";
             // 
@@ -211,7 +211,7 @@
             this.labelCreatePost.Location = new System.Drawing.Point(23, 336);
             this.labelCreatePost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCreatePost.Name = "labelCreatePost";
-            this.labelCreatePost.Size = new System.Drawing.Size(303, 40);
+            this.labelCreatePost.Size = new System.Drawing.Size(253, 36);
             this.labelCreatePost.TabIndex = 6;
             this.labelCreatePost.Text = "Create your Post";
             // 
@@ -265,7 +265,7 @@
             this.GetNextEventLabel.ForeColor = System.Drawing.Color.White;
             this.GetNextEventLabel.Location = new System.Drawing.Point(380, 177);
             this.GetNextEventLabel.Name = "GetNextEventLabel";
-            this.GetNextEventLabel.Size = new System.Drawing.Size(365, 40);
+            this.GetNextEventLabel.Size = new System.Drawing.Size(306, 36);
             this.GetNextEventLabel.TabIndex = 15;
             this.GetNextEventLabel.Text = "Get Your Next Event";
             // 
@@ -278,7 +278,7 @@
             this.AlbumNameComboBox.FormattingEnabled = true;
             this.AlbumNameComboBox.Location = new System.Drawing.Point(657, 386);
             this.AlbumNameComboBox.Name = "AlbumNameComboBox";
-            this.AlbumNameComboBox.Size = new System.Drawing.Size(243, 40);
+            this.AlbumNameComboBox.Size = new System.Drawing.Size(243, 36);
             this.AlbumNameComboBox.TabIndex = 19;
             // 
             // albumBindingSource
@@ -292,7 +292,7 @@
             this.DowLoadAlbumLabel.ForeColor = System.Drawing.Color.White;
             this.DowLoadAlbumLabel.Location = new System.Drawing.Point(650, 336);
             this.DowLoadAlbumLabel.Name = "DowLoadAlbumLabel";
-            this.DowLoadAlbumLabel.Size = new System.Drawing.Size(412, 40);
+            this.DowLoadAlbumLabel.Size = new System.Drawing.Size(349, 36);
             this.DowLoadAlbumLabel.TabIndex = 20;
             this.DowLoadAlbumLabel.Text = "Download Your Albums";
             // 
@@ -302,7 +302,7 @@
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker.Location = new System.Drawing.Point(30, 591);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(187, 39);
+            this.dateTimePicker.Size = new System.Drawing.Size(187, 34);
             this.dateTimePicker.TabIndex = 21;
             // 
             // postFuturePostButton
@@ -326,7 +326,7 @@
             this.lastPostLabel.ForeColor = System.Drawing.Color.White;
             this.lastPostLabel.Location = new System.Drawing.Point(23, 177);
             this.lastPostLabel.Name = "lastPostLabel";
-            this.lastPostLabel.Size = new System.Drawing.Size(197, 34);
+            this.lastPostLabel.Size = new System.Drawing.Size(225, 36);
             this.lastPostLabel.TabIndex = 21;
             this.lastPostLabel.Text = "Your Last Post";
             // 
@@ -350,7 +350,7 @@
             this.checkBox.ForeColor = System.Drawing.Color.White;
             this.checkBox.Location = new System.Drawing.Point(37, 130);
             this.checkBox.Name = "checkBox";
-            this.checkBox.Size = new System.Drawing.Size(245, 44);
+            this.checkBox.Size = new System.Drawing.Size(203, 36);
             this.checkBox.TabIndex = 23;
             this.checkBox.Text = "Remember Me";
             this.checkBox.UseVisualStyleBackColor = true;
@@ -363,7 +363,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(380, 336);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(280, 40);
+            this.label1.Size = new System.Drawing.Size(236, 36);
             this.label1.TabIndex = 24;
             this.label1.Text = "Sort Friends By";
             // 
@@ -374,19 +374,20 @@
             this.sortableAttributesComboBox.FormattingEnabled = true;
             this.sortableAttributesComboBox.Location = new System.Drawing.Point(387, 386);
             this.sortableAttributesComboBox.Name = "sortableAttributesComboBox";
-            this.sortableAttributesComboBox.Size = new System.Drawing.Size(243, 40);
+            this.sortableAttributesComboBox.Size = new System.Drawing.Size(243, 36);
             this.sortableAttributesComboBox.TabIndex = 25;
             this.sortableAttributesComboBox.Text = "Select Parameter";
             this.sortableAttributesComboBox.SelectedIndexChanged += new System.EventHandler(this.sortableAttributesComboBox_SelectedIndexChanged);
             // 
             // myFriendsListBox
             // 
+            this.myFriendsListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.myFriendsListBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.myFriendsListBox.FormattingEnabled = true;
-            this.myFriendsListBox.ItemHeight = 32;
+            this.myFriendsListBox.ItemHeight = 28;
             this.myFriendsListBox.Location = new System.Drawing.Point(387, 432);
             this.myFriendsListBox.Name = "myFriendsListBox";
-            this.myFriendsListBox.Size = new System.Drawing.Size(243, 160);
+            this.myFriendsListBox.Size = new System.Drawing.Size(243, 140);
             this.myFriendsListBox.TabIndex = 28;
             // 
             // SelectedAlbumPanel
@@ -543,6 +544,19 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void TextBoxPost_Leave(object sender, System.EventArgs e)
+        {
+            if (textBoxPost.Text.Length == 0)
+            {
+                textBoxPost.Text = "write your thought...";
+            }
+        }
+
+        private void TextBoxPost_Enter(object sender, System.EventArgs e)
+        {
+            textBoxPost.Text = default;
         }
 
         #endregion
