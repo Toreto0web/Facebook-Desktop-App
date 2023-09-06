@@ -4,6 +4,7 @@ using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using System.IO;
 using System.Threading;
+using System.Net;
 
 namespace FacebookDAppLogics
 {
@@ -176,9 +177,22 @@ namespace FacebookDAppLogics
             {
                 Album selectedAlbum = s_LoggedInUser.Albums[i_index];
                 string newFolderPath = Path.Combine(i_selectedFolderPath, selectedAlbum.Name);
-                AlbumAdapter albumAdapter = new AlbumAdapter { Album = s_LoggedInUser.Albums[i_index], FolderPath = newFolderPath };
+                byte photoIndex = 0;
                 Directory.CreateDirectory(newFolderPath);
-                albumAdapter.DownloadSelectedAlbum();
+
+                foreach (Photo photo in selectedAlbum.Photos)
+                {
+                    string imageUrl = photo.PictureNormalURL;
+                    string fileName = (++photoIndex).ToString() + ".jpg";
+                    string fullPath = Path.Combine(newFolderPath, fileName);
+
+                    using (WebClient webClient = new WebClient())
+                    {
+                        byte[] imageBytes = webClient.DownloadData(imageUrl);
+
+                        File.WriteAllBytes(fullPath, imageBytes);
+                    }
+                }
             }
         }
 
