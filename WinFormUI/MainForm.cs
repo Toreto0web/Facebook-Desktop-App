@@ -52,7 +52,7 @@ namespace WinFormUI
         {
             try
             {
-                s_LogicFacade.UpdateEventDataSource(eventBindingSource);
+                eventBindingSource.DataSource = s_LogicFacade.LastEvent;
             }
             catch (Exception)
             {
