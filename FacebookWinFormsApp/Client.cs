@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using System.IO;
@@ -11,6 +10,8 @@ namespace FacebookDAppLogics
 {
     public sealed class Client
     {
+        public event Action<TimeSpan> futurePostAction;
+
         private static User s_LoggedInUser;
         private static LoginResult s_LoginResult;
         private static Client s_Instance;
@@ -92,9 +93,9 @@ namespace FacebookDAppLogics
                 }
             }
 
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show("fetching status failed");
+               throw e;
             }
 
             return string.Format("\"{0}\"", s_LoggedInUser.Posts[postIndex].Message);
@@ -134,14 +135,14 @@ namespace FacebookDAppLogics
         {
             if (i_futurePost <= DateTime.Now)
             {
-                MessageBox.Show("The time you entered already passed");
+                throw new Exception("The time you entered already passed");
             }
             else
             {
                 DateTime currentTime = DateTime.Now;
 
                 TimeSpan timeDifference = i_futurePost - currentTime;
-                MessageBox.Show($"please wait {timeDifference.TotalSeconds.ToString("0.00")} seconds");
+                futurePostAction.Invoke(timeDifference);
                 Thread.Sleep((int)timeDifference.TotalMilliseconds);
 
                 PostStatus(text);
@@ -190,11 +191,11 @@ namespace FacebookDAppLogics
             try
             {
                 Status postedStatus = s_LoggedInUser.PostStatus(text);
-                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
+                //MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
             }
             catch (Exception)
             {
-                MessageBox.Show("Done!");
+                //MessageBox.Show("Done!");
             }
         }
 

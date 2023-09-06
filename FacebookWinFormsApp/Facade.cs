@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-using System.Windows.Forms;
 
 namespace FacebookDAppLogics
 {
@@ -99,15 +98,13 @@ namespace FacebookDAppLogics
 
         }
 
-      
-        public void DownloadSelectedAlbum(int i_SelectedIndex)
+     
+        public void DownloadSelectedAlbum(int i_SelectedIndex, string i_SelectedPath, bool i_isOK)
         {
-            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-            folderBrowser.Description = "Select where you want the Album will be save";
-            DialogResult result = folderBrowser.ShowDialog();
-            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
+
+            if (i_isOK && !string.IsNullOrWhiteSpace(i_SelectedPath))
             {
-                m_Client.DownloadSelectedAlbum(i_SelectedIndex, folderBrowser.SelectedPath);
+                m_Client.DownloadSelectedAlbum(i_SelectedIndex, i_SelectedPath);
             }
             else
             {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Drawing;
 using System.Threading;
 
 namespace WinFormUI
@@ -74,7 +73,21 @@ namespace WinFormUI
 
         private void postFuturePost_Click(object sender, EventArgs e)
         {
-            s_LogicFacade.PostFuturePost(this.dateTimePicker.Value, this.textBoxPost.Text);
+            FacebookDAppLogics.Client.Instance.futurePostAction += Instance_futurePostAction;
+            try
+            {
+                s_LogicFacade.PostFuturePost(this.dateTimePicker.Value, this.textBoxPost.Text);
+                TimeSpan timeDifference = dateTimePicker.Value - DateTime.Now;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Instance_futurePostAction(TimeSpan i_time)
+        {
+            MessageBox.Show($"please wait {i_time.TotalSeconds.ToString("0.00")} seconds");
         }
 
         private void buttonPostNow_Click(object sender, EventArgs e)
@@ -95,8 +108,15 @@ namespace WinFormUI
 
         private void fetchLastStatus()
         {
-            TextBoxProxy textBox = new TextBoxProxy(s_LogicFacade.LastStatus, LastPostTextBox);
-            textBox.AlignStatus();
+            try
+            {
+                TextBoxProxy textBox = new TextBoxProxy(s_LogicFacade.LastStatus, LastPostTextBox);
+                textBox.AlignStatus();
+            }
+            catch
+            {
+                MessageBox.Show("fetching status failed");
+            }
         }
 
         private void fetchFacebookContent()
@@ -146,7 +166,10 @@ namespace WinFormUI
         {
             try
             {
-                s_LogicFacade.DownloadSelectedAlbum(AlbumNameComboBox.SelectedIndex);
+                FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+                folderBrowser.Description = "Select where you want the Album will be save";
+                DialogResult result = folderBrowser.ShowDialog();
+                s_LogicFacade.DownloadSelectedAlbum(AlbumNameComboBox.SelectedIndex, folderBrowser.SelectedPath, result == DialogResult.OK);
                 MessageBox.Show("New folder created and photos saved.");
             }
             catch
