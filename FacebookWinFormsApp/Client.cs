@@ -12,6 +12,7 @@ namespace FacebookDAppLogics
     public sealed class Client
     {
         public event Action<TimeSpan> futurePostAction;
+        public event Action<Exception> ErrorHandler;
 
         private static User s_LoggedInUser;
         private static LoginResult s_LoginResult;
@@ -147,11 +148,28 @@ namespace FacebookDAppLogics
                 m_CurrentStatus = text;
                 
                 futurePostAction.Invoke(timeDifference);
-                System.Threading.Timer timer = new System.Threading.Timer(TimerCallback, null, (int)interval, Timeout.Infinite);
+                try
+                {
+                    System.Threading.Timer timer = new System.Threading.Timer(TimerCallback, null, (int)interval, Timeout.Infinite);
+                }
+                catch(Exception)
+                {
+                    throw;
+                }
             }
         }
 
-
+        private void TimerCallback(object state)
+        {
+            try
+            {
+                PostStatus(m_CurrentStatus);
+            }
+            catch(Exception)
+            {
+                ErrorHandler.Invoke(new Exception("future status didn't post because of an error"));
+            }
+        }
 
         public void DownloadSelectedAlbum(in int i_index, in string i_selectedFolderPath)
         {
@@ -166,18 +184,6 @@ namespace FacebookDAppLogics
             }
         }
 
-        private void TimerCallback(object state)
-        {
-            try
-            {
-
-                PostStatus(m_CurrentStatus);
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
-        }
         public string ProfilePictureUrl
         {
             get
@@ -202,7 +208,7 @@ namespace FacebookDAppLogics
             }
             catch (Exception)
             {
-               throw new Exception("Upload Post Failed");
+                throw;
             }
         }
 
