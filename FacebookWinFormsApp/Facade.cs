@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
-using FacebookWrapper;
 using System.Threading;
 
 namespace FacebookDAppLogics
@@ -116,7 +110,12 @@ namespace FacebookDAppLogics
 
         public void Sort(in string i_result)
         {
-            m_Client.SortCollection(i_result);
+            object SortCollectionLock = new object();
+
+            lock (SortCollectionLock) 
+            {
+                m_Client.SortCollection(i_result);
+            }
         }
 
     }

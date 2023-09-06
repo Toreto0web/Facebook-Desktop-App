@@ -556,11 +556,6 @@
 
         }
 
-       
-
-
-
-
         #endregion
 
         private System.Windows.Forms.Button buttonLogin;

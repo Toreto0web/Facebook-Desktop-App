@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
-using FacebookWrapper.ObjectModel;
 using System.Text.RegularExpressions;
-using FacebookWrapper;
-using System.IO;
-using System.Net;
-using System.Threading;
 
 namespace WinFormUI
 {

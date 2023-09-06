@@ -17,7 +17,7 @@ namespace WinFormUI
             StartPosition = FormStartPosition.Manual;
             checkBoxRememberMe.Checked = s_LogicFacade.AppSettings.RememberUser;
 
-            if(s_LogicFacade.isUserAccessible())
+            if (s_LogicFacade.isUserAccessible())
             {
                 new Thread(LogIN).Start();
             }
@@ -25,15 +25,22 @@ namespace WinFormUI
 
         private void LogIN()
         {
-            try
+            object LogInLock = new object();
+
+            lock (LogInLock)
             {
-                s_LogicFacade.LogInProcess();
-                fetchFacebookContent();
-                enableButtonsAfterFetchSucceeded();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Login Failed...");
+                try
+                {
+                    buttonLogin.Enabled = false;
+                    s_LogicFacade.LogInProcess();
+                    fetchFacebookContent();
+                    enableButtonsAfterFetchSucceeded();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Login Failed...");
+                    buttonLogin.Invoke(new Action(() => buttonLogin.Enabled = true));
+                }
             }
         }
 
@@ -44,7 +51,8 @@ namespace WinFormUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            LogIN();
+            buttonLogin.Enabled = false;
+            new Thread(LogIN).Start();
         }
 
         private void fetchClosestsEvent()
@@ -140,14 +148,20 @@ namespace WinFormUI
 
         private void fetchFacebookContent()
         {
-            FetchSortableAttributesComboBoxAdapter attributesComboBoxAdapter = new FetchSortableAttributesComboBoxAdapter(s_LogicFacade.SortableAttributes, sortableAttributesComboBox);
-            new Thread(attributesComboBoxAdapter.fillSortableAttributesComboBox).Start();
+            new Thread(() => fillSortableAttributesComboBox(s_LogicFacade.SortableAttributes)).Start();
             new Thread(fetchLastStatus).Start();
             new Thread(fetchAlbumNames).Start();
             new Thread(fetchProfilePicture).Start();
-            fetchClosestsEvent();
+            new Thread(fetchClosestsEvent).Start();
         }
 
+        private void fillSortableAttributesComboBox(in string[] i_AttributesList)
+        {
+            foreach (string str in i_AttributesList)
+            {
+                sortableAttributesComboBox.Invoke(new Action(() => sortableAttributesComboBox.Items.Add(str)));
+            }
+        }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -165,7 +179,7 @@ namespace WinFormUI
         {
             string result = s_LogicFacade.SortableAttributes[sortableAttributesComboBox.SelectedIndex];
 
-           s_LogicFacade.Sort(result);
+            new Thread(() => s_LogicFacade.Sort(result));
 
             myFriendsListBox.Items.Clear();
 

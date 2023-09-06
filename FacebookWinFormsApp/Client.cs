@@ -3,9 +3,7 @@ using System.Linq;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using System.IO;
-using System.Net;
 using System.Threading;
-using System.Timers;
 
 namespace FacebookDAppLogics
 {

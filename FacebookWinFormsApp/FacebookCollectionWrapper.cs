@@ -1,5 +1,4 @@
 ﻿using System;
-using FacebookWrapper.ObjectModel;
 using System.Reflection;
 
 namespace FacebookDAppLogics

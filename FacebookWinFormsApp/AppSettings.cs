@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Xml.Serialization;
 using System.IO;
 

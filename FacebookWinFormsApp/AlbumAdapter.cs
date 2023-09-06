@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using FacebookWrapper.ObjectModel;
-using FacebookWrapper;
-using System.IO;
 using System.Net;
 
 namespace FacebookDAppLogics
 {
-    class AlbumAdapter
+    public class AlbumAdapter
     {
         public Album Album { get; set; }
+
         public string FolderPath { get; set; }
+
         private byte photoIndex = 0;
 
         public void DownloadSelectedAlbum() 
