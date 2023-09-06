@@ -96,7 +96,7 @@ namespace WinFormUI
 
         private void fetchFacebookContent()
         {
-            TextBoxProxy textBox = new TextBoxProxy (s_LogicFacade.LastStatus, textBoxPost);
+            TextBoxProxy textBox = new TextBoxProxy (s_LogicFacade.LastStatus, LastPostTextBox);
             fetchAlbumNames();
             fetchProfilePicture();
             fetchClosestsEvent();

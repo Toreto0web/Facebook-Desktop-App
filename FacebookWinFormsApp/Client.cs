@@ -200,8 +200,8 @@ namespace FacebookDAppLogics
 
         public void SortCollection(in string i_attribute)
         {
-            FacebookCollection myFriends = new FacebookUserCollection(s_LoggedInUser.Friends.ToArray<User>());
-            myFriends.SortCollection(i_attribute);
+            //FacebookCollection<User> myFriends = new FacebookUserCollection(s_LoggedInUser.Friends.ToArray<User>());
+            //myFriends.SortCollection(i_attribute);
         }
 
     }

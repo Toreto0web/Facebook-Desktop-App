@@ -96,7 +96,6 @@
     <Compile Include="Client.cs" />
     <Compile Include="Facade.cs" />
     <Compile Include="FacebookUserCollection.cs" />
-    <Compile Include="FetchLastStatusTextAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

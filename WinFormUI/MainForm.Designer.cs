@@ -52,7 +52,7 @@
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.postFuturePostButton = new System.Windows.Forms.Button();
             this.lastPostLabel = new System.Windows.Forms.Label();
-            this.PostTextLabel = new System.Windows.Forms.TextBox();
+            this.LastPostTextBox = new System.Windows.Forms.TextBox();
             this.checkBox = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.sortableAttributesComboBox = new System.Windows.Forms.ComboBox();
@@ -332,18 +332,18 @@
             this.lastPostLabel.TabIndex = 21;
             this.lastPostLabel.Text = "Your Last Post";
             // 
-            // PostTextLabel
+            // LastPostTextBox
             // 
-            this.PostTextLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PostTextLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.PostTextLabel.Location = new System.Drawing.Point(30, 231);
-            this.PostTextLabel.Multiline = true;
-            this.PostTextLabel.Name = "PostTextLabel";
-            this.PostTextLabel.ReadOnly = true;
-            this.PostTextLabel.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.PostTextLabel.Size = new System.Drawing.Size(323, 89);
-            this.PostTextLabel.TabIndex = 22;
-            this.PostTextLabel.Text = "Post text";
+            this.LastPostTextBox.Font = new System.Drawing.Font("Segoe UI Semilight", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LastPostTextBox.ForeColor = System.Drawing.Color.DarkGray;
+            this.LastPostTextBox.Location = new System.Drawing.Point(30, 231);
+            this.LastPostTextBox.Multiline = true;
+            this.LastPostTextBox.Name = "PostTextLabel";
+            this.LastPostTextBox.ReadOnly = true;
+            this.LastPostTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.LastPostTextBox.Size = new System.Drawing.Size(323, 89);
+            this.LastPostTextBox.TabIndex = 22;
+            this.LastPostTextBox.Text = "Post text";
             // 
             // checkBox
             // 
@@ -517,7 +517,7 @@
             this.Controls.Add(this.sortableAttributesComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBox);
-            this.Controls.Add(this.PostTextLabel);
+            this.Controls.Add(this.LastPostTextBox);
             this.Controls.Add(this.lastPostLabel);
             this.Controls.Add(this.DowLoadAlbumLabel);
             this.Controls.Add(this.AlbumNameComboBox);
@@ -576,7 +576,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Button postFuturePostButton;
         private System.Windows.Forms.Label lastPostLabel;
-        private System.Windows.Forms.TextBox PostTextLabel;
+        private System.Windows.Forms.TextBox LastPostTextBox;
         private System.Windows.Forms.CheckBox checkBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox sortableAttributesComboBox;

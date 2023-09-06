@@ -128,11 +128,6 @@ namespace FacebookDAppLogics
             m_Client.SortCollection(i_result);
         }
 
-        public void FetchLastStatusText(string i_textBoxString) 
-        {
-            FetchLastStatusTextAdapter statusTextAdapter = new FetchLastStatusTextAdapter { Client = m_Client, TextBox = new TextBoxProxy(i_textBoxString) };
-            statusTextAdapter.FetchLastStatusText();
-        }
     }
 
    
