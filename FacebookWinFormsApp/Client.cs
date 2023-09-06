@@ -191,11 +191,10 @@ namespace FacebookDAppLogics
             try
             {
                 Status postedStatus = s_LoggedInUser.PostStatus(text);
-                //MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
             }
             catch (Exception)
             {
-                //MessageBox.Show("Done!");
+               throw new Exception("Upload Post Failed");
             }
         }
 
