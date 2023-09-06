@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumAdapter.cs" />
     <Compile Include="AppSettings.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Facade.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using System.IO;
@@ -10,8 +11,6 @@ namespace FacebookDAppLogics
 {
     public sealed class Client
     {
-        public event Action<TimeSpan> futurePostAction;
-
         private static User s_LoggedInUser;
         private static LoginResult s_LoginResult;
         private static Client s_Instance;
@@ -93,9 +92,9 @@ namespace FacebookDAppLogics
                 }
             }
 
-            catch (Exception e)
+            catch (Exception)
             {
-               throw e;
+                MessageBox.Show("fetching status failed");
             }
 
             return string.Format("\"{0}\"", s_LoggedInUser.Posts[postIndex].Message);
@@ -135,14 +134,14 @@ namespace FacebookDAppLogics
         {
             if (i_futurePost <= DateTime.Now)
             {
-                throw new Exception("The time you entered already passed");
+                MessageBox.Show("The time you entered already passed");
             }
             else
             {
                 DateTime currentTime = DateTime.Now;
 
                 TimeSpan timeDifference = i_futurePost - currentTime;
-                futurePostAction.Invoke(timeDifference);
+                MessageBox.Show($"please wait {timeDifference.TotalSeconds.ToString("0.00")} seconds");
                 Thread.Sleep((int)timeDifference.TotalMilliseconds);
 
                 PostStatus(text);
@@ -153,21 +152,9 @@ namespace FacebookDAppLogics
         {
             Album selectedAlbum = s_LoggedInUser.Albums[i_index];
             string newFolderPath = Path.Combine(i_selectedFolderPath, selectedAlbum.Name);
+            AlbumAdapter albumAdapter = new AlbumAdapter { Album = s_LoggedInUser.Albums[i_index], FolderPath = newFolderPath };
             Directory.CreateDirectory(newFolderPath);
-            byte photoIndex = 0;
-            foreach (Photo photo in selectedAlbum.Photos)
-            {
-                string imageUrl = photo.PictureNormalURL;
-                string fileName = (++photoIndex).ToString() + ".jpg";
-                string fullPath = Path.Combine(newFolderPath, fileName);
-
-                using (WebClient webClient = new WebClient())
-                {
-                    byte[] imageBytes = webClient.DownloadData(imageUrl);
-
-                    File.WriteAllBytes(fullPath, imageBytes);
-                }
-            }
+            new Thread(albumAdapter.DownloadSelectedAlbum).Start();
         }
 
         public string ProfilePictureUrl
@@ -191,17 +178,17 @@ namespace FacebookDAppLogics
             try
             {
                 Status postedStatus = s_LoggedInUser.PostStatus(text);
-                //MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
+                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //MessageBox.Show("Done!");
+                MessageBox.Show("Done!");
             }
         }
 
         public void SortCollection(in string i_attribute)
         {
-            FacebookCollectionWrapper<User> myFriends = new FacebookCollectionWrapper<User>(s_LoggedInUser.Friends.ToArray());
+            FacebookCollection myFriends = new FacebookUserCollection(s_LoggedInUser.Friends.ToArray<User>());
             myFriends.SortCollection(i_attribute);
         }
 
