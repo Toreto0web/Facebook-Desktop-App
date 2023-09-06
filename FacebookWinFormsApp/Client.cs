@@ -155,11 +155,15 @@ namespace FacebookDAppLogics
 
         public void DownloadSelectedAlbum(in int i_index, in string i_selectedFolderPath)
         {
-            Album selectedAlbum = s_LoggedInUser.Albums[i_index];
-            string newFolderPath = Path.Combine(i_selectedFolderPath, selectedAlbum.Name);
-            AlbumAdapter albumAdapter = new AlbumAdapter { Album = s_LoggedInUser.Albums[i_index], FolderPath = newFolderPath };
-            Directory.CreateDirectory(newFolderPath);
-            new Thread(albumAdapter.DownloadSelectedAlbum).Start();
+            object DownloadSelectedAlbumLock = new object();
+            lock (DownloadSelectedAlbumLock)
+            {
+                Album selectedAlbum = s_LoggedInUser.Albums[i_index];
+                string newFolderPath = Path.Combine(i_selectedFolderPath, selectedAlbum.Name);
+                AlbumAdapter albumAdapter = new AlbumAdapter { Album = s_LoggedInUser.Albums[i_index], FolderPath = newFolderPath };
+                Directory.CreateDirectory(newFolderPath);
+                albumAdapter.DownloadSelectedAlbum();
+            }
         }
 
         private void TimerCallback(object state)
