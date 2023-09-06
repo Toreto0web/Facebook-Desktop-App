@@ -164,7 +164,15 @@ namespace FacebookDAppLogics
 
         private void TimerCallback(object state)
         {
-            PostStatus(m_CurrentStatus);
+            try
+            {
+
+                PostStatus(m_CurrentStatus);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
         public string ProfilePictureUrl
         {
