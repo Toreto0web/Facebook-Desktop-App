@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
+using System.Threading;
 
 namespace FacebookDAppLogics
 {
@@ -104,7 +105,7 @@ namespace FacebookDAppLogics
 
             if (i_isOK && !string.IsNullOrWhiteSpace(i_SelectedPath))
             {
-                m_Client.DownloadSelectedAlbum(i_SelectedIndex, i_SelectedPath);
+                new Thread(() => m_Client.DownloadSelectedAlbum(i_SelectedIndex, i_SelectedPath)).Start();
             }
             else
             {
