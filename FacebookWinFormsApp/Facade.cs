@@ -13,8 +13,11 @@ namespace FacebookDAppLogics
     public class Facade
     {
         private Client m_Client;
+
         public AppSettings AppSettings { get; }
+
         private string[] m_sortableAttributes = { "Gender", "Name", "Birthday" };
+
         public string LastStatus { get { return m_Client.FetchLastStatusText(); } }
 
         public Facade()
@@ -23,6 +26,8 @@ namespace FacebookDAppLogics
         }
 
         public string[] SortableAttributes { get { return m_sortableAttributes; } }
+
+        public Event LastEvent { get { return m_Client.LastEvent;} }
 
         public string ProfilePictureUrl
         {   
@@ -40,18 +45,6 @@ namespace FacebookDAppLogics
         public bool isUserAccessible()
         {
             return AppSettings.RememberUser && !string.IsNullOrEmpty(AppSettings.LastAccessToken); 
-        }
-
-        public void UpdateEventDataSource(BindingSource o_dataSource)
-        {
-            try
-            {
-                o_dataSource.DataSource = m_Client.LastEvent;
-            }
-            catch
-            {
-                throw new Exception();
-            }
         }
 
         public void Logout()
