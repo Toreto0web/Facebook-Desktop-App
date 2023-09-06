@@ -98,7 +98,6 @@
     <Compile Include="FacebookUserCollection.cs" />
     <Compile Include="FetchLastStatusTextAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextBoxProxy.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

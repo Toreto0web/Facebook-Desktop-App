@@ -15,6 +15,7 @@ namespace FacebookDAppLogics
         private Client m_Client;
         public AppSettings AppSettings { get; }
         private string[] m_sortableAttributes = { "Gender", "Name", "Birthday" };
+        public string LastStatus { get { return m_Client.FetchLastStatusText(); } }
 
         public Facade()
         {
@@ -127,7 +128,11 @@ namespace FacebookDAppLogics
             m_Client.SortCollection(i_result);
         }
 
-        
+        public void FetchLastStatusText(string i_textBoxString) 
+        {
+            FetchLastStatusTextAdapter statusTextAdapter = new FetchLastStatusTextAdapter { Client = m_Client, TextBox = new TextBoxProxy(i_textBoxString) };
+            statusTextAdapter.FetchLastStatusText();
+        }
     }
 
    
