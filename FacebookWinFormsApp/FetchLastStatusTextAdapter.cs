@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FacebookDApp
+namespace FacebookDAppLogics
 {
-    public class FetchLastStatusTextAdapter
+    internal class FetchLastStatusTextAdapter
     {
-        public Client Client { get; set; }
-        public TextBoxProxy TextBox{ get; set; }
+        internal Client Client { get; set; }
+        internal TextBoxProxy TextBox{ get; set; }
 
-        public void FetchLastStatusText() 
+        internal void FetchLastStatusText() 
         {
             TextBox.TextBoxForm.Text = Client.FetchLastStatusText();
             TextBox.AlignStatus();

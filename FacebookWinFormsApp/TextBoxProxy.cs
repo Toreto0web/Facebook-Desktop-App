@@ -8,13 +8,13 @@ using System.IO;
 using System.Net;
 using System.Threading;
 
-namespace FacebookDApp
+namespace FacebookDAppLogics
 {
-    public class TextBoxProxy 
+    internal class TextBoxProxy 
     {
-        public System.Windows.Forms.TextBox TextBoxForm { get; set; }
+        internal System.Windows.Forms.TextBox TextBoxForm { get; set; }
 
-        public TextBoxProxy(System.Windows.Forms.TextBox i_textBox)
+        internal TextBoxProxy(System.Windows.Forms.TextBox i_textBox)
         {
             TextBoxForm = i_textBox;
         }
@@ -26,7 +26,7 @@ namespace FacebookDApp
             return Regex.IsMatch(TextBoxForm.Text, pattern);
         }
 
-        public void AlignStatus() 
+        internal void AlignStatus() 
         {
             if (isStatusInEnglish()) 
             {

@@ -2,18 +2,18 @@
 using FacebookWrapper.ObjectModel;
 using System.Reflection;
 
-namespace FacebookDApp
+namespace FacebookDAppLogics
 {
-    class FacebookUserCollection
+    internal class FacebookUserCollection
     {
         private User[] m_Friends;
 
-        public FacebookUserCollection(User[] friends)
+        internal FacebookUserCollection(User[] friends)
         {
             m_Friends = friends;
         }
 
-        public void SortCollection(in string i_attributeName)
+        internal void SortCollection(in string i_attributeName)
         {
             PropertyInfo property = typeof(User).GetProperty(i_attributeName);
             if (property != null)

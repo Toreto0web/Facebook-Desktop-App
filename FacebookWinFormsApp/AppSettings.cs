@@ -4,17 +4,17 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Windows.Forms;
 
-namespace FacebookDApp
+namespace FacebookDAppLogics
 {
     public class AppSettings
     {
-        public Point m_LastWindowLocation { get; set; }
+        internal Point m_LastWindowLocation { get; set; }
 
-        public Size m_LastWindowSize { get; set; }
+        internal Size m_LastWindowSize { get; set; }
 
-        public bool m_RememberUser { get; set; }
+        internal bool m_RememberUser { get; set; }
 
-        public string m_LastAccessToken { get; set; }
+        internal string m_LastAccessToken { get; set; }
 
         private AppSettings()
         {

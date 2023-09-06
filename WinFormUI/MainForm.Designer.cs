@@ -1,4 +1,4 @@
-﻿namespace FacebookDApp
+﻿namespace WinFormUI
 {
     public partial class MainForm
     {
@@ -482,7 +482,6 @@
             // eventBindingSource
             // 
             this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
-            this.eventBindingSource.CurrentChanged += new System.EventHandler(this.eventBindingSource_CurrentChanged);
             // 
             // NextEventNameLabel1
             // 

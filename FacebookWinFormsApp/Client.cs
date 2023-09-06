@@ -7,19 +7,22 @@ using System.IO;
 using System.Net;
 using System.Threading;
 
-namespace FacebookDApp
+namespace FacebookDAppLogics
 {
-    public sealed class Client
+    internal sealed class Client
     {
         private static User s_LoggedInUser;
         private static LoginResult s_LoginResult;
         private static Client s_Instance;
 
-        private Client() { }
+        private Client()
+        {
+            FacebookService.s_UseForamttedToStrings = true;
+        }
 
-        public bool isLoggedIn { get { return s_Instance != null; } }
+        internal bool isLoggedIn { get { return s_Instance != null; } }
 
-        public string AccessToken
+        internal string AccessToken
         {
             get
             {
@@ -27,7 +30,7 @@ namespace FacebookDApp
             }
         }
 
-        public FacebookObjectCollection<User> MyFriendsList 
+        internal FacebookObjectCollection<User> MyFriendsList 
         {
             get 
             {
@@ -35,7 +38,7 @@ namespace FacebookDApp
             }
         }
 
-        public static Client Instance
+        internal static Client Instance
         {
             get
             {
@@ -48,7 +51,7 @@ namespace FacebookDApp
             }
         }
 
-        public void LoginAndInit(in string i_accessToken = default)
+        internal void LoginAndInit(in string i_accessToken = default)
         {
             if (!string.IsNullOrEmpty(i_accessToken))
             {
@@ -80,7 +83,7 @@ namespace FacebookDApp
 
         }
 
-        public string FetchLastStatusText()
+        internal string FetchLastStatusText()
         {
             byte postIndex = 0;
 
@@ -100,13 +103,13 @@ namespace FacebookDApp
             return string.Format("\"{0}\"", s_LoggedInUser.Posts[postIndex].Message);
         }
 
-        public void LogoutClient()
+        internal void LogoutClient()
         {
             FacebookService.LogoutWithUI();
             s_LoginResult = null;
         }
 
-        public Event LastEvent
+        internal Event LastEvent
         {
             get
             {
@@ -130,7 +133,7 @@ namespace FacebookDApp
             }
         }
 
-        public void PostFutureStatus(in DateTime i_futurePost, in string text)
+        internal void PostFutureStatus(in DateTime i_futurePost, in string text)
         {
             if (i_futurePost <= DateTime.Now)
             {
@@ -148,7 +151,7 @@ namespace FacebookDApp
             }
         }
 
-        public void DownloadSelectedAlbum(in int i_index, in string i_selectedFolderPath)
+        internal void DownloadSelectedAlbum(in int i_index, in string i_selectedFolderPath)
         {
             Album selectedAlbum = s_LoggedInUser.Albums[i_index];
             string newFolderPath = Path.Combine(i_selectedFolderPath, selectedAlbum.Name);
@@ -169,7 +172,7 @@ namespace FacebookDApp
             }
         }
 
-        public string ProfilePictureUrl
+        internal string ProfilePictureUrl
         {
             get
             {
@@ -177,7 +180,7 @@ namespace FacebookDApp
             }
         }
 
-        public FacebookObjectCollection<Album> ClientAlbums
+        internal FacebookObjectCollection<Album> ClientAlbums
         {
             get
             {
@@ -185,20 +188,20 @@ namespace FacebookDApp
             }
         }
 
-        public void PostStatus(in string text)
+        internal void PostStatus(in string text)
         {
             try
             {
                 Status postedStatus = s_LoggedInUser.PostStatus(text);
                 MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Done!");
             }
         }
 
-        public void SortCollection(in string i_attribute)
+        internal void SortCollection(in string i_attribute)
         {
             FacebookUserCollection myFriends = new FacebookUserCollection(s_LoggedInUser.Friends.ToArray<User>());
             myFriends.SortCollection(i_attribute);
