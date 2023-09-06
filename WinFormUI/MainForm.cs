@@ -16,8 +16,7 @@ namespace WinFormUI
 
             FormBorderStyle = FormBorderStyle.FixedSingle;
             StartPosition = FormStartPosition.Manual;
-            Location = s_LogicFacade.LastWindowLocation;
-            checkBox.Checked = s_LogicFacade.isUserWantToBeRemember;
+            checkBox.Checked = s_LogicFacade.AppSettings.RememberUser;
 
             if(s_LogicFacade.isUserAccessible())
             {
@@ -106,14 +105,14 @@ namespace WinFormUI
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            s_LogicFacade.isUserWantToBeRemember = checkBox.Checked;
+            s_LogicFacade.AppSettings.RememberUser = checkBox.Checked;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
 
-            s_LogicFacade.UpdateSettings(Location, checkBox.Checked);
+            s_LogicFacade.UpdateSettings(checkBox.Checked);
         }
 
         private void sortableAttributesComboBox_SelectedIndexChanged(object sender, EventArgs e)

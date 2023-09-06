@@ -31,42 +31,20 @@ namespace FacebookDAppLogics
             }
         }
 
-
-        //public Point LastWindowLocation
-        //{
-        //    //get
-        //    {
-        //        //return appSettings.m_LastWindowLocation;
-        //    }
-        //}
-
         public FacebookObjectCollection<Album> ClientAlbums 
         {
             get { return m_Client.ClientAlbums;}
         }
 
-        //public bool isUserWantToBeRemember
-        //{
-        //    get
-        //    {
-        //        return appSettings.m_RememberUser;
-        //    }
-        //    set
-        //    {
-        //        appSettings.m_RememberUser = value;
-        //    }
-        //}
-
-        //public bool isUserAccessible()
-        //{
-        //    //return m_AppSettings.m_RememberUser && !string.IsNullOrEmpty(m_AppSettings.m_LastAccessToken); 
-        //}
+        public bool isUserAccessible()
+        {
+            return AppSettings.RememberUser && !string.IsNullOrEmpty(AppSettings.LastAccessToken); 
+        }
 
         public void UpdateEventDataSource(BindingSource o_dataSource)
         {
             try
             {
-
                 o_dataSource.DataSource = m_Client.LastEvent;
             }
             catch
@@ -95,22 +73,21 @@ namespace FacebookDAppLogics
             get { return m_Client.MyFriendsList; }
         }
 
-        //public void UpdateSettings(in Point i_Location, in bool i_Checked)
-        //{
-        //    m_AppSettings.m_LastWindowLocation = i_Location;
-        //    m_AppSettings.m_RememberUser = i_Checked;
+        public void UpdateSettings(in bool i_Checked)
+        {
+            AppSettings.RememberUser = i_Checked;
 
-        //    if (m_AppSettings.m_RememberUser)
-        //    {
-        //        m_AppSettings.m_LastAccessToken = m_Client.AccessToken;
-        //    }
-        //    else
-        //    {
-        //        m_AppSettings.m_LastAccessToken = null;
-        //    }
+            if (AppSettings.RememberUser)
+            {
+                AppSettings.LastAccessToken = m_Client.AccessToken;
+            }
+            else
+            {
+                AppSettings.LastAccessToken = null;
+            }
 
-        //    m_AppSettings.SaveToFile();
-        //}
+            AppSettings.SaveToFile();
+        }
 
         public void LogInProcess()
         {
@@ -118,9 +95,9 @@ namespace FacebookDAppLogics
 
             try
             { // Yoav access token : EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD
-                //m_Client.LoginAndInit(m_AppSettings.m_LastAccessToken);
+                m_Client.LoginAndInit(AppSettings.LastAccessToken);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 
                 throw new Exception();
