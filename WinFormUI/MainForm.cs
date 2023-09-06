@@ -20,7 +20,7 @@ namespace WinFormUI
 
             if(s_LogicFacade.isUserAccessible())
             {
-                LogIN();
+                new Thread(LogIN).Start();
             }
         }
 
@@ -31,12 +31,10 @@ namespace WinFormUI
                 s_LogicFacade.LogInProcess();
                 fetchFacebookContent();
                 enableButtonsAfterFetchSucceeded();
-                fillSortableAttributesComboBox(s_LogicFacade.SortableAttributes);
-
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show("Login Failed!");
+                MessageBox.Show("Login Failed...");
             }
         }
 
@@ -58,9 +56,9 @@ namespace WinFormUI
             }
             catch (Exception)
             {
-                NextEventNameLabel1.Text = "No farther events";
-                NextEventLocationLabel1.Text = "-";
-                NextEventstartTimeLabel1.Text = "_/_/_";
+                NextEventNameLabel1.Invoke(new Action(() => NextEventNameLabel1.Text = "No farther events"));
+                NextEventNameLabel1.Invoke(new Action(() => NextEventLocationLabel1.Text = "-"));
+                NextEventNameLabel1.Invoke(new Action(() => NextEventstartTimeLabel1.Text = "_/_/_"));
             }
         }
 
@@ -90,7 +88,7 @@ namespace WinFormUI
 
         private void fetchAlbumNames()
         {
-            albumBindingSource.DataSource = s_LogicFacade.ClientAlbums;
+            AlbumNameComboBox.Invoke(new Action(() => albumBindingSource.DataSource = s_LogicFacade.ClientAlbums));
         }
 
         private void fetchLastStatus()
@@ -101,8 +99,10 @@ namespace WinFormUI
 
         private void fetchFacebookContent()
         {
+            FetchSortableAttributesComboBoxAdapter attributesComboBoxAdapter = new FetchSortableAttributesComboBoxAdapter(s_LogicFacade.SortableAttributes, sortableAttributesComboBox);
+            new Thread(attributesComboBoxAdapter.fillSortableAttributesComboBox).Start();
             new Thread(fetchLastStatus).Start();
-            fetchAlbumNames();
+            new Thread(fetchAlbumNames).Start();
             new Thread(fetchProfilePicture).Start();
             fetchClosestsEvent();
         }
@@ -133,15 +133,7 @@ namespace WinFormUI
                 myFriendsListBox.Items.Add(user.FirstName + " " + user.LastName);
             }
         }
-
-        private void fillSortableAttributesComboBox(string[] strArr)
-        {
-            foreach (string str in strArr)
-            {
-                sortableAttributesComboBox.Items.Add(str);
-            }
-        }
-
+        
         private void buttonDownloadSelectedAlbum_Click(object sender, EventArgs e)
         {
             try
@@ -186,12 +178,12 @@ namespace WinFormUI
 
         private void enableButtonsAfterFetchSucceeded()
         {
-            AlbumNameComboBox.Enabled = true;
-            sortableAttributesComboBox.Enabled = true;
-            buttonLogout.Enabled = true;
-            buttonDownloadSelectedAlbum.Enabled = true;
-            checkBoxRememberMe.Enabled = true;
-            textBoxPost.Enabled = true;
+            AlbumNameComboBox.Invoke(new Action(() => AlbumNameComboBox.Enabled = true));
+            sortableAttributesComboBox.Invoke(new Action(() => sortableAttributesComboBox.Enabled = true));
+            buttonLogout.Invoke(new Action(() => buttonLogout.Enabled = true));
+            buttonDownloadSelectedAlbum.Invoke(new Action(() => buttonDownloadSelectedAlbum.Enabled = true));
+            checkBoxRememberMe.Invoke(new Action(() => checkBoxRememberMe.Enabled = true));
+            textBoxPost.Invoke(new Action(() => textBoxPost.Enabled = true));
         }
     }
 }
