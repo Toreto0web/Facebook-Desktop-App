@@ -325,6 +325,7 @@
             this.postFuturePostButton.TabIndex = 22;
             this.postFuturePostButton.Text = "Future Post";
             this.postFuturePostButton.UseVisualStyleBackColor = false;
+            this.postFuturePostButton.Click += postFuturePost_Click;
             // 
             // lastPostLabel
             // 

@@ -85,12 +85,19 @@ namespace WinFormUI
 
         private void Instance_futurePostAction(TimeSpan i_time)
         {
-            MessageBox.Show($"please wait {i_time.TotalSeconds.ToString("0.00")} seconds");
+            MessageBox.Show($"the post will upload in {i_time.Minutes.ToString("0.00")} minutes");
         }
 
         private void buttonPostNow_Click(object sender, EventArgs e)
         {
-            s_LogicFacade.PostStatus(textBoxPost.Text);
+            try
+            {
+                s_LogicFacade.PostStatus(textBoxPost.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void fetchProfilePicture()
