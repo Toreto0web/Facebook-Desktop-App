@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
-
+using System.Threading;
 
 namespace WinFormUI
 {
@@ -32,7 +32,6 @@ namespace WinFormUI
                 fetchFacebookContent();
                 enableButtonsAfterFetchSucceeded();
                 fillSortableAttributesComboBox(s_LogicFacade.SortableAttributes);
-
 
             }
             catch (Exception)
@@ -94,13 +93,20 @@ namespace WinFormUI
             albumBindingSource.DataSource = s_LogicFacade.ClientAlbums;
         }
 
+        private void fetchLastStatus()
+        {
+            TextBoxProxy textBox = new TextBoxProxy(s_LogicFacade.LastStatus, LastPostTextBox);
+            textBox.AlignStatus();
+        }
+
         private void fetchFacebookContent()
         {
-            TextBoxProxy textBox = new TextBoxProxy (s_LogicFacade.LastStatus, LastPostTextBox);
+            new Thread(fetchLastStatus).Start();
             fetchAlbumNames();
-            fetchProfilePicture();
+            new Thread(fetchProfilePicture).Start();
             fetchClosestsEvent();
         }
+
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {

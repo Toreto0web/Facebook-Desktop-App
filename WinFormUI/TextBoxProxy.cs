@@ -16,9 +16,8 @@ namespace WinFormUI
 
         internal TextBoxProxy(string i_textBoxString, System.Windows.Forms.TextBox textBox)
         {
-            TextBoxForm = textBox;
-            TextBoxForm.Text = i_textBoxString;
-            AlignStatus();
+            textBox.Invoke(new Action(() => TextBoxForm = textBox));
+            textBox.Invoke(new Action(() => TextBoxForm.Text = i_textBoxString));
         }
 
         private bool isStatusInEnglish()
@@ -32,11 +31,11 @@ namespace WinFormUI
         {
             if (isStatusInEnglish()) 
             {
-                TextBoxForm.TextAlign = HorizontalAlignment.Right;
+                TextBoxForm.Invoke(new Action(() => TextBoxForm.TextAlign = HorizontalAlignment.Right));
             }
             else 
             {
-                TextBoxForm.TextAlign = HorizontalAlignment.Left;
+                TextBoxForm.Invoke(new Action(() => TextBoxForm.TextAlign = HorizontalAlignment.Left));
             }
         }
     }
