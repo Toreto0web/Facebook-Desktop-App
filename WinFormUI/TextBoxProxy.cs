@@ -8,15 +8,17 @@ using System.IO;
 using System.Net;
 using System.Threading;
 
-namespace FacebookDAppLogics
+namespace WinFormUI
 {
     internal class TextBoxProxy 
     {
-        internal System.Windows.Forms.TextBox TextBoxForm { get; set; }
+        private System.Windows.Forms.TextBox TextBoxForm;
 
-        internal TextBoxProxy(System.Windows.Forms.TextBox i_textBox)
+        internal TextBoxProxy(string i_textBoxString, System.Windows.Forms.TextBox textBox)
         {
-            TextBoxForm = i_textBox;
+            TextBoxForm = textBox;
+            TextBoxForm.Text = i_textBoxString;
+            AlignStatus();
         }
 
         private bool isStatusInEnglish()

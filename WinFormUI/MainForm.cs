@@ -97,11 +97,10 @@ namespace WinFormUI
 
         private void fetchFacebookContent()
         {
-            //FetchLastStatusTextAdapter statusTextAdapter = new FetchLastStatusTextAdapter { Client = m_Client, TextBox = new TextBoxProxy(PostTextLabel) };
+            TextBoxProxy textBox = new TextBoxProxy (s_LogicFacade.LastStatus, textBoxPost);
             fetchAlbumNames();
             fetchProfilePicture();
             fetchClosestsEvent();
-            //statusTextAdapter.FetchLastStatusText();
         }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)

@@ -8,13 +8,13 @@ namespace FacebookDAppLogics
 {
     public class AppSettings
     {
-        internal Point m_LastWindowLocation { get; set; }
+        public Point m_LastWindowLocation { get; set; }
 
-        internal Size m_LastWindowSize { get; set; }
+        public Size m_LastWindowSize { get; set; }
 
-        internal bool m_RememberUser { get; set; }
+        public bool m_RememberUser { get; set; }
 
-        internal string m_LastAccessToken { get; set; }
+        public string m_LastAccessToken { get; set; }
 
         private AppSettings()
         {

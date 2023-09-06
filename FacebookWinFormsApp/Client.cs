@@ -9,20 +9,17 @@ using System.Threading;
 
 namespace FacebookDAppLogics
 {
-    internal sealed class Client
+    public sealed class Client
     {
         private static User s_LoggedInUser;
         private static LoginResult s_LoginResult;
         private static Client s_Instance;
 
-        private Client()
-        {
-            FacebookService.s_UseForamttedToStrings = true;
-        }
+        private Client() { }
 
-        internal bool isLoggedIn { get { return s_Instance != null; } }
+        public bool isLoggedIn { get { return s_Instance != null; } }
 
-        internal string AccessToken
+        public string AccessToken
         {
             get
             {
@@ -30,7 +27,7 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal FacebookObjectCollection<User> MyFriendsList 
+        public FacebookObjectCollection<User> MyFriendsList 
         {
             get 
             {
@@ -38,7 +35,7 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal static Client Instance
+        public static Client Instance
         {
             get
             {
@@ -51,7 +48,7 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal void LoginAndInit(in string i_accessToken = default)
+        public void LoginAndInit(in string i_accessToken = default)
         {
             if (!string.IsNullOrEmpty(i_accessToken))
             {
@@ -83,7 +80,7 @@ namespace FacebookDAppLogics
 
         }
 
-        internal string FetchLastStatusText()
+        public string FetchLastStatusText()
         {
             byte postIndex = 0;
 
@@ -103,13 +100,13 @@ namespace FacebookDAppLogics
             return string.Format("\"{0}\"", s_LoggedInUser.Posts[postIndex].Message);
         }
 
-        internal void LogoutClient()
+        public void LogoutClient()
         {
             FacebookService.LogoutWithUI();
             s_LoginResult = null;
         }
 
-        internal Event LastEvent
+        public Event LastEvent
         {
             get
             {
@@ -133,7 +130,7 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal void PostFutureStatus(in DateTime i_futurePost, in string text)
+        public void PostFutureStatus(in DateTime i_futurePost, in string text)
         {
             if (i_futurePost <= DateTime.Now)
             {
@@ -151,7 +148,7 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal void DownloadSelectedAlbum(in int i_index, in string i_selectedFolderPath)
+        public void DownloadSelectedAlbum(in int i_index, in string i_selectedFolderPath)
         {
             Album selectedAlbum = s_LoggedInUser.Albums[i_index];
             string newFolderPath = Path.Combine(i_selectedFolderPath, selectedAlbum.Name);
@@ -172,7 +169,7 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal string ProfilePictureUrl
+        public string ProfilePictureUrl
         {
             get
             {
@@ -180,7 +177,7 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal FacebookObjectCollection<Album> ClientAlbums
+        public FacebookObjectCollection<Album> ClientAlbums
         {
             get
             {
@@ -188,22 +185,22 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal void PostStatus(in string text)
+        public void PostStatus(in string text)
         {
             try
             {
                 Status postedStatus = s_LoggedInUser.PostStatus(text);
                 MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Done!");
             }
         }
 
-        internal void SortCollection(in string i_attribute)
+        public void SortCollection(in string i_attribute)
         {
-            FacebookUserCollection myFriends = new FacebookUserCollection(s_LoggedInUser.Friends.ToArray<User>());
+            FacebookCollection myFriends = new FacebookUserCollection(s_LoggedInUser.Friends.ToArray<User>());
             myFriends.SortCollection(i_attribute);
         }
 
