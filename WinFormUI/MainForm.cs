@@ -12,7 +12,7 @@ namespace WinFormUI
         {
             InitializeComponent();
             s_LogicFacade = new FacebookDAppLogics.Facade();
-
+            FacebookDAppLogics.Client.Instance.ErrorHandler += Instance_ErrorHandler;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             StartPosition = FormStartPosition.Manual;
             checkBoxRememberMe.Checked = s_LogicFacade.AppSettings.RememberUser;
@@ -21,6 +21,11 @@ namespace WinFormUI
             {
                 new Thread(LogIN).Start();
             }
+        }
+
+        private void Instance_ErrorHandler(Exception obj)
+        {
+            MessageBox.Show(obj.Message);
         }
 
         private void LogIN()
