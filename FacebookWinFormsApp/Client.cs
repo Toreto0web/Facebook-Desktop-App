@@ -192,7 +192,7 @@ namespace FacebookDAppLogics
                 Status postedStatus = s_LoggedInUser.PostStatus(text);
                 MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Done!");
             }
@@ -200,8 +200,8 @@ namespace FacebookDAppLogics
 
         public void SortCollection(in string i_attribute)
         {
-            //FacebookCollection<User> myFriends = new FacebookUserCollection(s_LoggedInUser.Friends.ToArray<User>());
-            //myFriends.SortCollection(i_attribute);
+            FacebookCollectionWrapper<User> myFriends = new FacebookCollectionWrapper<User>(s_LoggedInUser.Friends.ToArray());
+            myFriends.SortCollection(i_attribute);
         }
 
     }

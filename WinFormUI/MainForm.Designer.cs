@@ -53,7 +53,7 @@
             this.postFuturePostButton = new System.Windows.Forms.Button();
             this.lastPostLabel = new System.Windows.Forms.Label();
             this.LastPostTextBox = new System.Windows.Forms.TextBox();
-            this.checkBox = new System.Windows.Forms.CheckBox();
+            this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.sortableAttributesComboBox = new System.Windows.Forms.ComboBox();
             this.myFriendsListBox = new System.Windows.Forms.ListBox();
@@ -109,7 +109,7 @@
             NextEventLocationLabel.ForeColor = System.Drawing.Color.White;
             NextEventLocationLabel.Location = new System.Drawing.Point(-5, 63);
             NextEventLocationLabel.Name = "NextEventLocationLabel";
-            NextEventLocationLabel.Size = new System.Drawing.Size(107, 30);
+            NextEventLocationLabel.Size = new System.Drawing.Size(94, 25);
             NextEventLocationLabel.TabIndex = 0;
             NextEventLocationLabel.Text = "Location:";
             // 
@@ -120,7 +120,7 @@
             NextEventNameLabel.ForeColor = System.Drawing.Color.White;
             NextEventNameLabel.Location = new System.Drawing.Point(-4, 0);
             NextEventNameLabel.Name = "NextEventNameLabel";
-            NextEventNameLabel.Size = new System.Drawing.Size(80, 30);
+            NextEventNameLabel.Size = new System.Drawing.Size(69, 25);
             NextEventNameLabel.TabIndex = 2;
             NextEventNameLabel.Text = "Name:";
             // 
@@ -131,7 +131,7 @@
             NextEventstartTimeLabel.ForeColor = System.Drawing.Color.White;
             NextEventstartTimeLabel.Location = new System.Drawing.Point(-4, 34);
             NextEventstartTimeLabel.Name = "NextEventstartTimeLabel";
-            NextEventstartTimeLabel.Size = new System.Drawing.Size(68, 30);
+            NextEventstartTimeLabel.Size = new System.Drawing.Size(58, 25);
             NextEventstartTimeLabel.TabIndex = 4;
             NextEventstartTimeLabel.Text = "Date:";
             // 
@@ -165,6 +165,7 @@
             // buttonLogout
             // 
             this.buttonLogout.BackColor = System.Drawing.Color.White;
+            this.buttonLogout.Enabled = false;
             this.buttonLogout.FlatAppearance.BorderSize = 0;
             this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -217,6 +218,7 @@
             // 
             // textBoxPost
             // 
+            this.textBoxPost.Enabled = false;
             this.textBoxPost.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPost.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.textBoxPost.Location = new System.Drawing.Point(30, 386);
@@ -226,12 +228,14 @@
             this.textBoxPost.Size = new System.Drawing.Size(332, 152);
             this.textBoxPost.TabIndex = 7;
             this.textBoxPost.Text = "write your thought...";
-            this.textBoxPost.Leave += TextBoxPost_Leave;
-            this.textBoxPost.Enter += TextBoxPost_Enter;
+            this.textBoxPost.Enter += new System.EventHandler(TextBoxPost_Enter);
+            this.textBoxPost.Leave += new System.EventHandler(TextBoxPost_Leave);
+            this.textBoxPost.TextChanged += TextBoxPost_TextChanged;
             // 
             // buttonPostNow
             // 
             this.buttonPostNow.BackColor = System.Drawing.Color.White;
+            this.buttonPostNow.Enabled = false;
             this.buttonPostNow.FlatAppearance.BorderSize = 0;
             this.buttonPostNow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPostNow.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -248,6 +252,7 @@
             // 
             this.buttonFuture.BackColor = System.Drawing.Color.White;
             this.buttonFuture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonFuture.Enabled = false;
             this.buttonFuture.FlatAppearance.BorderSize = 0;
             this.buttonFuture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFuture.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -334,29 +339,31 @@
             // 
             // LastPostTextBox
             // 
+            this.LastPostTextBox.Enabled = false;
             this.LastPostTextBox.Font = new System.Drawing.Font("Segoe UI Semilight", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LastPostTextBox.ForeColor = System.Drawing.Color.DarkGray;
             this.LastPostTextBox.Location = new System.Drawing.Point(30, 231);
             this.LastPostTextBox.Multiline = true;
-            this.LastPostTextBox.Name = "PostTextLabel";
+            this.LastPostTextBox.Name = "LastPostTextBox";
             this.LastPostTextBox.ReadOnly = true;
             this.LastPostTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.LastPostTextBox.Size = new System.Drawing.Size(323, 89);
             this.LastPostTextBox.TabIndex = 22;
-            this.LastPostTextBox.Text = "Post text";
+            this.LastPostTextBox.Text = "last status text";
             // 
-            // checkBox
+            // checkBoxRememberMe
             // 
-            this.checkBox.AutoSize = true;
-            this.checkBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.checkBox.ForeColor = System.Drawing.Color.White;
-            this.checkBox.Location = new System.Drawing.Point(37, 130);
-            this.checkBox.Name = "checkBox";
-            this.checkBox.Size = new System.Drawing.Size(203, 36);
-            this.checkBox.TabIndex = 23;
-            this.checkBox.Text = "Remember Me";
-            this.checkBox.UseVisualStyleBackColor = true;
-            this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            this.checkBoxRememberMe.AutoSize = true;
+            this.checkBoxRememberMe.Enabled = false;
+            this.checkBoxRememberMe.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.checkBoxRememberMe.ForeColor = System.Drawing.Color.White;
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(37, 130);
+            this.checkBoxRememberMe.Name = "checkBoxRememberMe";
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(203, 36);
+            this.checkBoxRememberMe.TabIndex = 23;
+            this.checkBoxRememberMe.Text = "Remember Me";
+            this.checkBoxRememberMe.UseVisualStyleBackColor = true;
+            this.checkBoxRememberMe.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // label1
             // 
@@ -410,6 +417,7 @@
             // 
             this.buttonDownloadSelectedAlbum.BackColor = System.Drawing.Color.White;
             this.buttonDownloadSelectedAlbum.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonDownloadSelectedAlbum.Enabled = false;
             this.buttonDownloadSelectedAlbum.FlatAppearance.BorderSize = 0;
             this.buttonDownloadSelectedAlbum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDownloadSelectedAlbum.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -516,7 +524,7 @@
             this.Controls.Add(this.myFriendsListBox);
             this.Controls.Add(this.sortableAttributesComboBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBox);
+            this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.LastPostTextBox);
             this.Controls.Add(this.lastPostLabel);
             this.Controls.Add(this.DowLoadAlbumLabel);
@@ -547,18 +555,10 @@
 
         }
 
-        private void TextBoxPost_Leave(object sender, System.EventArgs e)
-        {
-            if (textBoxPost.Text.Length == 0)
-            {
-                textBoxPost.Text = "write your thought...";
-            }
-        }
+       
 
-        private void TextBoxPost_Enter(object sender, System.EventArgs e)
-        {
-            textBoxPost.Text = default;
-        }
+
+
 
         #endregion
 
@@ -577,7 +577,7 @@
         private System.Windows.Forms.Button postFuturePostButton;
         private System.Windows.Forms.Label lastPostLabel;
         private System.Windows.Forms.TextBox LastPostTextBox;
-        private System.Windows.Forms.CheckBox checkBox;
+        private System.Windows.Forms.CheckBox checkBoxRememberMe;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox sortableAttributesComboBox;
         private System.Windows.Forms.ListBox myFriendsListBox;

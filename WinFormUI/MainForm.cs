@@ -16,7 +16,7 @@ namespace WinFormUI
 
             FormBorderStyle = FormBorderStyle.FixedSingle;
             StartPosition = FormStartPosition.Manual;
-            checkBox.Checked = s_LogicFacade.AppSettings.RememberUser;
+            checkBoxRememberMe.Checked = s_LogicFacade.AppSettings.RememberUser;
 
             if(s_LogicFacade.isUserAccessible())
             {
@@ -93,7 +93,7 @@ namespace WinFormUI
         {
             albumBindingSource.DataSource = s_LogicFacade.ClientAlbums;
         }
-
+         
         private void fetchFacebookContent()
         {
             TextBoxProxy textBox = new TextBoxProxy (s_LogicFacade.LastStatus, LastPostTextBox);
@@ -104,14 +104,14 @@ namespace WinFormUI
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            s_LogicFacade.AppSettings.RememberUser = checkBox.Checked;
+            s_LogicFacade.AppSettings.RememberUser = checkBoxRememberMe.Checked;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
 
-            s_LogicFacade.UpdateSettings(checkBox.Checked);
+            s_LogicFacade.UpdateSettings(checkBoxRememberMe.Checked);
         }
 
         private void sortableAttributesComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,11 +150,42 @@ namespace WinFormUI
 
         }
 
+        private void TextBoxPost_Leave(object sender, System.EventArgs e)
+        {
+            if (textBoxPost.Text.Length == 0)
+            {
+                textBoxPost.Text = "write your thought...";
+            }
+        }
+
+        private void TextBoxPost_Enter(object sender, System.EventArgs e)
+        {
+            textBoxPost.Text = default;
+        }
+
+        private void TextBoxPost_TextChanged(object sender, System.EventArgs e)
+        {
+            if (textBoxPost.Text.Length != 0 && textBoxPost.Text != "write your thought...")
+            {
+                buttonFuture.Enabled = true;
+                buttonPostNow.Enabled = true;
+            }
+            else
+            {
+                buttonFuture.Enabled = false;
+                buttonPostNow.Enabled = false;
+            }
+            
+        }
 
         private void enableButtonsAfterFetchSucceeded()
         {
             AlbumNameComboBox.Enabled = true;
             sortableAttributesComboBox.Enabled = true;
+            buttonLogout.Enabled = true;
+            buttonDownloadSelectedAlbum.Enabled = true;
+            checkBoxRememberMe.Enabled = true;
+            textBoxPost.Enabled = true;
         }
     }
 }
