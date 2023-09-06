@@ -85,7 +85,22 @@ namespace WinFormUI
 
         private void Instance_futurePostAction(TimeSpan i_time)
         {
-            MessageBox.Show($"the post will upload in {i_time.Minutes.ToString("0.00")} minutes");
+            string timeLeft;
+            if (i_time.TotalDays > 1)
+            {
+                timeLeft = i_time.TotalDays.ToString("0") + " days";
+            }
+            else if(i_time.TotalHours > 1)
+            {
+                timeLeft = i_time.TotalHours.ToString("0") + " hours";
+            }
+            else
+            {
+                timeLeft = i_time.TotalSeconds.ToString("0") + " seconds";
+            }
+
+
+            MessageBox.Show($"the post will upload in {timeLeft}");
         }
 
         private void buttonPostNow_Click(object sender, EventArgs e)
