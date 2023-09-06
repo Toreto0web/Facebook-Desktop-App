@@ -5,6 +5,7 @@ using FacebookWrapper;
 using System.IO;
 using System.Net;
 using System.Threading;
+using System.Timers;
 
 namespace FacebookDAppLogics
 {
@@ -15,6 +16,7 @@ namespace FacebookDAppLogics
         private static User s_LoggedInUser;
         private static LoginResult s_LoginResult;
         private static Client s_Instance;
+        private string m_CurrentStatus;
 
         private Client() { }
 
@@ -140,14 +142,16 @@ namespace FacebookDAppLogics
             else
             {
                 DateTime currentTime = DateTime.Now;
-
                 TimeSpan timeDifference = i_futurePost - currentTime;
+                double interval = timeDifference.TotalMilliseconds;
+                m_CurrentStatus = text;
+                
                 futurePostAction.Invoke(timeDifference);
-                Thread.Sleep((int)timeDifference.TotalMilliseconds);
-
-                PostStatus(text);
+                System.Threading.Timer timer = new System.Threading.Timer(TimerCallback, null, (int)interval, Timeout.Infinite);
             }
         }
+
+
 
         public void DownloadSelectedAlbum(in int i_index, in string i_selectedFolderPath)
         {
@@ -158,6 +162,10 @@ namespace FacebookDAppLogics
             new Thread(albumAdapter.DownloadSelectedAlbum).Start();
         }
 
+        private void TimerCallback(object state)
+        {
+            PostStatus(m_CurrentStatus);
+        }
         public string ProfilePictureUrl
         {
             get

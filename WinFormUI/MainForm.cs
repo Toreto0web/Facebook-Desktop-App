@@ -75,7 +75,6 @@ namespace WinFormUI
             try
             {
                 s_LogicFacade.PostFuturePost(this.dateTimePicker.Value, this.textBoxPost.Text);
-                TimeSpan timeDifference = dateTimePicker.Value - DateTime.Now;
             }
             catch(Exception ex)
             {
