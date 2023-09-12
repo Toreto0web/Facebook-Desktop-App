@@ -228,9 +228,9 @@
             this.textBoxPost.Size = new System.Drawing.Size(332, 152);
             this.textBoxPost.TabIndex = 7;
             this.textBoxPost.Text = "write your thought...";
-            this.textBoxPost.Enter += new System.EventHandler(TextBoxPost_Enter);
-            this.textBoxPost.Leave += new System.EventHandler(TextBoxPost_Leave);
-            this.textBoxPost.TextChanged += TextBoxPost_TextChanged;
+            this.textBoxPost.Enter += new System.EventHandler(textBoxPost_Enter);
+            this.textBoxPost.Leave += new System.EventHandler(textBoxPost_Leave);
+            this.textBoxPost.TextChanged += textBoxPost_TextChanged;
             // 
             // buttonPostNow
             // 

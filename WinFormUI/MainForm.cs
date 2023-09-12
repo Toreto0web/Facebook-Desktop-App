@@ -12,23 +12,23 @@ namespace WinFormUI
         {
             InitializeComponent();
             s_LogicFacade = new FacebookDAppLogics.Facade();
-            FacebookDAppLogics.Client.Instance.ErrorHandler += Instance_ErrorHandler;
+            FacebookDAppLogics.Client.Instance.ErrorHandler += instance_ErrorHandler;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             StartPosition = FormStartPosition.Manual;
             checkBoxRememberMe.Checked = s_LogicFacade.AppSettings.RememberUser;
 
             if (s_LogicFacade.isUserAccessible())
             {
-                new Thread(LogIN).Start();
+                new Thread(logIn).Start();
             }
         }
 
-        private void Instance_ErrorHandler(Exception obj)
+        private void instance_ErrorHandler(Exception obj)
         {
             MessageBox.Show(obj.Message);
         }
 
-        private void LogIN()
+        private void logIn()
         {
             object LogInLock = new object();
 
@@ -57,7 +57,7 @@ namespace WinFormUI
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             buttonLogin.Enabled = false;
-            new Thread(LogIN).Start();
+            new Thread(logIn).Start();
         }
 
         private void fetchClosestsEvent()
@@ -84,7 +84,7 @@ namespace WinFormUI
 
         private void postFuturePost_Click(object sender, EventArgs e)
         {
-            FacebookDAppLogics.Client.Instance.futurePostAction += Instance_futurePostAction;
+            FacebookDAppLogics.Client.Instance.futurePostAction += iInstance_futurePostAction;
             try
             {
                 s_LogicFacade.PostFuturePost(this.dateTimePicker.Value, this.textBoxPost.Text);
@@ -95,20 +95,20 @@ namespace WinFormUI
             }
         }
 
-        private void Instance_futurePostAction(TimeSpan i_time)
+        private void iInstance_futurePostAction(TimeSpan i_Time)
         {
             string timeLeft;
-            if (i_time.TotalDays > 1)
+            if (i_Time.TotalDays > 1)
             {
-                timeLeft = i_time.TotalDays.ToString("0") + " days";
+                timeLeft = i_Time.TotalDays.ToString("0") + " days";
             }
-            else if(i_time.TotalHours > 1)
+            else if(i_Time.TotalHours > 1)
             {
-                timeLeft = i_time.TotalHours.ToString("0") + " hours";
+                timeLeft = i_Time.TotalHours.ToString("0") + " hours";
             }
             else
             {
-                timeLeft = i_time.TotalSeconds.ToString("0") + " seconds";
+                timeLeft = i_Time.TotalSeconds.ToString("0") + " seconds";
             }
 
 
@@ -140,15 +140,9 @@ namespace WinFormUI
 
         private void fetchLastStatus()
         {
-            try
-            {
-                TextBoxProxy textBox = new TextBoxProxy(s_LogicFacade.LastStatus, LastPostTextBox);
-                textBox.AlignStatus();
-            }
-            catch
-            {
-                MessageBox.Show("fetching status failed");
-            }
+
+            TextBoxProxy textBox = new TextBoxProxy(s_LogicFacade.LastStatus, LastPostTextBox);
+            textBox.AlignStatus();
         }
 
         private void fetchFacebookContent()
@@ -211,7 +205,7 @@ namespace WinFormUI
 
         }
 
-        private void TextBoxPost_Leave(object sender, System.EventArgs e)
+        private void textBoxPost_Leave(object sender, System.EventArgs e)
         {
             if (textBoxPost.Text.Length == 0)
             {
@@ -219,12 +213,12 @@ namespace WinFormUI
             }
         }
 
-        private void TextBoxPost_Enter(object sender, System.EventArgs e)
+        private void textBoxPost_Enter(object sender, System.EventArgs e)
         {
             textBoxPost.Text = default;
         }
 
-        private void TextBoxPost_TextChanged(object sender, System.EventArgs e)
+        private void textBoxPost_TextChanged(object sender, System.EventArgs e)
         {
             if (textBoxPost.Text.Length != 0 && textBoxPost.Text != "write your thought...")
             {

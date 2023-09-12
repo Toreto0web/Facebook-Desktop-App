@@ -16,19 +16,28 @@ namespace FacebookDAppLogics
             LastAccessToken = null;
         }
 
-        public static AppSettings LoadFromFile()
+        internal static AppSettings LoadFromFile()
         {
             AppSettings appSettings = new AppSettings();
-
-            if (File.Exists(giveAppFolderPath()))
+            try
             {
-                using (Stream stream = new FileStream(giveAppFolderPath(), FileMode.Open))
+                if (File.Exists(giveAppFolderPath()))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
-                    appSettings = serializer.Deserialize(stream) as AppSettings;
+                    using (Stream stream = new FileStream(giveAppFolderPath(), FileMode.Open))
+                    {
+
+                        XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
+                        appSettings = serializer.Deserialize(stream) as AppSettings;
+
+
+                    }
                 }
             }
-
+            catch
+            {
+                appSettings.RememberUser = false;
+                appSettings.LastAccessToken = null;
+            }
             return appSettings;
         }
 
@@ -40,24 +49,29 @@ namespace FacebookDAppLogics
             return filePath;
         }
 
-        public void SaveToFile() 
+        internal void SaveToFile() 
         {
-            if (File.Exists(giveAppFolderPath())) 
+            string filePath = giveAppFolderPath();
+            try
             {
-                using (Stream stream = new FileStream(giveAppFolderPath(), FileMode.Truncate)) 
+                if (File.Exists(filePath))
                 {
-                    XmlSerializer serializer = new XmlSerializer(this.GetType());
-                    serializer.Serialize(stream, this);
-                }            
-            }
-            else 
-            {
-                using (Stream stream = new FileStream(giveAppFolderPath(), FileMode.Create))
+                    using (Stream stream = new FileStream(filePath, FileMode.Truncate))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(this.GetType());
+                        serializer.Serialize(stream, this);
+                    }
+                }
+                else
                 {
-                    XmlSerializer serializer = new XmlSerializer(this.GetType());
-                    serializer.Serialize(stream, this);
+                    using (Stream stream = new FileStream(giveAppFolderPath(), FileMode.Create))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(this.GetType());
+                        serializer.Serialize(stream, this);
+                    }
                 }
             }
+            catch { }
         }
     }
 }

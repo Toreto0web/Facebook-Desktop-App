@@ -17,12 +17,11 @@ namespace FacebookDAppLogics
         private static LoginResult s_LoginResult;
         private static Client s_Instance;
         private string m_CurrentStatus;
+        private static readonly object sr_CreatingClientLock = new object();
 
         private Client() { }
 
-        public bool isLoggedIn { get { return s_Instance != null; } }
-
-        public string AccessToken
+        internal string AccessToken
         {
             get
             {
@@ -30,11 +29,11 @@ namespace FacebookDAppLogics
             }
         }
 
-        public FacebookObjectCollection<User> MyFriendsList 
+        internal FacebookCollectionWrapperProxy<User> MyFriendsList 
         {
             get 
             {
-                return s_LoggedInUser.Friends;
+                return new FacebookCollectionWrapperProxy<User>(s_LoggedInUser.Friends.ToArray());
             }
         }
 
@@ -44,18 +43,24 @@ namespace FacebookDAppLogics
             {
                 if (s_Instance == null)
                 {
-                    s_Instance = new Client();
+                    lock (sr_CreatingClientLock)
+                    {
+                        if (s_Instance == null)
+                        {
+                            s_Instance = new Client();
+                        }
+                    }
                 }
 
                 return s_Instance;
             }
         }
 
-        public void LoginAndInit(in string i_accessToken = default)
+        internal void LoginAndInit(in string i_AccessToken = default)
         {
-            if (!string.IsNullOrEmpty(i_accessToken))
+            if (!string.IsNullOrEmpty(i_AccessToken))
             {
-                s_LoginResult = FacebookService.Connect(i_accessToken);
+                s_LoginResult = FacebookService.Connect(i_AccessToken);
             }
             else
             {
@@ -75,7 +80,6 @@ namespace FacebookDAppLogics
             {
                 s_LoggedInUser = s_LoginResult.LoggedInUser;
             }
-
             else
             {
                 throw new Exception();
@@ -83,33 +87,43 @@ namespace FacebookDAppLogics
 
         }
 
-        public string FetchLastStatusText()
+        internal string FetchLastStatusText()
         {
             byte postIndex = 0;
-
+            string statusText;
             try
             {
                 while (string.IsNullOrEmpty(s_LoggedInUser.Posts[postIndex].Message))
                 {
                     postIndex++;
                 }
+                statusText = string.Format("\"{0}\"", s_LoggedInUser.Posts[postIndex].Message);
             }
-
-            catch (Exception e)
+            catch (Exception)
             {
-               throw e;
+                statusText = "No Status to show";
             }
 
-            return string.Format("\"{0}\"", s_LoggedInUser.Posts[postIndex].Message);
+            return statusText;
         }
 
-        public void LogoutClient()
+        internal void LogoutClient()
         {
-            FacebookService.LogoutWithUI();
-            s_LoginResult = null;
+            try
+            {
+                FacebookService.LogoutWithUI();
+            }
+            catch
+            {
+                ErrorHandler.Invoke(new Exception("Logout Failed"));
+            }
+            finally
+            {
+                s_LoggedInUser = null;
+            }
         }
 
-        public Event LastEvent
+        internal Event LastEvent
         {
             get
             {
@@ -133,23 +147,23 @@ namespace FacebookDAppLogics
             }
         }
 
-        public void PostFutureStatus(in DateTime i_futurePost, in string text)
+        internal void PostFutureStatus(in DateTime i_FuturePost, in string i_Text)
         {
-            if (i_futurePost <= DateTime.Now)
+            if (i_FuturePost <= DateTime.Now)
             {
                 throw new Exception("The time you entered already passed");
             }
             else
             {
                 DateTime currentTime = DateTime.Now;
-                TimeSpan timeDifference = i_futurePost - currentTime;
+                TimeSpan timeDifference = i_FuturePost - currentTime;
                 double interval = timeDifference.TotalMilliseconds;
-                m_CurrentStatus = text;
+                m_CurrentStatus = i_Text;
                 
                 futurePostAction.Invoke(timeDifference);
                 try
                 {
-                    System.Threading.Timer timer = new System.Threading.Timer(TimerCallback, null, (int)interval, Timeout.Infinite);
+                    System.Threading.Timer timer = new System.Threading.Timer(timerCallback, null, (int)interval, Timeout.Infinite);
                 }
                 catch(Exception)
                 {
@@ -158,7 +172,7 @@ namespace FacebookDAppLogics
             }
         }
 
-        private void TimerCallback(object state)
+        private void timerCallback(object i_State)
         {
             try
             {
@@ -170,33 +184,40 @@ namespace FacebookDAppLogics
             }
         }
 
-        public void DownloadSelectedAlbum(in int i_index, in string i_selectedFolderPath)
+        internal void DownloadSelectedAlbum(in int i_Index, in string i_SelectedFolderPath)
         {
             object DownloadSelectedAlbumLock = new object();
             lock (DownloadSelectedAlbumLock)
             {
-                Album selectedAlbum = s_LoggedInUser.Albums[i_index];
-                string newFolderPath = Path.Combine(i_selectedFolderPath, selectedAlbum.Name);
+                Album selectedAlbum = s_LoggedInUser.Albums[i_Index];
+                string newFolderPath = Path.Combine(i_SelectedFolderPath, selectedAlbum.Name);
                 byte photoIndex = 0;
-                Directory.CreateDirectory(newFolderPath);
-
-                foreach (Photo photo in selectedAlbum.Photos)
+                try
                 {
-                    string imageUrl = photo.PictureNormalURL;
-                    string fileName = (++photoIndex).ToString() + ".jpg";
-                    string fullPath = Path.Combine(newFolderPath, fileName);
+                    Directory.CreateDirectory(newFolderPath);
 
-                    using (WebClient webClient = new WebClient())
+                    foreach (Photo photo in selectedAlbum.Photos)
                     {
-                        byte[] imageBytes = webClient.DownloadData(imageUrl);
+                        string imageUrl = photo.PictureNormalURL;
+                        string fileName = (++photoIndex).ToString() + ".jpg";
+                        string fullPath = Path.Combine(newFolderPath, fileName);
 
-                        File.WriteAllBytes(fullPath, imageBytes);
+                        using (WebClient webClient = new WebClient())
+                        {
+                            byte[] imageBytes = webClient.DownloadData(imageUrl);
+
+                            File.WriteAllBytes(fullPath, imageBytes);
+                        }
                     }
+                }
+                catch(Exception)
+                {
+                    throw;
                 }
             }
         }
 
-        public string ProfilePictureUrl
+        internal string ProfilePictureUrl
         {
             get
             {
@@ -204,31 +225,37 @@ namespace FacebookDAppLogics
             }
         }
 
-        public FacebookObjectCollection<Album> ClientAlbums
+        internal FacebookCollectionWrapperProxy<Album> ClientAlbums
         {
             get
             {
-                return s_LoggedInUser.Albums;
+                return new  FacebookCollectionWrapperProxy<Album>(s_LoggedInUser.Albums.ToArray());
             }
         }
 
-        public void PostStatus(in string text)
+        internal void PostStatus(in string i_Text)
         {
             try
             {
-                Status postedStatus = s_LoggedInUser.PostStatus(text);
+                Status postedStatus = s_LoggedInUser.PostStatus(i_Text);
             }
             catch (Exception)
             {
-                throw;
+                ErrorHandler.Invoke(new Exception("Upload Post Failed"));
             }
         }
 
-        public void SortCollection(in string i_attribute)
+        internal void SortCollection(in string i_Attribute)
         {
-            FacebookCollectionWrapper<User> myFriends = new FacebookCollectionWrapper<User>(s_LoggedInUser.Friends.ToArray());
-            myFriends.SortCollection(i_attribute);
+            try
+            {
+                FacebookCollectionWrapperProxy<User> myFriends = new FacebookCollectionWrapperProxy<User>(s_LoggedInUser.Friends.ToArray());
+                myFriends.SortCollection(i_Attribute);
+            }
+            catch
+            {
+                ErrorHandler.Invoke(new Exception("Cant Show friend list now"));
+            }
         }
-
     }
 }

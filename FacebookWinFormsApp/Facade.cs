@@ -8,34 +8,28 @@ namespace FacebookDAppLogics
     {
         private Client m_Client;
 
-        public AppSettings AppSettings { get; }
 
         private string[] m_sortableAttributes = { "Gender", "Name", "Birthday" };
 
         public string LastStatus { get { return m_Client.FetchLastStatusText(); } }
 
+        public AppSettings AppSettings { get; }
+
+        public string[] SortableAttributes { get { return m_sortableAttributes; } }
+
+        public Event LastEvent { get { return m_Client.LastEvent; } }
+
+        public string ProfilePictureUrl { get { return m_Client.ProfilePictureUrl; } }
+
+        public FacebookCollectionWrapperProxy<Album> ClientAlbums { get { return m_Client.ClientAlbums; } }
+
+        public FacebookCollectionWrapperProxy<User> Friends { get { return m_Client.MyFriendsList; } }
+
         public Facade()
         {
             AppSettings = AppSettings.LoadFromFile();
         }
-
-        public string[] SortableAttributes { get { return m_sortableAttributes; } }
-
-        public Event LastEvent { get { return m_Client.LastEvent;} }
-
-        public string ProfilePictureUrl
-        {   
-            get
-            {
-                return m_Client.ProfilePictureUrl;
-            }
-        }
-
-        public FacebookObjectCollection<Album> ClientAlbums 
-        {
-            get { return m_Client.ClientAlbums;}
-        }
-
+        
         public bool isUserAccessible()
         {
             return AppSettings.RememberUser && !string.IsNullOrEmpty(AppSettings.LastAccessToken); 
@@ -46,19 +40,14 @@ namespace FacebookDAppLogics
             m_Client.LogoutClient();
         }
 
-        public void PostFuturePost(DateTime i_time, string i_text)
+        public void PostFuturePost(DateTime i_Time, string i_Text)
         {
-            m_Client.PostFutureStatus(i_time, i_text);
+            m_Client.PostFutureStatus(i_Time, i_Text);
         }
 
-        public void PostStatus(string i_text)
+        public void PostStatus(string i_Text)
         {
-            m_Client.PostStatus(i_text);
-        }
-
-        public FacebookObjectCollection<User> Friends
-        {
-            get { return m_Client.MyFriendsList; }
+            m_Client.PostStatus(i_Text);
         }
 
         public void UpdateSettings(in bool i_Checked)
@@ -82,22 +71,20 @@ namespace FacebookDAppLogics
             m_Client = Client.Instance;
 
             try
-            { // Yoav access token : EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD
+            { //Yoav access token : EAALu5L7eeuoBOxHXZAcvtyYPHcFLiknT6rbqgLU7rImXXHvmc01IKrjxMEQ20h6y5UBzMNsS8KGDLmzz5wR50JkdZAQ7S8mbUPIKViVzE7AQ1EWXFej7c57phsVXjqZCIGuAgZAOi3MmQ79fZCYSfbhIZAWO2sVYjZC4cbxy2BTRzT5ZCBGEdkYNsUJnMe51FWmZCIBJC5zj1CgZDZD
                 m_Client.LoginAndInit(AppSettings.LastAccessToken);
             }
             catch (Exception)
             {
-                
-                throw new Exception();
+                throw;
             }
 
         }
 
-     
-        public void DownloadSelectedAlbum(int i_SelectedIndex, string i_SelectedPath, bool i_isOK)
+        public void DownloadSelectedAlbum(int i_SelectedIndex, string i_SelectedPath, bool i_IsOK)
         {
 
-            if (i_isOK && !string.IsNullOrWhiteSpace(i_SelectedPath))
+            if (i_IsOK && !string.IsNullOrWhiteSpace(i_SelectedPath))
             {
                 new Thread(() => m_Client.DownloadSelectedAlbum(i_SelectedIndex, i_SelectedPath)).Start();
             }
@@ -108,13 +95,13 @@ namespace FacebookDAppLogics
 
         }
 
-        public void Sort(in string i_result)
+        public void Sort(in string i_Result)
         {
             object SortCollectionLock = new object();
 
             lock (SortCollectionLock) 
             {
-                m_Client.SortCollection(i_result);
+                m_Client.SortCollection(i_Result);
             }
         }
 

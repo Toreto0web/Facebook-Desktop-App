@@ -6,12 +6,12 @@ namespace WinFormUI
 {
     internal class TextBoxProxy 
     {
-        private System.Windows.Forms.TextBox TextBoxForm;
+        private TextBox TextBoxForm;
 
-        internal TextBoxProxy(string i_textBoxString, System.Windows.Forms.TextBox textBox)
+        internal TextBoxProxy(string i_TextBoxString, TextBox i_TextBox)
         {
-            textBox.Invoke(new Action(() => TextBoxForm = textBox));
-            textBox.Invoke(new Action(() => TextBoxForm.Text = i_textBoxString));
+            i_TextBox.Invoke(new Action(() => TextBoxForm = i_TextBox));
+            i_TextBox.Invoke(new Action(() => TextBoxForm.Text = i_TextBoxString));
         }
 
         private bool isStatusInEnglish()
