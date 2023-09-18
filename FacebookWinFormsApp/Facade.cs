@@ -21,9 +21,9 @@ namespace FacebookDAppLogics
 
         public string ProfilePictureUrl { get { return m_Client.ProfilePictureUrl; } }
 
-        public FacebookCollectionWrapperProxy<Album> ClientAlbums { get { return m_Client.ClientAlbums; } }
+        public FacebookCollectionWrapper<Album> ClientAlbums { get { return m_Client.ClientAlbums; } }
 
-        public FacebookCollectionWrapperProxy<User> Friends { get { return m_Client.MyFriendsList; } }
+        public FacebookCollectionWrapper<User> Friends { get { return m_Client.MyFriendsList; } }
 
         public Facade()
         {
