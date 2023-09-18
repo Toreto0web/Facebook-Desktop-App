@@ -5,6 +5,7 @@ using FacebookWrapper;
 using System.IO;
 using System.Threading;
 using System.Net;
+using System.Reflection;
 
 namespace FacebookDAppLogics
 {
@@ -29,19 +30,19 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal FacebookCollectionWrapperProxy<User> MyFriendsList 
-        {
-            get 
-            {
-                return new FacebookCollectionWrapperProxy<User>(s_LoggedInUser.Friends.ToArray());
-            }
-        }
-
-        internal FacebookCollectionWrapperProxy<Album> ClientAlbums
+        internal FacebookCollectionWrapper<User> MyFriendsList
         {
             get
             {
-                return new FacebookCollectionWrapperProxy<Album>(s_LoggedInUser.Albums.ToArray());
+                return new FacebookCollectionWrapper<User>(s_LoggedInUser.Friends.ToArray());
+            }
+        }
+
+        internal FacebookCollectionWrapper<Album> ClientAlbums
+        {
+            get
+            {
+                return new FacebookCollectionWrapper<Album>(s_LoggedInUser.Albums.ToArray());
             }
         }
 
@@ -175,13 +176,13 @@ namespace FacebookDAppLogics
                 TimeSpan timeDifference = i_FuturePost - currentTime;
                 double interval = timeDifference.TotalMilliseconds;
                 m_CurrentStatus = i_Text;
-                
+
                 futurePostAction.Invoke(timeDifference);
                 try
                 {
                     System.Threading.Timer timer = new System.Threading.Timer(timerCallback, null, (int)interval, Timeout.Infinite);
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -194,7 +195,7 @@ namespace FacebookDAppLogics
             {
                 PostStatus(m_CurrentStatus);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 ErrorHandler.Invoke(new Exception("future status didn't post because of an error"));
             }
@@ -226,7 +227,7 @@ namespace FacebookDAppLogics
                         }
                     }
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -245,17 +246,29 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal void SortCollection(in string i_Attribute)
+        public void SortCollection(in string i_attribute)
         {
-            try
+            string attributeName = i_attribute;
+
+            FacebookCollectionWrapper<User> myFriends = new FacebookCollectionWrapper<User>(s_LoggedInUser.Friends.ToArray(), (user1, user2) =>
             {
-                FacebookCollectionWrapperProxy<User> myFriends = new FacebookCollectionWrapperProxy<User>(s_LoggedInUser.Friends.ToArray());
-                myFriends.SortCollection(i_Attribute);
-            }
-            catch
-            {
-                ErrorHandler.Invoke(new Exception("Cant Show friend list now"));
-            }
+                PropertyInfo property = typeof(User).GetProperty(attributeName);
+                if (property != null)
+                {
+                    IComparable value1 = (IComparable)property.GetValue(user1);
+                    IComparable value2 = (IComparable)property.GetValue(user2);
+                    return value1.CompareTo(value2);
+                }
+                else
+                {
+                    throw new Exception("Attribute not exist");
+                }
+
+            });
+
+            myFriends.SortCollection();
+           
+           
         }
     }
 }

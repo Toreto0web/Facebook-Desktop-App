@@ -22,9 +22,9 @@ namespace FacebookDAppLogics
 
         public string ProfilePictureUrl { get { return privateFlexableClient.ProfilePictureUrl; } }
 
-        public FacebookCollectionWrapperProxy<Album> ClientAlbums { get { return privateFlexableClient.ClientAlbums; } }
+        public FacebookCollectionWrapper<Album> ClientAlbums { get { return Client.ClientAlbums; } }
 
-        public FacebookCollectionWrapperProxy<User> Friends { get { return privateFlexableClient.MyFriendsList; } }
+        public FacebookCollectionWrapper<User> Friends { get { return Client.MyFriendsList; } }
 
         public Facade()
         {
