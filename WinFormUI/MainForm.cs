@@ -6,18 +6,18 @@ namespace WinFormUI
 {
     public partial class MainForm : Form
     {
-        private static FacebookDAppLogics.Facade s_LogicFacade;
+        public static FacebookDAppLogics.Facade s_LogicFacade { get; set; }
 
         public MainForm()
         {
             InitializeComponent();
             s_LogicFacade = new FacebookDAppLogics.Facade();
-            FacebookDAppLogics.Client.Instance.ErrorHandler += instance_ErrorHandler;
+            s_LogicFacade.Client.ErrorHandler += instance_ErrorHandler;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             StartPosition = FormStartPosition.Manual;
             checkBoxRememberMe.Checked = s_LogicFacade.AppSettings.RememberUser;
 
-            if (s_LogicFacade.isUserAccessible())
+            if (s_LogicFacade.IsUserAccessible())
             {
                 new Thread(logIn).Start();
             }
@@ -76,15 +76,15 @@ namespace WinFormUI
 
         private void buttonFuture_Click(object sender, EventArgs e)
         {
-            this.Controls.Add(this.postFuturePostButton);
+            this.Controls.Add(postFuturePostButton);
             this.postFuturePostButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(dateTimePicker);
             this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 12F);
         }
 
         private void postFuturePost_Click(object sender, EventArgs e)
         {
-            FacebookDAppLogics.Client.Instance.futurePostAction += iInstance_futurePostAction;
+            s_LogicFacade.Client.futurePostAction += iInstance_futurePostAction;
             try
             {
                 s_LogicFacade.PostFuturePost(this.dateTimePicker.Value, this.textBoxPost.Text);

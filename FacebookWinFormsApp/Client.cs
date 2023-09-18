@@ -37,6 +37,14 @@ namespace FacebookDAppLogics
             }
         }
 
+        internal FacebookCollectionWrapperProxy<Album> ClientAlbums
+        {
+            get
+            {
+                return new FacebookCollectionWrapperProxy<Album>(s_LoggedInUser.Albums.ToArray());
+            }
+        }
+
         public static Client Instance
         {
             get
@@ -53,6 +61,38 @@ namespace FacebookDAppLogics
                 }
 
                 return s_Instance;
+            }
+        }
+
+        internal string ProfilePictureUrl
+        {
+            get
+            {
+                return s_LoggedInUser.PictureLargeURL;
+            }
+        }
+
+        internal Event LastEvent
+        {
+            get
+            {
+                if (s_LoggedInUser.Events.Count == 0)
+                {
+                    throw new Exception("No Events");
+                }
+                else
+                {
+                    Event closesestEvent = s_LoggedInUser.Events[0];
+
+                    foreach (Event fbEvent in s_LoggedInUser.Events)
+                    {
+                        if (fbEvent.StartTime < closesestEvent.StartTime)
+                        {
+                            closesestEvent = fbEvent;
+                        }
+                    }
+                    return closesestEvent;
+                }
             }
         }
 
@@ -123,30 +163,6 @@ namespace FacebookDAppLogics
             }
         }
 
-        internal Event LastEvent
-        {
-            get
-            {
-                if (s_LoggedInUser.Events.Count == 0)
-                {
-                    throw new Exception("No Events");
-                }
-                else
-                {
-                    Event closesestEvent = s_LoggedInUser.Events[0];
-
-                    foreach (Event fbEvent in s_LoggedInUser.Events)
-                    {
-                        if (fbEvent.StartTime < closesestEvent.StartTime)
-                        {
-                            closesestEvent = fbEvent;
-                        }
-                    }
-                    return closesestEvent;
-                }
-            }
-        }
-
         internal void PostFutureStatus(in DateTime i_FuturePost, in string i_Text)
         {
             if (i_FuturePost <= DateTime.Now)
@@ -214,22 +230,6 @@ namespace FacebookDAppLogics
                 {
                     throw;
                 }
-            }
-        }
-
-        internal string ProfilePictureUrl
-        {
-            get
-            {
-                return s_LoggedInUser.PictureLargeURL;
-            }
-        }
-
-        internal FacebookCollectionWrapperProxy<Album> ClientAlbums
-        {
-            get
-            {
-                return new  FacebookCollectionWrapperProxy<Album>(s_LoggedInUser.Albums.ToArray());
             }
         }
 
