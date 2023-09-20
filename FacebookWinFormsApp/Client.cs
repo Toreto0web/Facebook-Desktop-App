@@ -260,9 +260,9 @@ namespace FacebookDAppLogics
 
                 if (attribute != null)
                 {
-                    IComparable value1 = (IComparable)attribute.GetValue(user1);
-                    IComparable value2 = (IComparable)attribute.GetValue(user2);
-                    return value1.CompareTo(value2);
+                    IComparable attributeOfUser1 = (IComparable)attribute.GetValue(user1);
+                    IComparable attributeOfUser2 = (IComparable)attribute.GetValue(user2);
+                    return attributeOfUser1.CompareTo(attributeOfUser2);
                 }
                 else
                 {
