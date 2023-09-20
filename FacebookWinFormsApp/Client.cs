@@ -250,7 +250,8 @@ namespace FacebookDAppLogics
         {
             string attributeName = i_Attribute;
 
-            FacebookCollectionWrapper<User> myFriends = new FacebookCollectionWrapper<User>(s_LoggedInUser.Friends.ToArray(), (user1, user2) =>
+            FacebookCollectionWrapper<User> myFriends = new FacebookCollectionWrapper<User>(s_LoggedInUser.Friends.ToArray(),
+                (user1, user2) =>
             {
                 PropertyInfo property = typeof(User).GetProperty(attributeName);
                 if (property != null)
