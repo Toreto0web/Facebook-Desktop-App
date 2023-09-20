@@ -9,7 +9,6 @@ namespace FacebookDAppLogics
         private readonly Func<IEnumerable<T>, IEnumerable<T>, int> r_ManipulateFunction;
         private T[] m_CurrentFacebookObject;
 
-
         public IEnumerator<T> GetEnumerator()
         {
             foreach (T item in m_CurrentFacebookObject)
@@ -23,7 +22,6 @@ namespace FacebookDAppLogics
             return GetEnumerator();
         }
 
-        
         public FacebookCollectionWrapper(T[] i_FacebookObject, Func<IEnumerable<T>, IEnumerable<T>, int> i_ManipulateFunction = null)
         {
             m_CurrentFacebookObject = i_FacebookObject;
@@ -34,7 +32,9 @@ namespace FacebookDAppLogics
         {
             if (r_ManipulateFunction != null)
             {
-                Array.Sort(m_CurrentFacebookObject, (user1, user2) =>
+                Array.Sort(
+                    m_CurrentFacebookObject,
+                    (user1, user2) =>
                 {
                     return r_ManipulateFunction(new[] { user1 }, new[] { user2 });
                 });

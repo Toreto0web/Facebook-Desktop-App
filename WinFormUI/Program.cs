@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace WinFormUI
@@ -18,7 +16,6 @@ namespace WinFormUI
             }
             catch(Exception)
             {
-
             }
         }
     }

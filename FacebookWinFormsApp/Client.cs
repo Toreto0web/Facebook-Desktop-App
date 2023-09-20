@@ -246,9 +246,9 @@ namespace FacebookDAppLogics
             }
         }
 
-        public void SortCollection(in string i_attribute)
+        public void SortCollection(in string i_Attribute)
         {
-            string attributeName = i_attribute;
+            string attributeName = i_Attribute;
 
             FacebookCollectionWrapper<User> myFriends = new FacebookCollectionWrapper<User>(s_LoggedInUser.Friends.ToArray(), (user1, user2) =>
             {
@@ -267,8 +267,6 @@ namespace FacebookDAppLogics
             });
 
             myFriends.SortCollection();
-           
-           
         }
     }
 }

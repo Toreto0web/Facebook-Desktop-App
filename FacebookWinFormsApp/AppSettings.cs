@@ -25,11 +25,8 @@ namespace FacebookDAppLogics
                 {
                     using (Stream stream = new FileStream(giveAppFolderPath(), FileMode.Open))
                     {
-
                         XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
                         appSettings = serializer.Deserialize(stream) as AppSettings;
-
-
                     }
                 }
             }
@@ -38,6 +35,7 @@ namespace FacebookDAppLogics
                 appSettings.RememberUser = false;
                 appSettings.LastAccessToken = null;
             }
+
             return appSettings;
         }
 
@@ -71,7 +69,9 @@ namespace FacebookDAppLogics
                     }
                 }
             }
-            catch { }
+            catch 
+            {
+            }
         }
     }
 }
