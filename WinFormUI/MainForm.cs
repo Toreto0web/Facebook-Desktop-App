@@ -82,9 +82,10 @@ namespace WinFormUI
             this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 12F);
         }
 
-        private void postFuturePost_Click(object sender, EventArgs e)
+        private void postFutureStatus_Click(object sender, EventArgs e)
         {
             s_LogicFacade.Client.futurePostAction += iInstance_futurePostAction;
+
             try
             {
                 s_LogicFacade.PostFuturePost(this.dateTimePicker.Value, this.textBoxPost.Text);
@@ -98,6 +99,7 @@ namespace WinFormUI
         private void iInstance_futurePostAction(TimeSpan i_Time)
         {
             string timeLeft;
+
             if (i_Time.TotalDays > 1)
             {
                 timeLeft = i_Time.TotalDays.ToString("0") + " days";
@@ -110,7 +112,6 @@ namespace WinFormUI
             {
                 timeLeft = i_Time.TotalSeconds.ToString("0") + " seconds";
             }
-
 
             MessageBox.Show($"the post will upload in {timeLeft}");
         }
@@ -140,7 +141,6 @@ namespace WinFormUI
 
         private void fetchLastStatus()
         {
-
             TextBoxProxy textBox = new TextBoxProxy(s_LogicFacade.LastStatus, LastPostTextBox);
             textBox.AlignStatus();
         }

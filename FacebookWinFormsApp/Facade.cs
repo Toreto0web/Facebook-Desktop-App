@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Ignore Spelling: App Facebook
+
+using System;
 using FacebookWrapper.ObjectModel;
 using System.Threading;
 

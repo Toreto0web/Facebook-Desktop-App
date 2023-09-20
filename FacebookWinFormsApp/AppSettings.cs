@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Ignore Spelling: Facebook App
+
+using System;
 using System.Xml.Serialization;
 using System.IO;
 

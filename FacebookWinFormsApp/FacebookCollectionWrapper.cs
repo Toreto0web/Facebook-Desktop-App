@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Ignore Spelling: Facebook App
+
+using System;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -6,7 +8,7 @@ namespace FacebookDAppLogics
 {
     public class FacebookCollectionWrapper<T> : IEnumerable<T>
     {
-        private readonly Func<IEnumerable<T>, IEnumerable<T>, int> r_ManipulateFunction;
+        private readonly Func<IEnumerable<T>, IEnumerable<T>, int> r_SortFunction;
         private T[] m_CurrentFacebookObject;
 
         public IEnumerator<T> GetEnumerator()
@@ -22,21 +24,21 @@ namespace FacebookDAppLogics
             return GetEnumerator();
         }
 
-        public FacebookCollectionWrapper(T[] i_FacebookObject, Func<IEnumerable<T>, IEnumerable<T>, int> i_ManipulateFunction = null)
+        public FacebookCollectionWrapper(T[] i_FacebookObject, Func<IEnumerable<T>, IEnumerable<T>, int> i_SortFunction = null)
         {
             m_CurrentFacebookObject = i_FacebookObject;
-            r_ManipulateFunction = i_ManipulateFunction;
+            r_SortFunction = i_SortFunction;
         }
 
         internal void SortCollection()
         {
-            if (r_ManipulateFunction != null)
+            if (r_SortFunction != null)
             {
                 Array.Sort(
                     m_CurrentFacebookObject,
                     (user1, user2) =>
                 {
-                    return r_ManipulateFunction(new[] { user1 }, new[] { user2 });
+                    return r_SortFunction(new[] { user1 }, new[] { user2 });
                 });
             }
         }

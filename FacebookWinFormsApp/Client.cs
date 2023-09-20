@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Ignore Spelling: Facebook App
+
+using System;
 using System.Linq;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
@@ -178,6 +180,7 @@ namespace FacebookDAppLogics
                 m_CurrentStatus = i_Text;
 
                 futurePostAction.Invoke(timeDifference);
+
                 try
                 {
                     System.Threading.Timer timer = new System.Threading.Timer(timerCallback, null, (int)interval, Timeout.Infinite);
@@ -253,11 +256,12 @@ namespace FacebookDAppLogics
             FacebookCollectionWrapper<User> myFriends = new FacebookCollectionWrapper<User>(s_LoggedInUser.Friends.ToArray(),
                 (user1, user2) =>
             {
-                PropertyInfo property = typeof(User).GetProperty(attributeName);
-                if (property != null)
+                PropertyInfo attribute = typeof(User).GetProperty(attributeName);
+
+                if (attribute != null)
                 {
-                    IComparable value1 = (IComparable)property.GetValue(user1);
-                    IComparable value2 = (IComparable)property.GetValue(user2);
+                    IComparable value1 = (IComparable)attribute.GetValue(user1);
+                    IComparable value2 = (IComparable)attribute.GetValue(user2);
                     return value1.CompareTo(value2);
                 }
                 else
